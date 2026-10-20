@@ -6,8 +6,9 @@ The canonical Sandicts symbol is the stylized `S` approved on 30 July 2026.
 The source PNGs are visual references only. Production surfaces use transparent
 vector geometry with no baked background or mandatory glow.
 
-`SANDICTS` is real text in Roboto Medium. IBM Plex Sans remains the interface
-font and Montserrat remains the heading font.
+`SANDICTS` is real text in Roboto Medium. Inter is the interface and heading font supplied through the shared design
+system contract. Brand colors use `--sandicts-brand-*`; they never override
+shared primary, focus or navigation tokens.
 
 ## Ownership
 

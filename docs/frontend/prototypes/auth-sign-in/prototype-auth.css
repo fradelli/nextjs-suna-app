@@ -40,18 +40,18 @@
 }
 
 .auth-card {
-  padding: 1.25rem;
+  padding: var(--fd-card-padding-default);
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) * 1.5);
-  background: color-mix(in oklch, var(--popover) 96%, transparent);
+  border-radius: var(--fd-radius-xl);
+
 }
 
 .auth-card h3,
 .boundary-state h3 {
   margin: 0;
-  font-size: clamp(1.55rem, 6vw, 2rem);
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  font-size: var(--fd-text-card-size);
+  line-height: var(--fd-text-card-line-height);
+  letter-spacing: var(--fd-text-card-tracking);
 }
 
 .auth-card__description {
@@ -82,10 +82,10 @@
 
 .google-button:hover:not(:disabled) {
   background: #f8faff;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.18);
+  box-shadow: var(--fd-surface-glass-shadow);
 }
 
-.google-button:focus-visible {
+.google-button:focus-visible:not(.fd-focus-managed) {
   outline-color: var(--primary);
 }
 
@@ -149,8 +149,8 @@
   justify-content: center;
   padding: 2rem 1.25rem;
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) * 1.5);
-  background: color-mix(in oklch, var(--popover) 96%, transparent);
+  border-radius: var(--fd-radius-xl);
+  background: var(--fd-color-surface-elevated);
   text-align: center;
 }
 
@@ -161,7 +161,7 @@
   margin-bottom: 1.25rem;
   place-items: center;
   border: 1px solid var(--info-border);
-  border-radius: calc(var(--radius) * 1.4);
+  border-radius: var(--fd-radius-xl);
   background: var(--info-subtle);
   color: var(--info);
 }
@@ -212,7 +212,7 @@
 
 @media (min-width: 36rem) {
   .auth-card {
-    padding: 1.5rem;
+    padding: var(--fd-card-padding-default);
   }
 }
 

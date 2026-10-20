@@ -45,10 +45,10 @@ test("renders the gallery and propagates fixture theme tokens", async ({
   await expect(fixtureVariant).toHaveCount(1);
 
   const defaultBrandColor = await defaultVariant.evaluate((element) =>
-    getComputedStyle(element).getPropertyValue("--brand"),
+    getComputedStyle(element).getPropertyValue("--sandicts-brand"),
   );
   const fixtureBrandColor = await fixtureVariant.evaluate((element) =>
-    getComputedStyle(element).getPropertyValue("--brand"),
+    getComputedStyle(element).getPropertyValue("--sandicts-brand"),
   );
 
   expect(defaultBrandColor).toBeTruthy();
@@ -62,7 +62,7 @@ test("renders the gallery and propagates fixture theme tokens", async ({
         const lockup = element.querySelector("[data-brand-lockup]");
 
         return lockup
-          ? getComputedStyle(lockup).getPropertyValue("--brand")
+          ? getComputedStyle(lockup).getPropertyValue("--sandicts-brand")
           : "";
       }),
     defaultVariant
@@ -71,7 +71,7 @@ test("renders the gallery and propagates fixture theme tokens", async ({
         const lockup = element.querySelector("[data-brand-lockup]");
 
         return lockup
-          ? getComputedStyle(lockup).getPropertyValue("--brand")
+          ? getComputedStyle(lockup).getPropertyValue("--sandicts-brand")
           : "";
       }),
   ]);

@@ -10,7 +10,7 @@ function AuthenticatedTopbar({
   title,
 }: AuthenticatedTopbarProps) {
   return (
-    <header className="sticky top-0 z-30 flex min-h-20 items-center gap-3 border-b border-border bg-background/95 px-4 py-3 backdrop-blur-sm sm:px-6">
+    <header className="fd-surface-glass-elevated sticky top-0 z-30 flex min-h-20 items-center gap-3 border-b border-border px-4 py-3 sm:px-6">
       {menuTrigger}
       {menuTrigger ? null : (
         <div className="md:hidden">

@@ -6,7 +6,7 @@ import { forwardRef } from "react";
 import type { Icon, IconProps } from "@phosphor-icons/react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Button } from "@/components/ui/button";
+import { Button } from "@fradelli/ui/button";
 import { PageState } from "./page-state";
 
 const TestIcon = forwardRef<SVGSVGElement, Omit<IconProps, "ref">>(

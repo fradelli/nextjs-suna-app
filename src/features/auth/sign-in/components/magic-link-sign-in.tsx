@@ -4,15 +4,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useEffect, useId, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
-import { PendingButton } from "@/components/shared/pending-button/pending-button";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { PendingButton } from "@fradelli/ui/pending-button";
+import { Alert, AlertDescription, AlertTitle } from "@fradelli/ui/alert";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+} from "@fradelli/ui/field";
+import { Input } from "@fradelli/ui/input";
 import { useRequestMagicLinkControllerRequest } from "@/lib/api/generated/sandicts-api/auth/auth";
 import { isSandictsApiError } from "@/lib/api/runtime/sandicts-api-error";
 import {

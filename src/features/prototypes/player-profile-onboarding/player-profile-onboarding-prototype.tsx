@@ -11,21 +11,21 @@ import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Controller } from "react-hook-form";
 import { BrandLockup } from "@/components/shared/brand";
-import { LoadingRegion } from "@/components/shared/loading-region/loading-region";
+import { LoadingRegion } from "@fradelli/ui/loading-region";
 import { PageState } from "@/components/shared/page-state/page-state";
-import { PendingButton } from "@/components/shared/pending-button/pending-button";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { PendingButton } from "@fradelli/ui/pending-button";
+import { Alert, AlertDescription, AlertTitle } from "@fradelli/ui/alert";
+import { Button } from "@fradelli/ui/button";
+import { Card, CardContent, CardHeader } from "@fradelli/ui/card";
 import {
   Field,
   FieldDescription,
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Skeleton } from "@/components/ui/skeleton";
+} from "@fradelli/ui/field";
+import { Input } from "@fradelli/ui/input";
+import { Skeleton } from "@fradelli/ui/skeleton";
 import { ExitConfirmationDialog } from "./components/exit-confirmation-dialog";
 import { PrototypeScenarioController } from "./components/prototype-scenario-controller";
 import { SelectionCardRadioGroup } from "./components/selection-card-radio-group";

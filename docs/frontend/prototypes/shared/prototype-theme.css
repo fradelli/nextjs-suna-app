@@ -1,0 +1,48 @@
+/* Compatibility names belong only to the standalone HTML prototype vocabulary. */
+:root {
+  --background: var(--fd-color-background);
+  --foreground: var(--fd-color-foreground);
+  --card: var(--fd-color-surface);
+  --card-foreground: var(--fd-color-foreground);
+  --popover: var(--fd-color-surface-elevated);
+  --popover-foreground: var(--fd-color-foreground);
+  --primary: var(--fd-color-primary);
+  --primary-foreground: var(--fd-color-primary-foreground);
+  --secondary: var(--fd-color-surface-interactive);
+  --secondary-foreground: var(--fd-color-foreground);
+  --muted: var(--fd-color-surface-elevated);
+  --muted-foreground: var(--fd-color-muted-foreground);
+  --accent: var(--fd-color-surface-interactive);
+  --accent-foreground: var(--fd-color-foreground);
+  --border: var(--fd-color-border);
+  --input: var(--fd-color-input);
+  --ring: var(--fd-color-focus-ring);
+  --sidebar: var(--fd-color-surface-elevated);
+  --sidebar-foreground: var(--fd-color-foreground);
+  --sidebar-primary: var(--fd-color-primary);
+  --sidebar-primary-foreground: var(--fd-color-primary-foreground);
+  --sidebar-accent: var(--fd-color-surface-interactive);
+  --sidebar-accent-foreground: var(--fd-color-foreground);
+  --sidebar-border: var(--fd-color-border);
+  --success: var(--fd-color-status-success-solid);
+  --success-foreground: var(--fd-color-status-success-foreground);
+  --success-subtle: var(--fd-color-status-success-subtle);
+  --success-border: var(--fd-color-status-success-border);
+  --warning: var(--fd-color-status-warning-solid);
+  --warning-foreground: var(--fd-color-status-warning-foreground);
+  --warning-subtle: var(--fd-color-status-warning-subtle);
+  --warning-border: var(--fd-color-status-warning-border);
+  --info: var(--fd-color-status-info-solid);
+  --info-foreground: var(--fd-color-status-info-foreground);
+  --info-subtle: var(--fd-color-status-info-subtle);
+  --info-border: var(--fd-color-status-info-border);
+  --destructive: var(--fd-color-status-destructive-solid);
+  --destructive-foreground: var(--fd-color-status-destructive-foreground);
+  --destructive-subtle: var(--fd-color-status-destructive-subtle);
+  --destructive-border: var(--fd-color-status-destructive-border);
+  --font-sans-stack: var(--fd-font-family-sans);
+  --font-heading-stack: var(--fd-font-family-sans);
+  --font-brand-stack: "Roboto", var(--fd-font-family-sans);
+  --radius: var(--fd-radius-lg);
+  --shadow: var(--fd-surface-glass-shadow);
+}

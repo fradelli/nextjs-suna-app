@@ -1,12 +1,14 @@
 import type { PageStateTone } from "./page-state.types";
 
 const pageStateToneClasses: Record<PageStateTone, string> = {
-  neutral: "border-border bg-card text-muted-foreground",
-  info: "border-info-border bg-info-subtle text-info",
-  success: "border-success-border bg-success-subtle text-success",
-  warning: "border-warning-border bg-warning-subtle text-warning",
+  neutral: "border-border bg-surface text-muted-foreground",
+  info: "border-status-info-border bg-status-info-subtle text-status-info",
+  success:
+    "border-status-success-border bg-status-success-subtle text-status-success",
+  warning:
+    "border-status-warning-border bg-status-warning-subtle text-status-warning",
   destructive:
-    "border-destructive-border bg-destructive-subtle text-destructive",
+    "border-status-destructive-border bg-status-destructive-subtle text-status-destructive",
 };
 
 const pageStateStyles = {
@@ -15,8 +17,8 @@ const pageStateStyles = {
     "mb-6 flex size-14 items-center justify-center rounded-2xl border",
   icon: "size-7",
   eyebrow: "mb-3 text-sm font-medium text-primary",
-  heading: "text-3xl leading-tight font-semibold text-balance sm:text-4xl",
-  description: "mt-4 max-w-xl text-base leading-7 text-muted-foreground",
+  heading: "fd-text-display text-balance",
+  description: "fd-text-body mt-4 max-w-xl text-muted-foreground",
   actions:
     "mt-7 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row",
 } as const;

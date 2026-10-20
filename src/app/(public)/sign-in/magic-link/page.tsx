@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@fradelli/ui/card";
 import { MagicLinkCallbackScreen } from "@/features/auth/sign-in/components/magic-link-callback-screen";
 import { signInScreenStyles } from "@/features/auth/sign-in/sign-in-screen.styles";
 import { DEFAULT_LOCALE } from "@/i18n/config";

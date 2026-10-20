@@ -51,7 +51,7 @@ Decided:
   repository
 - use npm as the package manager, with Node.js 24 LTS and npm 11
 - use Next.js App Router with TypeScript
-- use shadcn/ui Radix Nova with Tailwind CSS and Phosphor Icons
+- use public @fradelli/ui exports with Tailwind CSS and Phosphor Icons
 - use TanStack Query for server state
 - use Zod with React Hook Form for forms
 - use `next-intl` with `pt-BR` as the only MVP locale and fallback locale
@@ -128,7 +128,7 @@ Rules:
 
 Current alignment:
 
-- `.nvmrc` targets Node.js `24.16.0`
+- `.nvmrc` targets Node.js `24.20.0`
 - `package.json` declares Node.js `>=24 <25`, npm `>=11 <12`, and
   `packageManager: npm@11.13.0`
 - CI reads Node.js from `.nvmrc`, caches npm dependencies by
@@ -231,53 +231,12 @@ Additional catalogs, localized public URLs, a locale switcher, persistence, and
 
 ### UI And Styling
 
-Current implementation:
-
-- shadcn/ui
-- Tailwind CSS
-- `@phosphor-icons/react`
-- locally owned tokens and primitives based on preset `b6pMnd9eSI`
-
-Target architecture:
-
-- consume foundations and primitives from the versioned `@fradelli/ui` package
-- keep product brand, shells, pages, feature compositions, domain mapping, API,
-  auth, i18n, and providers in Sandicts
-- use the [shared Design System ADR](https://github.com/fradelli/design-system/blob/main/docs/decisions/0001-shared-design-system-foundation.md)
-  as the normative ownership contract
-
-Rules:
-
-- keep the current preset and local source code active until the KAN-224 and
-  KAN-225 migration PRs replace them with a validated package version
-- migrate tokens and primitives incrementally; do not combine extraction,
-  import replacement, and visual redesign in one change
-- keep a component local when its props know Sandicts DTOs, statuses, routes,
-  permissions, copy, or feature behavior
-- admit composed patterns to the package only after real use in two products
-  and approval of the shared component-admission checklist
-- use canonical Phosphor `*Icon` exports where an existing icon fits the control
-- keep the locally reconciled primitive behavior, types, accessibility, and
-  tests during migration to the shared package
-- use semantic shadcn/ui-compatible tokens for color, radius, typography,
-  status, focus, and surfaces
-- keep palette names and domain meanings out of shared component APIs; map
-  categorical colors to Sandicts concepts inside the owning feature
-- ship one dark theme for MVP and defer a user-selectable light theme
-- keep Organization screens denser and more operational than player screens
-- pin an exact `@fradelli/ui` version in the app and upgrade it through an
-  independent PR
-
-Reason:
-
-- a shared package prevents Sandicts and Kaizen from copying and diverging on
-  visual foundations while preserving independent delivery cycles
-- local ownership of domain composition prevents the Design System from
-  becoming a generic business layer
-
-The canonical MVP token values, component variants, common states, icon rules,
-and post-MVP visual boundaries live in
-`docs/frontend/sandicts-mvp-visual-system.md`.
+Use `@fradelli/ui@0.5.0`, Tailwind CSS and Phosphor. Inter and the dark palette,
+materials, radius, type roles, spacing and interaction states come from the
+package. Import public subpaths and CSS; do not generate or maintain duplicate
+primitives. Layout, product copy, brand art and business behavior remain local.
+Dense content may use the same family's solid/elevated materials. The full
+contract lives in `docs/frontend/sandicts-mvp-visual-system.md`.
 
 ### Global Feedback And Page States
 
@@ -293,17 +252,17 @@ Rules:
   consuming route or feature
 - do not create a global catalog that decides retry, sign-in, create, reset,
   or navigation behavior for feature-owned states
-- use `components/shared/loading-region` around pending content reads and keep
+- use `@fradelli/ui/loading-region` around pending content reads and keep
   skeleton geometry near the feature or route that knows the expected content
   shape
-- use `components/shared/pending-button` for user-triggered command loading
+- use `@fradelli/ui/pending-button` for user-triggered command loading
   when duplicate submission must be prevented and button width should remain
   stable
-- use `components/shared/status-badge` only for semantic presentation; feature
+- use `@fradelli/ui/status-badge` only for semantic presentation; feature
   code maps API/domain status codes to labels and tones, with a neutral
   fallback for unknown runtime values
-- keep `components/ui/skeleton` decorative and reduced-motion safe
-- keep `components/ui/alert` live-region semantics opt-in; use
+- keep `@fradelli/ui/skeleton` decorative and reduced-motion safe
+- keep `@fradelli/ui/alert` live-region semantics opt-in; use
   `role="alert"` only for newly surfaced interactive failures, and `role="status"`
   only for polite confirmations that should be announced
 - use `src/app/not-found.tsx` as the global privacy-safe 404 treatment for
@@ -885,7 +844,7 @@ Reason:
   UI or API infrastructure into feature-specific code
 - the architecture should preserve the useful discipline of layered frontend
   systems while staying aligned with Next.js App Router, Orval, TanStack Query,
-  shadcn/ui, and the already configured `@/*` source alias
+  @fradelli/ui, and the already configured `@/*` source alias
 
 Recommended app areas:
 
@@ -897,8 +856,7 @@ Recommended app areas:
 Recommended boundaries:
 
 - `app`: route groups, layouts, route-level loading and error states
-- `components/ui`: shadcn/ui primitives and low-level reusable UI building
-  blocks owned by the frontend codebase
+- `@fradelli/ui/*`: shared primitives owned by the package; no local copies
 - `components/shared`: reusable cross-feature composition with no product data
   ownership
 - `features`: feature-specific screens, forms, hooks, and view models
@@ -993,11 +951,8 @@ app route or layout
   primitives, or shared route constants
 - storing API data in Zustand
 
-`components/ui` owns:
-
-- shadcn/ui primitives and low-level reusable UI components such as buttons,
-  inputs, dialogs, badges, tabs, menus, and tooltips
-- styling variants that are product-agnostic enough to reuse
+`@fradelli/ui/*` owns shared primitives and product-agnostic visual variants.
+The app imports public exports instead of maintaining `components/ui` copies.
 
 `components/shared` owns:
 

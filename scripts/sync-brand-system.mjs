@@ -58,7 +58,7 @@ function renderTokenBlock(tokens) {
     .filter(([tokenName]) => tokenName !== "static")
     .map(
       ([tokenName, value]) =>
-        `  --${toCustomPropertyName(tokenName)}: ${value};`,
+        `  --sandicts-${toCustomPropertyName(tokenName)}: ${value};`,
     )
     .join("\n");
 }

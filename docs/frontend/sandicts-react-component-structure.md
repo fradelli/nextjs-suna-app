@@ -111,8 +111,9 @@ Use the project stack that already exists:
 
 - use Tailwind classes directly for simple components;
 - use `cn` for conditional class composition;
-- use `class-variance-authority` (`cva`) when a component has meaningful visual
-  variants;
+- consume shared visual variants from `@fradelli/ui` and use its `cn` export
+  for conditional local layout; do not import a variant library through the
+  package's transitive dependencies or recreate its primitives;
 - do not introduce `tailwind-variants` unless the project explicitly decides to
   add it later.
 

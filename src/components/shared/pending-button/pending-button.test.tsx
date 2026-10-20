@@ -5,7 +5,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { PendingButton } from "./pending-button";
+import { PendingButton } from "@fradelli/ui/pending-button";
 
 describe("PendingButton", () => {
   it("renders as a normal enabled button when no action is pending", async () => {

@@ -5,6 +5,19 @@ import {
 } from "./visual-system-residue-rules.mjs";
 
 describe("visual-system residue rules", () => {
+  it("rejects local copies and glass formulas after package adoption", () => {
+    expect(
+      inspectVisualSystemResidues(
+        "src/components/shared/example.tsx",
+        'import { Button } from "@/components/ui/button"; const styles = "backdrop-blur-2xl";',
+      ),
+    ).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ rule: "duplicate-shared-primitive" }),
+        expect.objectContaining({ rule: "local-glass-formula" }),
+      ]),
+    );
+  });
   it("allows explicitly superseded migration history", () => {
     expect(
       inspectVisualSystemResidues(

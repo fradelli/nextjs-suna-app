@@ -18,11 +18,13 @@ import {
 vi.mock("next/link", () => ({
   default: ({
     children,
+    href,
     onClick,
     ...props
   }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
     <a
       {...props}
+      href={href}
       onClick={(event) => {
         event.preventDefault();
         onClick?.(event);

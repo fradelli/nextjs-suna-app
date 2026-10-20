@@ -3,9 +3,9 @@
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { LoadingRegion } from "@/components/shared/loading-region/loading-region";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Alert, AlertDescription, AlertTitle } from "@fradelli/ui/alert";
+import { LoadingRegion } from "@fradelli/ui/loading-region";
+import { Skeleton } from "@fradelli/ui/skeleton";
 import { useAuthSession } from "@/lib/auth/auth-session-provider";
 import { signInScreenStyles } from "../sign-in-screen.styles";
 import type { SignInSessionSurfaceProps } from "../sign-in-screen.types";

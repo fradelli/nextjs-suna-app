@@ -1,6 +1,6 @@
 import { TrophyIcon } from "@phosphor-icons/react/ssr";
 import { useTranslations } from "next-intl";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@fradelli/ui/badge";
 import { PublicHomeActionCard } from "./components/public-home-action-card";
 import { PublicHomeStatusCard } from "./components/public-home-status-card";
 import {

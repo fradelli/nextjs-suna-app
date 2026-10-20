@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
-import { LoadingRegion } from "@/components/shared/loading-region/loading-region";
-import { Skeleton } from "@/components/ui/skeleton";
+import { LoadingRegion } from "@fradelli/ui/loading-region";
+import { Skeleton } from "@fradelli/ui/skeleton";
 import { signInScreenStyles } from "@/features/auth/sign-in/sign-in-screen.styles";
 
 export default function SignInLoading() {

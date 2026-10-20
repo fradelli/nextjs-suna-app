@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@fradelli/ui/cn";
 
 const signInScreenStyles = {
   root: "min-h-[calc(100vh-4.5rem)]",
@@ -13,16 +13,15 @@ const signInScreenStyles = {
   ),
   introduction: "max-w-2xl",
   eyebrow: "text-sm font-medium text-primary",
-  title: "mt-3 text-4xl leading-tight font-semibold text-balance sm:text-5xl",
+  title: "fd-text-display mt-3 text-balance",
   description: "mt-5 max-w-xl text-base leading-7 text-muted-foreground",
   benefits: "mt-7 grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-1",
   benefit: "flex items-start gap-3 text-muted-foreground",
   benefitIcon: "mt-0.5 size-5 shrink-0 text-primary",
   surface: "w-full self-center",
-  card: "gap-0",
   cardHeader: "border-b border-border/70",
   cardEyebrow: "text-sm font-medium text-primary",
-  cardTitle: "mt-2 text-2xl font-semibold text-balance",
+  cardTitle: "fd-text-card mt-2 text-balance",
   cardDescription: "mt-2 text-sm leading-6 text-muted-foreground",
   cardContent: "space-y-5",
   betaNotice: "items-start",
@@ -47,7 +46,7 @@ const signInScreenStyles = {
   loadingDescriptionShort: "h-4 w-4/5",
   loadingSurface: "h-80 w-full",
   pageState: "px-0 py-3",
-  callbackCard: "mx-auto w-full max-w-lg gap-0",
+  callbackCard: "mx-auto w-full max-w-lg",
 } as const;
 
 export { signInScreenStyles };

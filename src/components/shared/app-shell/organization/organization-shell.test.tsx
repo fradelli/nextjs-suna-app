@@ -84,9 +84,12 @@ describe("OrganizationShell", () => {
       }),
     );
 
-    const drawerNavigation = screen.getByRole("navigation", {
-      name: "Navegação da organização",
-    });
+    const drawerNavigation = within(screen.getByRole("dialog")).getByRole(
+      "navigation",
+      {
+        name: "Navegação da organização",
+      },
+    );
 
     expect(screen.getByRole("dialog")).toBeInTheDocument();
     expect(

@@ -2,10 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { LoadingRegion } from "@/components/shared/loading-region/loading-region";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Alert, AlertDescription, AlertTitle } from "@fradelli/ui/alert";
+import { Button } from "@fradelli/ui/button";
+import { LoadingRegion } from "@fradelli/ui/loading-region";
+import { Skeleton } from "@fradelli/ui/skeleton";
 import { useGoogleSignIn } from "@/features/auth/hooks/use-google-sign-in";
 import { isSandictsApiError } from "@/lib/api/runtime/sandicts-api-error";
 import { publicEnv } from "@/lib/env/public-env";
@@ -16,7 +16,7 @@ import {
 } from "@/lib/google-identity/google-identity-client";
 import { loadGoogleIdentityScript } from "@/lib/google-identity/google-identity-script";
 import type { GoogleCredentialResponse } from "@/lib/google-identity/google-identity.types";
-import { cn } from "@/lib/utils";
+import { cn } from "@fradelli/ui/cn";
 import { signInScreenStyles } from "../sign-in-screen.styles";
 
 type GoogleProviderStatus =
