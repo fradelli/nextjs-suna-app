@@ -70,7 +70,7 @@
     </svg>
     <!-- visual-system:icons:end -->
 
-    <header class="prototype-toolbar">
+    <header class="prototype-toolbar fd-surface-glass-elevated">
       <div class="prototype-toolbar__intro">
         <p class="prototype-kicker">KAN-104 · UX prototype</p>
         <h1>Magic link do Sandicts</h1>
@@ -110,7 +110,7 @@
         id="demo-shell"
         aria-label="Exemplo interativo do estado de magic link selecionado"
       >
-        <header class="public-header">
+        <header class="public-header fd-surface-glass-elevated">
           <a class="brand-link" href="#auth-main" aria-label="Sandicts — início">
             <img
               src="../../../../public/sandicts-mark.svg"
@@ -122,7 +122,7 @@
           </a>
 
           <nav class="public-navigation" aria-label="Navegação pública">
-            <a class="button button--ghost" href="#auth-main">
+            <a class="button button--ghost fd-focus-managed" href="#auth-main">
               <svg class="icon" aria-hidden="true">
                 <use href="#icon-compass"></use>
               </svg>
@@ -130,7 +130,7 @@
               <span class="sr-only explore-label-compact">Explorar quadras</span>
             </a>
             <a
-              class="button button--primary button--compact"
+              class="button button--primary button--compact fd-focus-managed"
               id="header-sign-in-link"
               href="#auth-card-title"
               aria-current="page"
@@ -185,7 +185,7 @@
               </div>
             </div>
 
-            <article class="auth-card" id="auth-card" tabindex="-1">
+            <article class="auth-card fd-surface-glass fd-card" id="auth-card" tabindex="-1">
               <p class="auth-card__eyebrow" id="auth-card-eyebrow">
                 Acesso seguro
               </p>
@@ -234,7 +234,7 @@
                     Informe um endereço de e-mail válido.
                   </p>
                   <button
-                    class="button button--primary email-submit"
+                    class="button button--primary email-submit fd-focus-managed"
                     id="email-submit"
                     type="submit"
                   >
@@ -260,7 +260,7 @@
                 <p class="sent-panel__status" id="sent-status"></p>
                 <div class="sent-panel__actions">
                   <button
-                    class="button button--primary"
+                    class="button button--primary fd-focus-managed"
                     id="resend-action"
                     type="button"
                     data-demo-action="resend"
@@ -276,7 +276,7 @@
                     </svg>
                   </button>
                   <button
-                    class="button button--secondary"
+                    class="button button--secondary fd-focus-managed"
                     id="change-email-action"
                     type="button"
                     data-demo-state="email-entry"
@@ -310,14 +310,14 @@
               ></p>
               <div class="boundary-state__actions" id="boundary-actions">
                 <button
-                  class="button button--primary"
+                  class="button button--primary fd-focus-managed"
                   id="boundary-primary"
                   type="button"
                 >
                   <span id="boundary-primary-label">Solicitar novo link</span>
                 </button>
                 <button
-                  class="button button--secondary"
+                  class="button button--secondary fd-focus-managed"
                   id="boundary-secondary"
                   type="button"
                   hidden

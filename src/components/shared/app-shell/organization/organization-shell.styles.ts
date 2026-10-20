@@ -1,15 +1,15 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@fradelli/ui/cn";
 
 const organizationShellStyles = {
   root: cn(
-    "min-h-screen bg-background text-foreground md:grid",
+    "min-h-screen text-foreground md:grid",
     "md:grid-cols-[5rem_minmax(0,1fr)]",
     "lg:grid-cols-[18rem_minmax(0,1fr)]",
   ),
   sidebar: cn(
-    "sticky top-0 hidden h-screen border-r border-sidebar-border",
-    "bg-sidebar/80 text-sidebar-foreground",
-    "supports-backdrop-filter:backdrop-blur-2xl md:flex md:flex-col",
+    "sticky top-0 hidden h-screen border-r border-border",
+    "fd-surface-glass-elevated text-foreground",
+    "md:flex md:flex-col",
   ),
   sidebarBrand: cn(
     "flex min-h-20 items-center justify-center border-b border-border px-3",
@@ -18,10 +18,7 @@ const organizationShellStyles = {
   ),
   content: "min-w-0",
   mobileMenuTrigger: "md:hidden",
-  drawerContent: cn(
-    "overflow-y-auto bg-sidebar/85 text-sidebar-foreground",
-    "supports-backdrop-filter:backdrop-blur-2xl",
-  ),
+  drawerContent: cn("overflow-y-auto text-foreground"),
 } as const;
 
 export { organizationShellStyles };

@@ -5,10 +5,10 @@
 import { CheckCircleIcon } from "@phosphor-icons/react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+import { Alert, AlertDescription, AlertTitle } from "@fradelli/ui/alert";
+import { Button } from "@fradelli/ui/button";
+import { Field, FieldDescription, FieldLabel } from "@fradelli/ui/field";
+import { Input } from "@fradelli/ui/input";
 
 describe("UI foundation", () => {
   it("composes accessible form and feedback primitives", () => {

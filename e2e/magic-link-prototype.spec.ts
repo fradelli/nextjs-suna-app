@@ -72,9 +72,9 @@ test("renders every KAN-104 state with the shared visual foundation", async ({
       };
     });
 
-    expect(visualFoundation.fontSans).toContain("IBM Plex Sans");
-    expect(visualFoundation.headingFont).toContain("Montserrat");
-    expect(Number.parseFloat(visualFoundation.radius)).toBe(0.45);
+    expect(visualFoundation.fontSans).toContain("Inter");
+    expect(visualFoundation.headingFont).toContain("Inter");
+    expect(Number.parseFloat(visualFoundation.radius)).toBe(12);
 
     for (const state of STATES) {
       await page.locator("#state-selector").selectOption(state);

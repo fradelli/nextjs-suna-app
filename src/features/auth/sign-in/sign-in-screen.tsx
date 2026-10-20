@@ -5,8 +5,8 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-} from "@/components/ui/card";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+} from "@fradelli/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@fradelli/ui/alert";
 import { SignInSessionSurface } from "./components/sign-in-session-surface";
 import { signInScreenStyles } from "./sign-in-screen.styles";
 import type { SignInScreenProps } from "./sign-in-screen.types";
@@ -40,7 +40,7 @@ function SignInScreen(props: SignInScreenProps) {
         </section>
 
         <aside className={signInScreenStyles.surface}>
-          <Card className={signInScreenStyles.card}>
+          <Card>
             <CardHeader className={signInScreenStyles.cardHeader}>
               <p className={signInScreenStyles.cardEyebrow}>
                 {t("surface.eyebrow")}

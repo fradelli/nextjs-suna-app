@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { PageState } from "@/components/shared/page-state/page-state";
-import { Button } from "@/components/ui/button";
+import { Button } from "@fradelli/ui/button";
 import type { AuthSessionLifecycle } from "@/lib/auth/auth-session.types";
 import { APP_ROUTES } from "@/lib/routes/app-routes";
 import { signInScreenStyles } from "../sign-in-screen.styles";

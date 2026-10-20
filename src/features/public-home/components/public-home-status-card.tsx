@@ -1,6 +1,6 @@
 import { ShieldCheckIcon } from "@phosphor-icons/react/ssr";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@fradelli/ui/alert";
+import { Card, CardContent, CardHeader } from "@fradelli/ui/card";
 import { publicHomeScreenStyles } from "../public-home-screen.styles";
 import type { PublicHomeStatusCardProps } from "../public-home-screen.types";
 import { PublicHomeSignalRow } from "./public-home-signal-row";
@@ -14,7 +14,7 @@ function PublicHomeStatusCard({
 }: PublicHomeStatusCardProps) {
   return (
     <aside className={publicHomeScreenStyles.statusCardAside}>
-      <Card className={publicHomeScreenStyles.statusCard.root}>
+      <Card>
         <CardHeader className={publicHomeScreenStyles.statusCard.header}>
           <div>
             <p className={publicHomeScreenStyles.statusCard.eyebrow}>

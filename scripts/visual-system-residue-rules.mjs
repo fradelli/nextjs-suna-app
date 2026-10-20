@@ -74,8 +74,33 @@ function inspectVisualSystemResidues(filePath, contents) {
       ...collectMatches(
         normalizedPath,
         contents,
+        "duplicate-shared-primitive",
+        /["'](?:@\/components\/ui\/[^"']+|radix-ui|@\/lib\/utils)["']/giu,
+      ),
+      ...collectMatches(
+        normalizedPath,
+        contents,
+        "local-glass-formula",
+        /\bbackdrop-(?:blur|saturate)-[\w[\].-]+/giu,
+      ),
+    );
+    violations.push(
+      ...collectMatches(
+        normalizedPath,
+        contents,
         "direct-public-brand-asset",
         /["']\/sandicts-mark\.svg["']/giu,
+      ),
+    );
+  }
+
+  if (normalizedPath === "src/app/layout.tsx") {
+    violations.push(
+      ...collectMatches(
+        normalizedPath,
+        contents,
+        "legacy-interface-font",
+        /\b(?:IBM_Plex_Sans|Montserrat)\b/gu,
       ),
     );
   }

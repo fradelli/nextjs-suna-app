@@ -4,7 +4,7 @@ import {
   getBrandVariant,
   type BrandVariantId,
 } from "@/config/brand";
-import { cn } from "@/lib/utils";
+import { cn } from "@fradelli/ui/cn";
 
 type BrandNameProps = ComponentProps<"span"> &
   Readonly<{
@@ -22,7 +22,7 @@ function BrandName({
     <span
       {...props}
       className={cn(
-        "font-brand text-[0.82em] leading-none font-medium tracking-[0.16em] text-brand",
+        "font-brand text-[0.82em] leading-none font-medium tracking-[0.16em] text-sandicts-brand",
         className,
       )}
       data-brand-name=""

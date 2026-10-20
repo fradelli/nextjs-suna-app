@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@fradelli/ui/separator";
 import { signInScreenStyles } from "../sign-in-screen.styles";
 
 type AuthMethodStackProps = Readonly<{

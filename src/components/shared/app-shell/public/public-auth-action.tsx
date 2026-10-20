@@ -3,9 +3,9 @@
 import { UserCircleIcon } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { StatusBadge } from "@/components/shared/status-badge/status-badge";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
+import { StatusBadge } from "@fradelli/ui/status-badge";
+import { Button } from "@fradelli/ui/button";
+import { Skeleton } from "@fradelli/ui/skeleton";
 import { useOptionalAuthSession } from "@/lib/auth/auth-session-provider";
 import { APP_ROUTES } from "@/lib/routes/app-routes";
 import { publicShellStyles } from "./public-shell.styles";

@@ -1,6 +1,10 @@
 import { e2eAuthSession, expect, test } from "./fixtures/auth.fixture";
 
-test("navigates from the public shell to sign-in", async ({ page }) => {
+test("navigates from the public shell to sign-in", async ({
+  authApi,
+  page,
+}) => {
+  authApi.setSession(null);
   await page.goto("/");
 
   await expect(

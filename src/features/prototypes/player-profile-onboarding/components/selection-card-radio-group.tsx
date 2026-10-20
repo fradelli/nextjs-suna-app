@@ -1,8 +1,8 @@
 "use client";
 
 import { CheckCircleIcon, CircleIcon } from "@phosphor-icons/react";
-import { RadioGroup } from "radix-ui";
-import { cn } from "@/lib/utils";
+import { RadioGroup } from "@fradelli/ui/radio-group";
+import { cn } from "@fradelli/ui/cn";
 import { prototypeStyles } from "../player-profile-onboarding-prototype.styles";
 
 type SelectionCardOption = Readonly<{

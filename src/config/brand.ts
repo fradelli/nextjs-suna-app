@@ -5,11 +5,6 @@ type BrandThemeTokens = Readonly<{
   brandForeground: string;
   brandGlow: string;
   brandSurface: string;
-  primary: string;
-  primaryForeground: string;
-  ring: string;
-  sidebarPrimary: string;
-  sidebarPrimaryForeground: string;
 }>;
 
 type StaticBrandColors = Readonly<{
@@ -45,22 +40,12 @@ const brandVariants = {
         brandForeground: "oklch(0.279 0.077 45.635)",
         brandGlow: "oklch(0.769 0.188 70.08 / 46%)",
         brandSurface: "oklch(0.279 0.077 45.635)",
-        primary: "oklch(0.473 0.137 46.201)",
-        primaryForeground: "oklch(0.987 0.022 95.277)",
-        ring: "oklch(0.553 0.013 58.071)",
-        sidebarPrimary: "oklch(0.769 0.188 70.08)",
-        sidebarPrimaryForeground: "oklch(0.279 0.077 45.635)",
       },
       light: {
         brand: "oklch(0.555 0.163 48.998)",
         brandForeground: "oklch(0.987 0.022 95.277)",
         brandGlow: "oklch(0.705 0.213 47.604 / 32%)",
         brandSurface: "oklch(0.987 0.022 95.277)",
-        primary: "oklch(0.555 0.163 48.998)",
-        primaryForeground: "oklch(0.987 0.022 95.277)",
-        ring: "oklch(0.709 0.01 56.259)",
-        sidebarPrimary: "oklch(0.666 0.179 58.318)",
-        sidebarPrimaryForeground: "oklch(0.987 0.022 95.277)",
       },
       static: {
         background: "#0c0a09",
@@ -83,22 +68,12 @@ const brandVariants = {
         brandForeground: "oklch(0.282 0.091 267.935)",
         brandGlow: "oklch(0.707 0.165 254.624 / 46%)",
         brandSurface: "oklch(0.282 0.091 267.935)",
-        primary: "oklch(0.623 0.214 259.815)",
-        primaryForeground: "oklch(0.97 0.014 254.604)",
-        ring: "oklch(0.707 0.165 254.624)",
-        sidebarPrimary: "oklch(0.707 0.165 254.624)",
-        sidebarPrimaryForeground: "oklch(0.282 0.091 267.935)",
       },
       light: {
         brand: "oklch(0.546 0.245 262.881)",
         brandForeground: "oklch(0.97 0.014 254.604)",
         brandGlow: "oklch(0.623 0.214 259.815 / 32%)",
         brandSurface: "oklch(0.932 0.032 255.585)",
-        primary: "oklch(0.546 0.245 262.881)",
-        primaryForeground: "oklch(0.97 0.014 254.604)",
-        ring: "oklch(0.623 0.214 259.815)",
-        sidebarPrimary: "oklch(0.546 0.245 262.881)",
-        sidebarPrimaryForeground: "oklch(0.97 0.014 254.604)",
       },
       static: {
         background: "#172554",

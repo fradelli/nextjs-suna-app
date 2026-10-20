@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@fradelli/ui/cn";
 import { pageStateStyles, pageStateToneClasses } from "./page-state.styles";
 import type { PageStateProps } from "./page-state.types";
 import { getAnnouncementProps } from "./page-state.utils";

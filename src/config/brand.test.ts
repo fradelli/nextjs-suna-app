@@ -19,7 +19,7 @@ describe("brand configuration", () => {
     }
   });
 
-  it("proves that a fixture can change semantic colors centrally", () => {
+  it("proves that a fixture can change artwork colors without overriding the shared interface", () => {
     const defaultVariant = getBrandVariant("default");
     const fixtureVariant = getBrandVariant("celebration-fixture");
 
@@ -27,8 +27,8 @@ describe("brand configuration", () => {
     expect(fixtureVariant.theme.dark.brand).not.toBe(
       defaultVariant.theme.dark.brand,
     );
-    expect(fixtureVariant.theme.light.primary).not.toBe(
-      defaultVariant.theme.light.primary,
+    expect(fixtureVariant.theme.light.brand).not.toBe(
+      defaultVariant.theme.light.brand,
     );
   });
 });

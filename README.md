@@ -9,39 +9,25 @@ the Nest API.
 - React
 - TypeScript
 - Tailwind CSS
-- shadcn/ui
+- `@fradelli/ui@0.5.0`
 - Phosphor Icons
 - npm
 
 ## UI Foundation
 
-shadcn/ui is configured through `components.json` for the Radix Nova preset,
-Tailwind CSS v4, React Server Components, TypeScript, Phosphor icons, Stone
-surfaces, Amber actions, and the existing `@/*` source alias.
+A interface consome o Fradelli Design System pelos exports públicos de
+`@fradelli/ui@0.5.0`, com Inter, tema escuro e a mesma fundação do portfólio.
+Importe primitives de `@fradelli/ui/<componente>`; mantenha composições de produto
+em `src/components/shared` e telas/forms em `src/features`.
 
-Inspect the current configuration or add a component with:
+O escopo `@fradelli` é resolvido no GitHub Packages. Configure acesso de leitura
+no ambiente de desenvolvimento e autorize este repositório no pacote para CI.
+Não versione credenciais. Actions usa seu token efêmero; builds locais da Vercel
+herdam esse ambiente. Builds remotos da Vercel exigem autenticação de registry
+configurada no próprio ambiente antes de qualquer publicação.
 
-```bash
-npm run ui:info
-npm run ui:add -- button
-```
-
-Low-level primitives live in `src/components/ui`. Cross-feature compositions
-live in `src/components/shared` when more than one feature needs them. Feature
-screens should import primitives from `@/components/ui/*` and must not edit
-generated or copied registry code at call sites to compensate for a shared
-visual rule.
-
-The semantic token and component contract lives in:
-
-```text
-docs/frontend/sandicts-mvp-visual-system.md
-```
-
-Use semantic utilities such as `bg-card`, `text-muted-foreground`,
-`border-border`, and `ring-ring`. Keep raw palette names and repeated color
-values out of shared component APIs. Add new shadcn/ui primitives only when a
-real screen needs them instead of generating the complete catalog up front.
+Use `docs/frontend/sandicts-mvp-visual-system.md` para materiais, tipografia,
+estados, ownership e validação. Não gere cópias locais de primitives do pacote.
 
 ## Runtime
 
@@ -54,7 +40,7 @@ npm -v
 
 The expected local baseline is:
 
-- Node.js `24.x`
+- Node.js `24.20.0` ou superior dentro de 24.x
 - npm `11.x`
 - package manager `npm`
 

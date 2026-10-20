@@ -1,13 +1,10 @@
 "use client";
 
-import {
-  SignOutIcon,
-  SpinnerGapIcon,
-  UserCircleIcon,
-} from "@phosphor-icons/react";
+import { SignOutIcon, UserCircleIcon } from "@phosphor-icons/react";
 import { useTranslations } from "next-intl";
-import { Popover } from "radix-ui";
-import { Button } from "@/components/ui/button";
+import { Popover } from "@fradelli/ui/popover";
+import { Button } from "@fradelli/ui/button";
+import { PendingButton } from "@fradelli/ui/pending-button";
 import { useSignOut } from "@/features/auth/hooks/use-sign-out";
 import { useOptionalAuthSession } from "@/lib/auth/auth-session-provider";
 import type { AuthenticatedAccountSummary } from "@/lib/auth/auth-session.types";
@@ -77,24 +74,17 @@ function AuthenticatedAccountMenu({
             </p>
           ) : null}
 
-          <Button
+          <PendingButton
             type="button"
             variant="destructive"
             className={accountMenuStyles.signOut}
-            disabled={signOut.isPending}
+            pending={signOut.isPending}
+            pendingLabel={t("signingOut")}
             onClick={() => signOut.mutate()}
           >
-            {signOut.isPending ? (
-              <SpinnerGapIcon
-                className={accountMenuStyles.pendingIcon}
-                data-icon="inline-start"
-                aria-hidden="true"
-              />
-            ) : (
-              <SignOutIcon data-icon="inline-start" aria-hidden="true" />
-            )}
-            {signOut.isPending ? t("signingOut") : t("signOut")}
-          </Button>
+            <SignOutIcon data-icon="inline-start" aria-hidden="true" />
+            {t("signOut")}
+          </PendingButton>
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>

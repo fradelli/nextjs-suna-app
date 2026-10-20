@@ -112,7 +112,7 @@ Follow the decided frontend direction:
 
 - Next.js App Router with TypeScript
 - Tailwind CSS and Phosphor Icons
-- shadcn/ui as the component strategy
+- `@fradelli/ui@0.5.0` public exports as the component strategy
 - TanStack Query for server state
 - React Hook Form and Zod for forms
 - Orval as the initial MVP OpenAPI generator for the Nest Swagger contract

@@ -15,6 +15,13 @@ read-when:
 
 # Sandicts React Component Migration Map
 
+## Current package ownership
+
+The 2026-10-19 Fradelli adoption replaces local UI primitives and the local
+LoadingRegion, PendingButton and StatusBadge with public `@fradelli/ui` exports.
+Their former file-level refactoring entries below are historical and no longer
+implementation targets. App-shell and feature composition remain local.
+
 ## Purpose
 
 This map keeps the component-structure refactor incremental. It should help the

@@ -8,7 +8,7 @@
   min-height: 42rem;
   overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) * 1.6);
+  border-radius: var(--fd-radius-xl);
   background:
     radial-gradient(
       circle at 15% 30%,
@@ -26,8 +26,8 @@
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--border);
-  background: color-mix(in oklch, var(--background) 94%, transparent);
-  backdrop-filter: blur(1.5rem) saturate(1.5);
+
+
 }
 
 .brand-link {
@@ -36,7 +36,7 @@
   align-items: center;
   gap: 0.6rem;
   border-radius: var(--radius);
-  color: var(--brand);
+  color: var(--sandicts-brand);
   text-decoration: none;
 }
 

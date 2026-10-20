@@ -2,414 +2,98 @@
 title: Sandicts MVP Visual System
 doc-type: frontend-visual-system
 role: source-of-truth
-priority: high
 canonical: docs/frontend/sandicts-mvp-visual-system.md
-related:
-  - docs/frontend/sandicts-frontend-context.md
-  - docs/frontend/sandicts-frontend-tech-decisions.md
-  - docs/frontend/sandicts-mobile-navigation.md
-  - docs/frontend/sandicts-mvp-screens-spec.md
-  - docs/frontend/sandicts-mvp-delivery-roadmap.md
-  - fradelli/sandicts-docs:docs/product/sandicts-product-context.md
-  - fradelli/sandicts-docs:docs/product/sandicts-mvp-functional-spec.md
-  - fradelli/design-system:docs/decisions/0001-shared-design-system-foundation.md
-scope: frontend, design, tokens, components, states, accessibility, mvp
-read-when:
-  - configuring shadcn/ui or Tailwind CSS
-  - creating or reviewing shared UI components
-  - implementing a new frontend screen or global state
-  - deciding whether a visual refinement belongs in the MVP
-do-not-read-when:
-  - changing backend-only behavior
-  - deciding feature-specific product behavior with no visual-system impact
+scope: frontend, tokens, components, accessibility
 ---
 
-# Sandicts MVP Visual System
-
-## Purpose
-
-Define the smallest durable visual contract needed to build the Sandicts MVP
-consistently with shadcn/ui, Tailwind CSS, and Phosphor Icons.
-
-This is a direction and decision document. It defines token roles, component
-defaults, interaction states, and visual boundaries. It does not initialize
-shadcn/ui, generate components, or replace feature-specific UX decisions.
-
-This document also records the migration boundary introduced by KAN-223. The
-[shared Design System ADR](https://github.com/fradelli/design-system/blob/main/docs/decisions/0001-shared-design-system-foundation.md)
-governs cross-product foundations and primitives. This document remains the
-source of truth for how Sandicts applies them and for the current implementation
-until the migration stories land.
-
-## Decision Summary
-
-Current implementation, preserved until KAN-224/KAN-225:
-
-- ships one dark Sandicts theme for the MVP
-- uses semantic CSS variables as the component styling API
-- uses the Stone/Amber foundation from shadcn preset `b6pMnd9eSI`
-- uses IBM Plex Sans for product UI, Montserrat for headings, Roboto for the
-  textual brand, and a system monospace stack for technical values
-- owns tokens and shadcn/ui primitive source code inside this repository
-
-Approved target direction:
-
-- consume shared foundations and primitives from `@fradelli/ui`
-- use Inter variable for product UI, headings, and textual wordmarks
-- remain dark-first, with near-black neutral surfaces, coral red identity,
-  solar yellow primary actions, and the shared pastel categorical palette
-- keep Sandicts brand, density, shells, pages, features, domain mappings,
-  integrations, and business behavior local
-
-Durable rules across both states:
-
-- Use the standard Tailwind spacing scale and a `0.45rem` base radius.
-- Keep player experiences energetic and comfortably spaced.
-- Keep Organization experiences denser and operational without creating a
-  second component system.
-- Use Phosphor for interface icons and the Sandicts mark for brand identity.
-- Require an explicit loading, empty, error, forbidden, and not-found treatment
-  for every data-driven screen.
-
-## Product Character
-
-The interface should feel:
-
-- energetic, grounded, and practical
-- connected to sand sports and beach lifestyle
-- suitable for committed amateur athletes
-- clear enough for fast operational work
-- recognizable without depending on decorative effects
-
-The interface should not feel:
-
-- like a generic booking administration template
-- like a passive social feed
-- overly promotional inside authenticated workflows
-- dependent on gradients, glass effects, or animation for hierarchy
-- like a complete bespoke design system before the MVP proves its flows
-
-## Theme Model
-
-The current MVP uses a dark theme and does not include a theme switcher. The
-preset's light values live in `:root`; dark values live in `.dark`; the document
-root activates `.dark` explicitly. Both maps use the same semantic contract so
-a future theme decision does not require component-specific colors.
-
-The shared target remains dark-first. Dark-first defines release priority and
-does not prohibit a future light theme. KAN-224 will establish package
-consumption; KAN-225 will deliberately activate the new visual values.
-
-Components must consume semantic utilities such as `bg-background`,
-`text-foreground`, `bg-primary`, `border-border`, and `ring-ring`.
-
-Brand palette names may be exposed for the logo, illustrations, or rare
-brand-only accents. Shared component variants and feature states must not depend
-on palette names such as `sand`, `mint`, or `water`.
-
-## Color Foundation
-
-### Current implementation
-
-The current runtime foundation is the resolved OKLCH output of preset
-`b6pMnd9eSI`:
-
-- Nova component language on the Radix base
-- Stone neutral surfaces
-- Amber primary actions
-- subtle menu accents
-- default translucent menu surfaces
-- Orange chart sequence
-
-Exact light and dark values live in `src/app/globals.css`. Do not duplicate
-them in JSX or feature CSS. Renderers that cannot consume CSS variables may use
-the documented static serialization in `src/lib/visual-system`.
-
-### Approved target
-
-The target foundation uses near-black neutral surfaces, coral red identity,
-solar yellow primary actions, and eight pastel categorical colors: yellow,
-orange, red, pink, purple, blue, cyan, and green. Exact source values and their
-ownership live only in the
-[shared ADR](https://github.com/fradelli/design-system/blob/main/docs/decisions/0001-shared-design-system-foundation.md).
-
-The Design System owns appearance tokens. Sandicts owns the mapping from those
-categories to modalities, availability, event types, or any other domain
-meaning. Brand red and destructive red remain separate semantic tokens.
-
-## Semantic Token Contract
-
-### shadcn/ui Core Tokens
-
-These tokens form the current public visual contract for Sandicts components.
-After KAN-224, equivalent shared roles are owned by `@fradelli/ui`; local
-overrides must have an explicit compatibility reason and removal condition.
-
-| Token | Foundation | Meaning |
-| --- | --- | --- |
-| `background` / `foreground` | Stone | Default page surface and content |
-| `card` / `card-foreground` | Stone | Cards, panels, and grouped sections |
-| `popover` / `popover-foreground` | Stone | Menus, popovers, and floating panels |
-| `primary` / `primary-foreground` | Amber | Primary actions and selected emphasis |
-| `secondary` / `secondary-foreground` | Stone | Lower-emphasis filled actions |
-| `muted` / `muted-foreground` | Stone | Subdued surfaces, metadata, and help |
-| `accent` / `accent-foreground` | Stone subtle | Hovered rows and ghost controls |
-| `destructive` / `destructive-foreground` | Preset red | Destructive action and content |
-| `border` / `input` | Stone | Separators and control boundaries |
-| `ring` | Stone/Amber-compatible | Visible keyboard focus |
-| `radius` | `0.45rem` | Base radius used to derive the scale |
-| `sidebar-*` | Stone/Amber | App-shell navigation surfaces and states |
-| `chart-1` through `chart-5` | Orange | Reviewed chart sequence |
-
-If a generated shadcn/ui component does not use one of these tokens by default,
-adapt the locally owned component once. Do not compensate at every call site.
-
-### Current Sandicts Status Tokens
-
-Status colors communicate system meaning and must be paired with text or an
-icon.
-
-| Token family | Owner | Use |
-| --- | --- | --- |
-| `success`, `success-foreground`, `success-subtle`, `success-border` | Sandicts | Completed or confirmed outcomes |
-| `warning`, `warning-foreground`, `warning-subtle`, `warning-border` | Sandicts | Attention and recoverable risk |
-| `info`, `info-foreground`, `info-subtle`, `info-border` | Sandicts | Neutral operational information |
-| `destructive` | Preset | Base destructive emphasis |
-| `destructive-foreground`, `destructive-subtle`, `destructive-border` | Sandicts | Failure and destructive compositions |
-
-Use the explicit subtle and border tokens for alerts and badges instead of
-recreating opacity formulas at call sites. Status meaning must never rely on hue
-alone.
-
-### Deferred Tokens
-
-- Keep calendar/domain mappings in the owning Sandicts feature. Only generic
-  categorical appearance tokens belong to the shared package.
-- Do not create tokens for speculative Admin App, academy, tournament, or V2
-  states.
-
-## Tailwind And shadcn/ui Rules
-
-- Configure shadcn/ui to use CSS variables.
-- Expose semantic CSS variables to Tailwind through `@theme inline`.
-- Keep shadcn/ui primitives in `src/components/ui` until KAN-224 replaces each
-  import with a validated `@fradelli/ui` export.
-- Keep cross-feature compositions such as `EmptyState` or `StatusBadge` in
-  `src/components/shared` unless they later prove a domain-free use in both
-  products and pass the shared admission checklist.
-- Keep feature-only variants and state mapping inside the owning feature.
-- Treat current generated component code as locally owned during transition;
-  after migration, shared primitive changes belong in the Design System repo.
-- Do not create a wrapper component that only renames a shadcn/ui primitive.
-- Do not generate the entire component catalog in advance.
-- Keep `components.json` aligned to `radix-nova`, Stone, Phosphor,
-  `default-translucent`, and `subtle`.
-
-## Typography
-
-### Current implementation
-
-Use the fonts currently loaded by the app:
-
-- IBM Plex Sans for interface and body text
-- Montserrat for headings and component titles
-- the system monospace stack for identifiers, timestamps, or technical values
-  where a monospace face materially improves scanning
-
-### Approved target
-
-KAN-225 will replace Roboto, IBM Plex Sans, and Montserrat with Inter variable
-for interface, headings, and textual wordmarks. The app will load Inter once at
-the root and expose `--font-inter`; `@fradelli/ui` will reference that variable
-with a system fallback. The system monospace stack remains available for
-technical values.
-
-Until that code migration passes build and visual review, the current font
-names and variables above remain accurate and must not be removed by a
-documentation-only change.
-
-Use semibold instead of bold for most headings and actions. Avoid extra-light
-text on dark surfaces.
-
-| Role | Tailwind direction | Use |
-| --- | --- | --- |
-| Display | `text-4xl sm:text-5xl font-semibold tracking-tight` | Public hero only |
-| Page title | `text-3xl font-semibold tracking-tight` | Main screen heading |
-| Section title | `text-xl font-semibold` | Major screen section |
-| Component title | `text-base font-semibold` | Cards, dialogs, and list groups |
-| Body | `text-base leading-7` | Primary content |
-| Supporting | `text-sm leading-6 text-muted-foreground` | Metadata and help |
-| Caption | `text-xs leading-5 text-muted-foreground` | Compact labels and timestamps |
-
-Feature screens may choose a smaller title on constrained mobile layouts, but
-they must preserve the same role hierarchy.
-
-## Spacing And Layout Density
-
-Use Tailwind's standard `0.25rem` spacing scale. Do not create custom CSS
-spacing tokens until a repeated layout need cannot be expressed clearly with
-the standard scale.
-
-Default direction:
-
-- use `gap-2` or `gap-3` inside compact controls and metadata
-- use `gap-4` for default component composition
-- use `p-4` on compact cards and `p-5` or `p-6` on primary panels
-- use `gap-6` or `gap-8` between screen sections
-- preserve a minimum `1rem` mobile page gutter
-- constrain reading content instead of stretching text across wide screens
-
-Player surfaces may use more breathing room and stronger imagery. Organization
-surfaces may reduce card padding and row spacing for scanning, but must reuse
-the same typography, tokens, focus treatment, and control variants.
-
-Default interactive controls use a `2.5rem` height. Primary mobile actions and
-isolated icon controls should provide a target close to `2.75rem`. Compact
-Organization controls may be smaller only when pointer and keyboard use remain
-clear and the control is not a primary mobile action.
-
-## Radius, Borders, And Elevation
-
-- Set `--radius` to `0.45rem` and derive the shadcn/ui radius scale from it.
-- Use medium radii for buttons and fields.
-- Use the base or larger derived radius for cards, dialogs, and empty states.
-- Reserve full pills for badges, avatars, and genuinely circular controls.
-- Prefer borders and surface contrast over heavy shadows.
-- Use a restrained shadow only when a floating surface needs separation from
-  the layer below it.
-- Do not use glow effects as a default focus or brand treatment.
-
-## Component Direction
-
-Defining a component direction does not require generating the component before
-a real screen needs it.
-
-### Buttons
-
-Supported baseline variants:
-
-- `default`: primary action using `primary`
-- `secondary`: lower-emphasis filled action
-- `outline`: neutral action on the current surface
-- `ghost`: low-emphasis toolbar or navigation action
-- `destructive`: an action with destructive consequences
-- `link`: inline navigation where a button shape would add noise
-
-Rules:
-
-- one visually primary action per local decision area
-- use a leading or trailing icon only when it improves recognition
-- icon-only buttons require an accessible name and, when the meaning is not
-  universal, a tooltip
-- loading buttons preserve their width, expose busy state, and prevent duplicate
-  submission
-- disabled buttons are not a substitute for explaining unmet requirements
-- destructive actions must use the `destructive` treatment rather than the
-  primary action treatment
-
-### Forms
-
-Use the shadcn/ui field, label, input, textarea, select, checkbox, and related
-primitives as needed by real forms.
-
-Rules:
-
-- every control has a persistent visible label
-- placeholder text demonstrates format or gives an example; it does not replace
-  the label
-- helper text appears before validation fails when it can prevent an error
-- validation text appears beside the responsible field
-- a form-level alert summarizes submission or service failures when field
-  messages are insufficient
-- required, optional, disabled, and read-only states remain visually distinct
-- focus uses the shared `ring` token
-- error state uses color plus message or icon
-- keep form actions close to the fields they submit
-
-### Cards And Surfaces
-
-- use cards for meaningful grouping, not for every piece of content
-- default cards use `card`, `card-foreground`, and `border`
-- selected or interactive cards need a visible hover, focus, and selected state
-- public and player cards may be more spacious
-- Organization panels favor compact headers and scan-friendly alignment
-
-### Tables And Lists
-
-- use a semantic table for dense comparable Organization data
-- use list items or cards for player-facing results and mobile-first browsing
-- provide a deliberate mobile representation instead of forcing every wide
-  table into horizontal scrolling
-- keep row actions grouped and keyboard reachable
-- align numbers and short statuses for scanning
-- loading rows should preserve the expected table or list structure
-- empty results use the shared empty-state pattern, not a blank table
-
-### Badges And Statuses
-
-- badges carry short labels, categories, or statuses
-- status badges combine a semantic token with explicit text
-- use outline or subtle-tint badges by default
-- reserve filled high-emphasis badges for states that require immediate
-  attention
-- map backend statuses to visual variants inside the owning feature
-- do not infer domain status from color in a generic UI primitive
-
-### Alerts
-
-Use inline alerts for information that must remain visible while the user
-decides or acts.
-
-Supported meanings:
-
-- neutral information
-- success
-- warning
-- destructive or error
-
-An alert contains a concise title when needed, a useful description, and a next
-action when recovery is possible. Transient notifications must not be the only
-place where validation, business-rule failure, or destructive consequences are
-communicated.
-
-### Dialogs
-
-- use `Dialog` for a focused task that benefits from preserving page context
-- use `AlertDialog` for destructive or irreversible confirmation
-- keep titles and descriptions explicit
-- place the safe cancel action before the confirming action
-- move complex or multi-step workflows to a page instead of growing a modal
-- do not nest dialogs
-- preserve keyboard focus and return it to the triggering control on close
-
-### Empty States
-
-Use a consistent composition:
-
-1. optional Phosphor icon
-2. short title describing the absence
-3. one sentence explaining context
-4. primary next action when the user can resolve the state
-5. optional secondary link when it offers a genuinely different path
-
-Text and icon are sufficient for MVP empty states. Custom illustrations are
-deferred. Search with no results may offer filter reset; first-use emptiness may
-offer creation; a legitimate completed state may need no action.
+# Sistema visual do Sandicts
+
+## Fonte de verdade
+
+A interface utiliza `@fradelli/ui@0.5.0`, com a mesma fundação do portfólio:
+tema escuro, Inter, primária amarela, cores semânticas e superfícies glass/solid.
+A adoção foi autorizada em 19/10/2026. O
+[plano e inventário](sandicts-fradelli-design-system-adoption-plan.md) registra
+o diagnóstico anterior; o código e este documento descrevem o contrato atual.
+
+- Importar componentes por subpaths públicos (`@fradelli/ui/button`, `/card`,
+  `/field`, `/input`, `/sheet`, `/popover`, `/alert-dialog`, `/radio-group`).
+  O entrypoint raiz do pacote é intencionalmente vazio.
+- Importar `@fradelli/ui/styles.css` uma vez em globals; manter `@source` do
+  pacote para que Tailwind compile suas classes.
+- Não gerar primitives locais nem duplicar tokens, fórmulas de vidro, sombras,
+  foco ou escalas tipográficas. O gerador anterior de componentes foi retirado.
+- Layouts, rotas, conteúdo, integrações, i18n, arte e regras ficam no aplicativo.
+  RHF/Zod e TanStack Query/Orval mantêm suas responsabilidades.
+
+## Tipografia, materiais e geometria
+
+O root carrega Inter e define `--font-inter`. Papéis públicos:
+`fd-text-display`, `fd-text-section`, `fd-text-card`, `fd-text-body`,
+`fd-text-interface` e `fd-text-label`. Roboto é exclusivo do wordmark Sandicts.
+
+Usar `Card` glass por padrão; `surface="solid"` para painéis densos ou cards
+internos. O Card define padding na raiz (24px default, 16px sm), slots sem
+padding lateral adicional e geometria idêntica entre materiais. Não compensar
+com `p-0`, margens negativas ou padding adicional nos slots.
+
+Chrome pode usar `fd-surface-glass-elevated`; geometria e posicionamento são do
+layout local. Não aninhar blur em linhas de listas. Texto legal usa superfície
+sólida. Fallback sem blur/color-mix, forced colors e redução de transparência
+pertencem ao pacote; `data-fd-transparency="reduce"` no html desativa vidro.
+
+Cores e espaços vêm de `--fd-*`. Usar `bg-surface`, `bg-surface-elevated`,
+`text-muted-foreground` e `text-status-success`/demais semânticas. Não confundir
+`--fd-color-primary` com a cor da marca. Arte local usa `--sandicts-brand-*` e
+não modifica primária, foco ou navegação do pacote.
+
+## Componentes e comportamento
+
+- `Button`/`PendingButton`: ações e pendência com rótulo acessível; prevenir
+  submissão duplicada. Links usam `asChild` com um único Next Link.
+- `Field`/`Input`: labels persistentes, refs RHF, ids e descrições/erros
+  associados explicitamente. Copy e validação pertencem ao consumidor.
+- `Alert`/`StatusBadge`: cor mais texto; anúncio explícito somente quando
+  necessário. Nunca deduzir estado de domínio pela cor.
+- `NavigationItem`: estilo/foco/estado ativo públicos. URL, grupos e modos
+  bottom/rail/sidebar/drawer continuam no app.
+- `Sheet` e `AlertDialog`: dialog nativo, título/descrição, foco seguro,
+  Escape e retorno de foco; verificar em navegador real.
+- `Popover`: menu da conta e busca por esporte. Manter lógica e rótulos locais.
+- `RadioGroup`: teclado/seleção compartilhados, conteúdo das opções e regras
+  locais. Não converter IDs de fixtures em códigos reais da API.
+- `PageState`, `AreaPlaceholder` e shells são composições locais. O fundo é escuro uniforme, sem estrelas ou decoração copiada do portfólio.
+- O botão Google permanece controlado pelo SDK. Não recriar sua renderização.
+
+Busca com combobox e select de cenários permanecem locais: não há equivalente
+completo público. Não acrescentar tabelas, toast ou novos fluxos onde só existem
+placeholders. Componentes interativos não podem conter links/botões aninhados.
+
+## Movimento e acessibilidade
+
+O fundo usa a cor escura pública do pacote, sem estrelas, parallax ou meteoros,
+conforme orientação explícita do usuário. Motion de controles vem do pacote e
+respeita preferência de redução de movimento.
+
+Validar contraste composto, teclado, zoom/reflow, textos longos, celular/tablet/
+desktop, safe area e todos os estados existentes. O pacote controla o foco dos
+controles: não somar um segundo ring no wrapper. Elementos nativos locais usam
+o fallback de foco público. A única língua ativa é pt-BR.
 
 ## Common State Matrix
 
-| State | Default treatment |
-| --- | --- |
-| Initial page loading | Skeleton shaped like the expected content; preserve layout |
-| Action loading | Spinner or progress inside the initiating control; prevent duplicates |
-| Empty | Shared empty-state composition with a relevant next action |
-| Success | Persistent updated UI plus optional inline success confirmation |
-| Field validation | Message beside the field and invalid control treatment |
-| Business-rule error | Message near the blocked action with a safe next step |
-| Service or network error | Alert or error boundary with retry when retry is safe |
-| Forbidden | Simple explanation and safe route back to the correct context |
-| Not found | Neutral state that does not disclose private resource existence |
-| Disabled | Lower emphasis while retaining readable label and state |
+| State                    | Default treatment                                                     |
+| ------------------------ | --------------------------------------------------------------------- |
+| Initial page loading     | Skeleton shaped like the expected content; preserve layout            |
+| Action loading           | Spinner or progress inside the initiating control; prevent duplicates |
+| Empty                    | Shared empty-state composition with a relevant next action            |
+| Success                  | Persistent updated UI plus optional inline success confirmation       |
+| Field validation         | Message beside the field and invalid control treatment                |
+| Business-rule error      | Message near the blocked action with a safe next step                 |
+| Service or network error | Alert or error boundary with retry when retry is safe                 |
+| Forbidden                | Simple explanation and safe route back to the correct context         |
+| Not found                | Neutral state that does not disclose private resource existence       |
+| Disabled                 | Lower emphasis while retaining readable label and state               |
 
 Loading, error, and empty states must occupy the same structural region as the
 content they replace. Avoid full-screen blocking spinners for local reads or
@@ -439,8 +123,8 @@ Rules:
 
 - Meet WCAG AA contrast for text, controls, and meaningful state indicators.
 - Validate text pairs at `4.5:1` and UI/focus boundaries at `3:1` whenever the
-  preset or Sandicts status extensions change.
-- Keep keyboard focus visible through `ring-ring`.
+  shared package version change.
+- Keep keyboard focus visible through the package focus indicator.
 - Do not remove outlines without an equivalent visible focus treatment.
 - Use semantic HTML before adding ARIA.
 - Keep labels and error relationships programmatically discoverable.
@@ -450,86 +134,12 @@ Rules:
 - Ensure dialogs, menus, and popovers can be completed with a keyboard.
 - Keep muted text readable; muted does not mean low contrast.
 
-## Motion And Feedback
+## Geração e validação
 
-Use short transitions, generally `150ms` to `200ms`, for hover, focus, and
-surface changes. Motion should explain interaction state, not decorate static
-content.
+`npm run visual-system:sync` regenera arte, sprites e CSS dos protótipos a partir
+do pacote instalado. `prototype-theme.css` mantém apenas aliases de vocabulário
+para o HTML estático; não participa do runtime Next. Não editar CSS gerado.
 
-Advanced page transitions, parallax, animated backgrounds, and custom loading
-sequences are outside the MVP.
-
-## Image And Brand Asset Direction
-
-- Use the canonical stylized `S` through `BrandMark`, `BrandLockup`, or
-  `BrandLink` in runtime surfaces.
-- Currently render `SANDICTS` as text in Roboto through `BrandName`, with IBM
-  Plex Sans and Montserrat for interface content. KAN-225 migrates all three
-  proportional roles to Inter while preserving the Sandicts-owned brand
-  component and its tracking/weight decisions.
-- Keep the base mark flat, transparent, and driven by `currentColor`.
-- Restrict glow to large expressive surfaces and social imagery.
-- Change the active artwork and semantic colors through
-  `src/config/brand.ts`, then run `npm run brand:sync`.
-- Treat `public/sandicts-mark.svg`, `src/app/icon.svg`, and both generated
-  brand-token stylesheets as generated artifacts.
-- Use beach or sport photography only when it contributes context or discovery
-  value.
-- Do not require photography for operational Organization workflows.
-- Avoid decorative stock imagery in empty and error states.
-- Treat a complete corporate brand manual and marketing campaign as post-MVP
-  work.
-
-## Current Implementation Contract From KAN-144
-
-KAN-144 establishes:
-
-1. the complete preset configuration and both token maps
-2. the dark-only product activation
-3. IBM Plex Sans, Montserrat, and system monospace fallbacks
-4. the reconciled local primitives and semantic status extensions
-5. Phosphor as the only general-purpose interface icon set
-6. shared runtime/prototype token synchronization
-7. keyboard focus, contrast, loading, disabled, invalid, and semantic-state
-   validation
-
-Until the package migration lands, later features must consume this current
-contract rather than reintroducing palette names, new font stacks, or a second
-interface icon library.
-
-## Target Contract From KAN-223
-
-KAN-223 establishes governance only; it does not claim the visual migration is
-already delivered. KAN-224 will move compatible foundations/primitives to the
-versioned package, and KAN-225 will activate Inter and the red/yellow/pastel
-direction. Feature components, brand, page composition, domain mapping, API,
-auth, i18n, and providers remain owned by Sandicts throughout the migration.
-
-## Deferred Until After MVP
-
-- a user-selectable light theme
-- a complete marketing design language
-- a broad illustration system
-- high-fidelity prototypes for every page
-- advanced motion and transitions
-- a complete component catalog
-- speculative Academy, Admin App, tournament, or Web3 visual states
-- multiple density themes or user-selectable compact mode
-
-## Review Checklist
-
-Before approving shared visual work, confirm:
-
-- semantic tokens are used instead of raw repeated colors
-- component variants follow the directions in this document
-- loading, empty, error, and success states are explicit
-- focus, contrast, and keyboard behavior remain visible
-- Organization density does not fork the component system
-- Phosphor icons are accessible and not used as the brand mark
-- a post-MVP refinement has not entered the foundation by accident
-
-## Implementation References
-
-- [shadcn/ui theming](https://ui.shadcn.com/docs/theming)
-- [shadcn/ui Tailwind v4 guidance](https://ui.shadcn.com/docs/tailwind-v4)
-- [shadcn/ui component catalog](https://ui.shadcn.com/docs/components)
+Executar `npm run quality`, `npm test`, `npm run build` e `npm run test:e2e`.
+Atualizar evidências e registrar limitações do ambiente; Chromium não comprova
+Safari/iOS ou Firefox. Não atualizar snapshots sem revisão da mudança visual.

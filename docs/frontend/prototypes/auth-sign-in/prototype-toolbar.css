@@ -39,9 +39,9 @@
   align-self: end;
   padding: 1rem;
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) * 1.4);
-  background: color-mix(in oklch, var(--popover) 88%, transparent);
-  backdrop-filter: blur(1.5rem) saturate(1.5);
+  border-radius: var(--fd-radius-xl);
+  background: var(--fd-color-surface-elevated);
+
 }
 
 .prototype-control {
