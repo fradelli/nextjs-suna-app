@@ -18,17 +18,18 @@ describe("brand primitives", () => {
   });
 
   it("exposes a single accessible image name for a standalone mark", () => {
-    render(<BrandMark label="Símbolo Sandicts" size={24} />);
+    render(<BrandMark label="Símbolo Suna" size={24} />);
 
-    expect(
-      screen.getByRole("img", { name: "Símbolo Sandicts" }),
-    ).toHaveAttribute("width", "24");
+    expect(screen.getByRole("img", { name: "Símbolo Suna" })).toHaveAttribute(
+      "width",
+      "24",
+    );
   });
 
   it("renders the brand name as Roboto-backed text", () => {
     render(<BrandName />);
 
-    expect(screen.getByText("SANDICTS")).toHaveClass("font-brand");
+    expect(screen.getByText("suna")).toHaveClass("font-brand");
   });
 
   it("supports stacked expressive fixture lockups without changing geometry", () => {

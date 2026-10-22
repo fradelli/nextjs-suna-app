@@ -1,7 +1,7 @@
 const canonicalBrandFiles = new Set([
   "public/sandicts-mark.svg",
   "src/app/brand-variants.generated.css",
-  "src/app/icon.svg",
+  "src/app/icon.png",
   "src/config/brand.ts",
   "docs/frontend/prototypes/shared/sandicts-brand-tokens.css",
 ]);

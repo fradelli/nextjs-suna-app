@@ -6,7 +6,7 @@ canonical: docs/frontend/sandicts-mvp-visual-system.md
 scope: frontend, tokens, components, accessibility
 ---
 
-# Sistema visual do Sandicts
+# Sistema visual da Suna
 
 ## Fonte de verdade
 
@@ -30,7 +30,7 @@ o diagnóstico anterior; o código e este documento descrevem o contrato atual.
 
 O root carrega Inter e define `--font-inter`. Papéis públicos:
 `fd-text-display`, `fd-text-section`, `fd-text-card`, `fd-text-body`,
-`fd-text-interface` e `fd-text-label`. Roboto é exclusivo do wordmark Sandicts.
+`fd-text-interface` e `fd-text-label`. Roboto é exclusivo do wordmark Suna.
 
 Usar `Card` glass por padrão; `surface="solid"` para painéis densos ou cards
 internos. O Card define padding na raiz (24px default, 16px sm), slots sem
@@ -44,7 +44,8 @@ pertencem ao pacote; `data-fd-transparency="reduce"` no html desativa vidro.
 
 Cores e espaços vêm de `--fd-*`. Usar `bg-surface`, `bg-surface-elevated`,
 `text-muted-foreground` e `text-status-success`/demais semânticas. Não confundir
-`--fd-color-primary` com a cor da marca. Arte local usa `--sandicts-brand-*` e
+`--fd-color-primary` com a cor da marca. Arte local usa os aliases técnicos
+temporários `--sandicts-brand-*` e
 não modifica primária, foco ou navegação do pacote.
 
 ## Componentes e comportamento
@@ -116,7 +117,7 @@ Rules:
 - mark decorative icons with `aria-hidden="true"`
 - give icon-only controls an accessible name
 - pair status icons with text
-- do not use a Phosphor icon as the Sandicts logo
+- do not use a Phosphor icon as the Suna logo
 - do not mix a second general-purpose icon set into MVP product UI
 
 ## Accessibility Baseline

@@ -2,11 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import {
-  activeBrandVariant,
-  activeBrandVariantId,
-  brandVariants,
-} from "../src/config/brand.ts";
+import { brandVariants } from "../src/config/brand.ts";
 import { brandArtworks } from "../src/lib/brand/brand-artwork.ts";
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
@@ -19,6 +15,11 @@ const brandFontTargetPath = resolve(
   projectRoot,
   "public/fonts/roboto-latin-500-normal.woff",
 );
+const brandIconSourcePath = resolve(
+  projectRoot,
+  "public/brand/suna-logo-source.png",
+);
+const brandIconTargetPath = resolve(projectRoot, "src/app/icon.png");
 
 const generatedTargets = [
   {
@@ -33,16 +34,6 @@ const generatedTargets = [
       projectRoot,
       "docs/frontend/prototypes/shared/sandicts-brand-tokens.css",
     ),
-  },
-  {
-    contents: renderBrandSvg({ includeMetadata: true }),
-    label: "public brand mark",
-    path: resolve(projectRoot, "public/sandicts-mark.svg"),
-  },
-  {
-    contents: renderBrandSvg({ includeMetadata: false }),
-    label: "application icon",
-    path: resolve(projectRoot, "src/app/icon.svg"),
   },
 ];
 
@@ -98,19 +89,6 @@ ${blocks.join("\n\n")}
 `;
 }
 
-function renderBrandSvg({ includeMetadata }) {
-  const artwork = brandArtworks[activeBrandVariant.artworkId];
-  const metadata = includeMetadata
-    ? `\n  <metadata>Sandicts brand variant: ${activeBrandVariantId}</metadata>`
-    : "";
-
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${artwork.viewBox}" role="img" style="color: ${activeBrandVariant.theme.static.brand}">
-  <title>${activeBrandVariant.displayName}</title>${metadata}
-  <path fill="currentColor" d="${artwork.path}"/>
-</svg>
-`;
-}
-
 async function syncTarget(target) {
   let current = "";
 
@@ -157,6 +135,29 @@ async function syncBrandFont() {
   return true;
 }
 
+async function syncBrandIcon() {
+  const expected = await readFile(brandIconSourcePath);
+  let current = Buffer.alloc(0);
+
+  try {
+    current = await readFile(brandIconTargetPath);
+  } catch (error) {
+    if (error?.code !== "ENOENT") {
+      throw error;
+    }
+  }
+
+  if (current.equals(expected)) {
+    return false;
+  }
+
+  if (!checkOnly) {
+    await writeFile(brandIconTargetPath, expected);
+  }
+
+  return true;
+}
+
 for (const variant of Object.values(brandVariants)) {
   if (!(variant.artworkId in brandArtworks)) {
     throw new Error(
@@ -165,9 +166,10 @@ for (const variant of Object.values(brandVariants)) {
   }
 }
 
-const [results, fontChanged] = await Promise.all([
+const [results, fontChanged, iconChanged] = await Promise.all([
   Promise.all(generatedTargets.map(syncTarget)),
   syncBrandFont(),
+  syncBrandIcon(),
 ]);
 const changed = results.filter((result) => result.changed);
 
@@ -176,6 +178,14 @@ if (fontChanged) {
     changed: true,
     label: "Roboto brand font",
     path: brandFontTargetPath,
+  });
+}
+
+if (iconChanged) {
+  changed.push({
+    changed: true,
+    label: "application icon",
+    path: brandIconTargetPath,
   });
 }
 

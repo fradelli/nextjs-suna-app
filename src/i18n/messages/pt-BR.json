@@ -10,8 +10,8 @@
     "triggerLabel": "Abrir menu da conta de {account}"
   },
   "Common": {
-    "backToSandicts": "Voltar para o Sandicts",
-    "brandHomeLabel": "Sandicts — início",
+    "backToSandicts": "Voltar para a Suna",
+    "brandHomeLabel": "Suna — início",
     "close": "Fechar",
     "skipToContent": "Pular para o conteúdo"
   },
@@ -41,9 +41,9 @@
   },
   "Metadata": {
     "defaultDescription": "Encontre quadras, partidas e pessoas para praticar esportes de areia.",
-    "socialImageAlt": "Sandicts — encontre quadras, partidas e pessoas para jogar",
+    "socialImageAlt": "Suna — encontre quadras, partidas e pessoas para jogar",
     "socialImageEyebrow": "Sua próxima partida começa aqui",
-    "socialImageSymbolLabel": "Símbolo Sandicts",
+    "socialImageSymbolLabel": "Símbolo Suna",
     "socialImageTitle": "Encontre quadras, partidas e pessoas para jogar."
   },
   "Navigation": {
@@ -115,7 +115,7 @@
         "eyebrow": "Painel",
         "title": "Opere suas quadras com clareza."
       },
-      "metadataDescription": "Gerencie sua organização no Sandicts.",
+      "metadataDescription": "Gerencie sua organização na Suna.",
       "metadataTitle": "Área da organização",
       "payments": {
         "description": "Somente os estados manuais aprovados serão implementados; conciliação e relatórios avançados continuam fora do escopo.",
@@ -144,7 +144,7 @@
         "eyebrow": "Início",
         "title": "Seu próximo jogo começa aqui."
       },
-      "metadataDescription": "Gerencie sua experiência de jogador no Sandicts.",
+      "metadataDescription": "Gerencie sua experiência de jogador na Suna.",
       "metadataTitle": "Área do jogador",
       "openMatches": {
         "description": "A lista, os detalhes e a criação de partidas permanecerão dentro deste destino.",
@@ -156,7 +156,7 @@
         "eyebrow": "Perfil",
         "title": "Cuide do seu perfil Player."
       },
-      "redirectMetadataDescription": "Acesse sua área de jogador no Sandicts.",
+      "redirectMetadataDescription": "Acesse sua área de jogador na Suna.",
       "reservations": {
         "description": "Listas, detalhes e solicitações de alteração serão implementados nas tarefas de reservas.",
         "eyebrow": "Reservas",
@@ -166,7 +166,7 @@
     "signIn": {
       "description": "Google Sign-In, One Tap e magic link serão conectados aqui pelas tarefas de autenticação.",
       "eyebrow": "Área pública",
-      "metadataDescription": "Entre na sua conta Sandicts.",
+      "metadataDescription": "Entre na sua conta Suna.",
       "metadataTitle": "Entrar",
       "title": "Entre na sua conta."
     }
@@ -238,7 +238,7 @@
       "title": "Formulário de onboarding do perfil Player"
     },
     "identification": {
-      "displayNameHelp": "É assim que seu nome aparecerá no Sandicts.",
+      "displayNameHelp": "É assim que seu nome aparecerá na Suna.",
       "displayNameLabel": "Nome de exibição",
       "displayNamePlaceholder": "Ex.: Lucas Lima",
       "title": "Sobre você"
@@ -480,12 +480,12 @@
       "contexts": "Acesse somente os contextos autorizados para sua conta.",
       "session": "Sua sessão permanece protegida e pode ser retomada com segurança."
     },
-    "description": "Use sua conta para acessar seu perfil e os contextos disponíveis no Sandicts.",
-    "eyebrow": "Sua conta Sandicts",
+    "description": "Use sua conta para acessar seu perfil e os contextos disponíveis na Suna.",
+    "eyebrow": "Sua conta Suna",
     "methods": {
       "divider": "ou continue por e-mail",
       "googleFailure": {
-        "forbidden": "Esta conta não pode acessar o Sandicts. Use outra conta Google ou volte para uma área pública.",
+        "forbidden": "Esta conta não pode acessar a Suna. Use outra conta Google ou volte para uma área pública.",
         "generic": "Não foi possível concluir o acesso. Tente novamente pelo botão Google.",
         "invalidCredential": "O Google não retornou uma credencial válida. Tente novamente.",
         "rateLimited": "Você fez muitas tentativas. Aguarde um pouco antes de tentar novamente.",
@@ -528,7 +528,7 @@
         },
         "tryAgain": "Tentar novamente"
       },
-      "privacy": "A autenticação acontece com o provedor. O Sandicts não recebe sua senha."
+      "privacy": "A autenticação acontece com o provedor. A Suna não recebe sua senha."
     },
     "magicLinkCallback": {
       "actions": {
@@ -539,7 +539,7 @@
         "signIn": "Voltar para entrar"
       },
       "forbidden": {
-        "description": "Use outra conta ou volte para uma área pública do Sandicts.",
+        "description": "Use outra conta ou volte para uma área pública da Suna.",
         "title": "Você não tem acesso a esta área"
       },
       "invalid": {
@@ -580,7 +580,7 @@
     "states": {
       "authenticated": {
         "action": "Voltar ao início",
-        "description": "Continue navegando pelo Sandicts. Seu próximo contexto será escolhido somente depois que as permissões forem verificadas.",
+        "description": "Continue navegando pela Suna. Seu próximo contexto será escolhido somente depois que as permissões forem verificadas.",
         "title": "Sua sessão está ativa"
       },
       "checking": {
@@ -595,7 +595,7 @@
         "title": "Sua sessão expirou"
       },
       "forbidden": {
-        "description": "Use outra conta ou volte para uma área pública do Sandicts.",
+        "description": "Use outra conta ou volte para uma área pública da Suna.",
         "title": "Você não tem acesso a esta área"
       },
       "publicAction": "Voltar ao início",

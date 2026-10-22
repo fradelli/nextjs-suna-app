@@ -696,7 +696,7 @@ Generation workflow:
 - `KAN-73` implemented the Orval dependency, `orval.config.ts`, and
   `npm run api:generate`
 - generation first reads the sibling backend artifact at
-  `../nodejs-sandicts-api/openapi/sandicts-api.json`
+  `../nodejs-sandicts-api/openapi/suna-api.json`
 - CI falls back to the canonical backend `developer` artifact on GitHub
 - the command should support an explicit `OPENAPI_SCHEMA_URL` or equivalent
   non-public environment override for local, CI, and future preview workflows

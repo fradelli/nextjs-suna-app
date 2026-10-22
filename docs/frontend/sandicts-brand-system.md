@@ -1,12 +1,12 @@
-# Sandicts Brand System
+# Suna Brand System
 
 ## Canonical identity
 
-The canonical Sandicts symbol is the stylized `S` approved on 30 July 2026.
-The source PNGs are visual references only. Production surfaces use transparent
-vector geometry with no baked background or mandatory glow.
+The canonical Suna symbol is the four-grain transparent PNG supplied on 22
+October 2026. Production surfaces use that original raster artwork directly;
+the application must not recreate, trace, recolor, or simplify its geometry.
 
-`SANDICTS` is real text in Roboto Medium. Inter is the interface and heading font supplied through the shared design
+`suna` is real text in Roboto Medium. Inter is the interface and heading font supplied through the shared design
 system contract. Brand colors use `--sandicts-brand-*`; they never override
 shared primary, focus or navigation tokens.
 
@@ -15,16 +15,16 @@ shared primary, focus or navigation tokens.
 | Concern | Authoritative source |
 | --- | --- |
 | Active variant, display name, themes, static colors | `src/config/brand.ts` |
-| Mark geometry and view box | `src/lib/brand/brand-artwork.ts` |
+| Original mark artwork | `public/brand/suna-logo-source.png` |
+| Transparent crop/view box | `src/lib/brand/brand-artwork.ts` |
 | Runtime mark, name, lockups, link | `src/components/shared/brand/**` |
-| Runtime/prototype CSS and static SVGs | `scripts/sync-brand-system.mjs` |
+| Runtime/prototype CSS and application icon | `scripts/sync-brand-system.mjs` |
 | Visual reference | `/prototypes/brand` |
 
 Do not edit these generated files directly:
 
 - `src/app/brand-variants.generated.css`
-- `src/app/icon.svg`
-- `public/sandicts-mark.svg`
+- `src/app/icon.png`
 - `public/fonts/roboto-latin-500-normal.woff`
 - `docs/frontend/prototypes/shared/sandicts-brand-tokens.css`
 
@@ -34,7 +34,7 @@ Run `npm run brand:sync` after changing brand configuration or artwork.
 
 - `BrandMark` renders the symbol. Pass `label` when it is the only accessible
   representation of the brand.
-- `BrandName` renders `SANDICTS` in Roboto.
+- `BrandName` renders `suna` in Roboto.
 - `BrandLockup` composes horizontal or stacked treatments.
 - `BrandLink` is the accessible home link used by product shells.
 
@@ -48,15 +48,14 @@ for large reference, hero, splash, or social-image surfaces.
   navigation.
 - Preserve at least one quarter of the mark width as clear space around an
   isolated mark.
-- Do not stretch, crop, rotate, outline, or place the symbol on a baked
-  background.
-- Use `currentColor` in React and the generated variant color in standalone
-  SVG consumers.
+- Do not stretch, rotate, outline, recolor, or place the symbol on a baked
+  background. Its transparent outer area may be framed through the registered
+  view box, without changing the original pixels.
 
 ## Adding a seasonal variant
 
 1. Add a new entry to `brandVariants` in `src/config/brand.ts`.
-2. Reuse `sandicts-s` unless the campaign has approved replacement geometry.
+2. Reuse `suna-grains` unless the campaign has approved replacement artwork.
 3. If geometry changes, register it once in
    `src/lib/brand/brand-artwork.ts`.
 4. Define light, dark, and static theme values.

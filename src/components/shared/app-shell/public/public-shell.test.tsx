@@ -36,9 +36,10 @@ describe("PublicShell", () => {
       name: "Navegação pública",
     });
 
-    expect(
-      screen.getByRole("link", { name: "Sandicts — início" }),
-    ).toHaveAttribute("href", "/");
+    expect(screen.getByRole("link", { name: "Suna — início" })).toHaveAttribute(
+      "href",
+      "/",
+    );
     expect(
       within(navigation).getByRole("link", { name: /Explorar/ }),
     ).toHaveAttribute("href", "/discovery");
