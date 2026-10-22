@@ -82,7 +82,7 @@ function usePlayerProfileOnboardingPrototype({
     }
   }
 
-  function handleSportChange(sportId: string) {
+  function changeMainSportAndResetLevel(sportId: string) {
     const currentSportId = form.getValues("mainSportId");
 
     form.setValue("mainSportId", sportId, {
@@ -100,7 +100,9 @@ function usePlayerProfileOnboardingPrototype({
     }
   }
 
-  async function handleValidSubmit(values: PlayerProfileOnboardingValues) {
+  async function simulatePlayerProfileSave(
+    values: PlayerProfileOnboardingValues,
+  ) {
     form.clearErrors("root");
     await waitForSimulatedSave();
     onSaved(values);
@@ -110,8 +112,8 @@ function usePlayerProfileOnboardingPrototype({
     form,
     errors: form.formState.errors,
     isSubmitting: form.formState.isSubmitting,
-    handleSubmit: form.handleSubmit(handleValidSubmit, focusFirstError),
-    handleSportChange,
+    handleSubmit: form.handleSubmit(simulatePlayerProfileSave, focusFirstError),
+    changeMainSportAndResetLevel,
     focusFirstError,
   };
 }

@@ -1,9 +1,7 @@
 @import url("../shared/sandicts-visual-tokens.css");
 
 :root {
-  --primary-hover: color-mix(in oklch, var(--primary), white 15%);
   --toolbar-background: var(--background);
-  --shadow: 0 24px 80px rgb(0 0 0 / 0.28);
   font-family: var(--font-sans-stack);
 }
 
@@ -70,9 +68,9 @@ button:disabled {
   display: none !important;
 }
 
-:focus-visible {
-  outline: 3px solid var(--primary);
-  outline-offset: 3px;
+:focus-visible:not(.fd-focus-managed) {
+  outline: var(--fd-focus-width) solid var(--fd-focus-color);
+  outline-offset: var(--fd-focus-offset);
 }
 
 .sr-only {
@@ -121,57 +119,23 @@ button:disabled {
   fill: currentColor;
 }
 
-.button {
-  display: inline-flex;
-  min-height: 2.75rem;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.7rem 1rem;
-  border: 1px solid transparent;
-  border-radius: calc(var(--radius) * 0.8);
-  font-weight: 750;
-  text-decoration: none;
-}
 
-.button--compact {
-  padding-inline: 0.9rem;
-}
 
-.button--primary {
-  border-color: var(--primary);
-  background: var(--primary);
-  color: var(--primary-foreground);
-}
 
-.button--primary:hover:not(:disabled) {
-  background: var(--primary-hover);
-}
 
-.button--secondary {
-  border-color: var(--input);
-  background: var(--secondary);
-  color: var(--foreground);
-}
 
-.button--secondary:hover:not(:disabled) {
-  border-color: var(--success);
-  background: var(--accent);
-}
 
-.button--ghost {
-  background: transparent;
-  color: var(--muted-foreground);
-}
 
-.button--ghost:hover:not(:disabled) {
-  background: var(--accent);
-  color: var(--foreground);
-}
 
-.button:disabled {
-  opacity: 0.7;
-}
+
+
+
+
+
+
+
+
+
 
 @media (prefers-reduced-motion: reduce) {
   *,

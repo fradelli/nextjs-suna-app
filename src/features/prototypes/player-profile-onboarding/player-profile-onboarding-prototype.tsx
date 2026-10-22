@@ -11,21 +11,21 @@ import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Controller } from "react-hook-form";
 import { BrandLockup } from "@/components/shared/brand";
-import { LoadingRegion } from "@/components/shared/loading-region/loading-region";
+import { LoadingRegion } from "@fradelli/ui/loading-region";
 import { PageState } from "@/components/shared/page-state/page-state";
-import { PendingButton } from "@/components/shared/pending-button/pending-button";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { PendingButton } from "@fradelli/ui/pending-button";
+import { Alert, AlertDescription, AlertTitle } from "@fradelli/ui/alert";
+import { Button } from "@fradelli/ui/button";
+import { Card, CardContent, CardHeader } from "@fradelli/ui/card";
 import {
   Field,
   FieldDescription,
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Skeleton } from "@/components/ui/skeleton";
+} from "@fradelli/ui/field";
+import { Input } from "@fradelli/ui/input";
+import { Skeleton } from "@fradelli/ui/skeleton";
 import { ExitConfirmationDialog } from "./components/exit-confirmation-dialog";
 import { PrototypeScenarioController } from "./components/prototype-scenario-controller";
 import { SelectionCardRadioGroup } from "./components/selection-card-radio-group";
@@ -45,7 +45,7 @@ import type {
   RouteOutcome,
 } from "./player-profile-onboarding-prototype.types";
 import {
-  findSport,
+  findActiveSportById,
   getLevelsForSport,
 } from "./player-profile-onboarding-prototype.utils";
 import { usePlayerProfileOnboardingPrototype } from "./hooks/use-player-profile-onboarding-prototype";
@@ -259,23 +259,28 @@ function PlayerProfileOnboardingPrototype() {
         }
       : undefined);
 
-  const { errors, form, handleSportChange, handleSubmit, isSubmitting } =
-    usePlayerProfileOnboardingPrototype({
-      scenarioId,
-      sports,
-      levelScales: DEFAULT_LEVEL_SCALES,
-      initialState,
-      onSaved: () => {
-        setInteractiveFeedback({ kind: "success" });
-        setInteractiveOutcome({
-          kind: "authorizedContinuation",
-          destination: "/app/reservations",
-        });
-      },
-    });
+  const {
+    errors,
+    form,
+    changeMainSportAndResetLevel,
+    handleSubmit,
+    isSubmitting,
+  } = usePlayerProfileOnboardingPrototype({
+    scenarioId,
+    sports,
+    levelScales: DEFAULT_LEVEL_SCALES,
+    initialState,
+    onSaved: () => {
+      setInteractiveFeedback({ kind: "success" });
+      setInteractiveOutcome({
+        kind: "authorizedContinuation",
+        destination: "/app/reservations",
+      });
+    },
+  });
 
   const selectedSportId = form.watch("mainSportId");
-  const selectedSport = findSport(sports, selectedSportId);
+  const selectedSport = findActiveSportById(sports, selectedSportId);
   const levels = getLevelsForSport(
     sports,
     DEFAULT_LEVEL_SCALES,
@@ -338,11 +343,11 @@ function PlayerProfileOnboardingPrototype() {
     setInteractiveOutcome({ kind: "publicFallback", destination: "/" });
   }
 
-  function clearFeedback() {
+  function showInformationalFeedback() {
     setInteractiveFeedback({ kind: "info" });
   }
 
-  function verifyProfile() {
+  function simulateSuccessfulProfileVerification() {
     setInteractiveFeedback({ kind: "success" });
     setInteractiveOutcome({
       kind: "authorizedContinuation",
@@ -350,7 +355,7 @@ function PlayerProfileOnboardingPrototype() {
     });
   }
 
-  function reloadProfile() {
+  function loadConflictScenarioProfile() {
     form.reset({ ...CONFLICT_SERVER_VALUES });
     setInteractiveFeedback({ kind: "info" });
   }
@@ -583,7 +588,7 @@ function PlayerProfileOnboardingPrototype() {
                               }
                               ariaLabel={t("selectors.sportLegend")}
                               ariaInvalid={Boolean(errors.mainSportId)}
-                              onValueChange={handleSportChange}
+                              onValueChange={changeMainSportAndResetLevel}
                             />
                           ) : (
                             <SelectionCardRadioGroup
@@ -603,7 +608,7 @@ function PlayerProfileOnboardingPrototype() {
                               disabled={isSaving}
                               firstItemRef={field.ref}
                               onBlur={field.onBlur}
-                              onValueChange={handleSportChange}
+                              onValueChange={changeMainSportAndResetLevel}
                             />
                           )}
                           {errors.mainSportId?.message ? (
@@ -696,9 +701,9 @@ function PlayerProfileOnboardingPrototype() {
                         alertRef={alertRef}
                         feedback={feedback}
                         interactive={Boolean(interactiveFeedback)}
-                        onClear={clearFeedback}
-                        onReload={reloadProfile}
-                        onVerify={verifyProfile}
+                        onClear={showInformationalFeedback}
+                        onReload={loadConflictScenarioProfile}
+                        onVerify={simulateSuccessfulProfileVerification}
                       />
                     ) : null}
 

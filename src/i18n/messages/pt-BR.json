@@ -1,7 +1,17 @@
 {
+  "AccountMenu": {
+    "eyebrow": "Sua conta",
+    "failure": {
+      "rateLimited": "Muitas tentativas. Sua sessão continua ativa. Aguarde um pouco e tente novamente.",
+      "unavailable": "Não foi possível confirmar a saída. Sua conta permanece aberta nesta tela. Tente novamente."
+    },
+    "signOut": "Sair da conta",
+    "signingOut": "Saindo…",
+    "triggerLabel": "Abrir menu da conta de {account}"
+  },
   "Common": {
-    "backToSandicts": "Voltar para o Sandicts",
-    "brandHomeLabel": "Sandicts — início",
+    "backToSandicts": "Voltar para a Suna",
+    "brandHomeLabel": "Suna — início",
     "close": "Fechar",
     "skipToContent": "Pular para o conteúdo"
   },
@@ -31,9 +41,9 @@
   },
   "Metadata": {
     "defaultDescription": "Encontre quadras, partidas e pessoas para praticar esportes de areia.",
-    "socialImageAlt": "Sandicts — encontre quadras, partidas e pessoas para jogar",
+    "socialImageAlt": "Suna — encontre quadras, partidas e pessoas para jogar",
     "socialImageEyebrow": "Sua próxima partida começa aqui",
-    "socialImageSymbolLabel": "Símbolo Sandicts",
+    "socialImageSymbolLabel": "Símbolo Suna",
     "socialImageTitle": "Encontre quadras, partidas e pessoas para jogar."
   },
   "Navigation": {
@@ -105,7 +115,7 @@
         "eyebrow": "Painel",
         "title": "Opere suas quadras com clareza."
       },
-      "metadataDescription": "Gerencie sua organização no Sandicts.",
+      "metadataDescription": "Gerencie sua organização na Suna.",
       "metadataTitle": "Área da organização",
       "payments": {
         "description": "Somente os estados manuais aprovados serão implementados; conciliação e relatórios avançados continuam fora do escopo.",
@@ -134,7 +144,7 @@
         "eyebrow": "Início",
         "title": "Seu próximo jogo começa aqui."
       },
-      "metadataDescription": "Gerencie sua experiência de jogador no Sandicts.",
+      "metadataDescription": "Gerencie sua experiência de jogador na Suna.",
       "metadataTitle": "Área do jogador",
       "openMatches": {
         "description": "A lista, os detalhes e a criação de partidas permanecerão dentro deste destino.",
@@ -146,7 +156,7 @@
         "eyebrow": "Perfil",
         "title": "Cuide do seu perfil Player."
       },
-      "redirectMetadataDescription": "Acesse sua área de jogador no Sandicts.",
+      "redirectMetadataDescription": "Acesse sua área de jogador na Suna.",
       "reservations": {
         "description": "Listas, detalhes e solicitações de alteração serão implementados nas tarefas de reservas.",
         "eyebrow": "Reservas",
@@ -156,7 +166,7 @@
     "signIn": {
       "description": "Google Sign-In, One Tap e magic link serão conectados aqui pelas tarefas de autenticação.",
       "eyebrow": "Área pública",
-      "metadataDescription": "Entre na sua conta Sandicts.",
+      "metadataDescription": "Entre na sua conta Suna.",
       "metadataTitle": "Entrar",
       "title": "Entre na sua conta."
     }
@@ -228,7 +238,7 @@
       "title": "Formulário de onboarding do perfil Player"
     },
     "identification": {
-      "displayNameHelp": "É assim que seu nome aparecerá no Sandicts.",
+      "displayNameHelp": "É assim que seu nome aparecerá na Suna.",
       "displayNameLabel": "Nome de exibição",
       "displayNamePlaceholder": "Ex.: Lucas Lima",
       "title": "Sobre você"
@@ -416,6 +426,14 @@
       "summary": "Revise os campos indicados antes de continuar."
     }
   },
+  "ProtectedRoute": {
+    "checkingAuthorizationLabel": "Verificando seu acesso…",
+    "checkingSessionLabel": "Verificando sua sessão…",
+    "forbidden": {
+      "description": "Use outro contexto ou volte para uma área disponível para sua conta.",
+      "title": "Você não tem acesso a esta área"
+    }
+  },
   "PublicHome": {
     "actions": {
       "courts": {
@@ -452,6 +470,155 @@
       }
     },
     "title": "Encontre quadras, partidas e gente para jogar."
+  },
+  "SignIn": {
+    "betaNotice": {
+      "description": "O acesso está disponível somente para testadores convidados. Coletamos apenas os dados necessários para conta e sessão; não envie pagamentos, documentos ou dados sensíveis. Recursos podem mudar ou ficar indisponíveis durante os testes, e você pode solicitar a exclusão dos seus dados.",
+      "title": "Beta fechado para convidados"
+    },
+    "benefits": {
+      "contexts": "Acesse somente os contextos autorizados para sua conta.",
+      "session": "Sua sessão permanece protegida e pode ser retomada com segurança."
+    },
+    "description": "Use sua conta para acessar seu perfil e os contextos disponíveis na Suna.",
+    "eyebrow": "Sua conta Suna",
+    "methods": {
+      "divider": "ou continue por e-mail",
+      "googleFailure": {
+        "forbidden": "Esta conta não pode acessar a Suna. Use outra conta Google ou volte para uma área pública.",
+        "generic": "Não foi possível concluir o acesso. Tente novamente pelo botão Google.",
+        "invalidCredential": "O Google não retornou uma credencial válida. Tente novamente.",
+        "rateLimited": "Você fez muitas tentativas. Aguarde um pouco antes de tentar novamente.",
+        "rejected": "Não foi possível confirmar esta conta Google. Tente novamente ou escolha outra conta.",
+        "title": "Não foi possível entrar com Google"
+      },
+      "googlePreparing": "Preparando acesso com Google…",
+      "googleSigningIn": "Confirmando sua conta Google…",
+      "googleUnavailable": {
+        "loadFailure": "O serviço do Google não carregou. Confira sua conexão e tente novamente.",
+        "missingConfiguration": "O acesso com Google não está configurado neste ambiente.",
+        "retry": "Tentar carregar novamente",
+        "title": "Google Sign-In indisponível"
+      },
+      "magicLink": {
+        "cooldown": "Você poderá solicitar outro link em {seconds} s.",
+        "deliveryUnavailable": {
+          "description": "O envio por e-mail está temporariamente indisponível. Tente novamente em alguns instantes.",
+          "title": "Não foi possível enviar o link agora"
+        },
+        "emailDescription": "Enviaremos um link de uso único para o endereço informado.",
+        "emailInvalid": "Informe um endereço de e-mail válido.",
+        "emailLabel": "E-mail",
+        "requestFailed": {
+          "description": "Confira sua conexão e tente novamente.",
+          "title": "Não foi possível solicitar o link"
+        },
+        "rateLimited": {
+          "description": "Aguarde um pouco antes de solicitar outro link.",
+          "title": "Muitas tentativas"
+        },
+        "resend": "Reenviar link",
+        "resending": "Reenviando…",
+        "send": "Enviar link",
+        "sending": "Enviando…",
+        "sent": {
+          "description": "Se o endereço informado estiver correto, você receberá um link para entrar. Ele pode levar alguns instantes.",
+          "resendDescription": "Se solicitar outro link, use o e-mail mais recente que receber.",
+          "title": "Confira seu e-mail"
+        },
+        "tryAgain": "Tentar novamente"
+      },
+      "privacy": "A autenticação acontece com o provedor. A Suna não recebe sua senha."
+    },
+    "magicLinkCallback": {
+      "actions": {
+        "newLink": "Solicitar novo link",
+        "otherEmail": "Usar outro e-mail",
+        "publicHome": "Voltar ao início",
+        "retry": "Tentar novamente",
+        "signIn": "Voltar para entrar"
+      },
+      "forbidden": {
+        "description": "Use outra conta ou volte para uma área pública da Suna.",
+        "title": "Você não tem acesso a esta área"
+      },
+      "invalid": {
+        "description": "Solicite um novo link para entrar com segurança.",
+        "title": "Este link não é válido"
+      },
+      "expired": {
+        "description": "Solicite um novo link para continuar.",
+        "title": "Este link expirou"
+      },
+      "rateLimited": {
+        "description": "Aguarde um pouco antes de tentar entrar novamente.",
+        "title": "Não foi possível verificar agora"
+      },
+      "routing": {
+        "description": "Seu acesso foi confirmado. Estamos verificando o destino disponível.",
+        "label": "Preparando sua área…",
+        "title": "Preparando sua área"
+      },
+      "superseded": {
+        "description": "Use o e-mail mais recente que recebeu ou solicite outro link.",
+        "title": "Há um link mais recente"
+      },
+      "used": {
+        "description": "Para entrar neste dispositivo, solicite um novo link.",
+        "title": "Este link já foi utilizado"
+      },
+      "verificationFailed": {
+        "description": "Confira sua conexão e tente novamente.",
+        "title": "Não foi possível confirmar seu acesso"
+      },
+      "verifying": {
+        "description": "Estamos confirmando o acesso solicitado.",
+        "label": "Verificando seu link…",
+        "title": "Verificando seu link"
+      }
+    },
+    "states": {
+      "authenticated": {
+        "action": "Voltar ao início",
+        "description": "Continue navegando pela Suna. Seu próximo contexto será escolhido somente depois que as permissões forem verificadas.",
+        "title": "Sua sessão está ativa"
+      },
+      "checking": {
+        "label": "Verificando sua sessão…",
+        "pageLabel": "Carregando a página de entrada…"
+      },
+      "disabled": {
+        "description": "O acesso a contas não está disponível neste ambiente. Você ainda pode navegar pelas áreas públicas."
+      },
+      "expired": {
+        "description": "Entre novamente para continuar. Alterações não salvas não foram mantidas.",
+        "title": "Sua sessão expirou"
+      },
+      "forbidden": {
+        "description": "Use outra conta ou volte para uma área pública da Suna.",
+        "title": "Você não tem acesso a esta área"
+      },
+      "publicAction": "Voltar ao início",
+      "rateLimited": {
+        "description": "Você fez muitas tentativas. Aguarde um pouco antes de verificar novamente."
+      },
+      "unavailable": {
+        "action": "Tentar novamente",
+        "description": "O serviço de acesso está temporariamente indisponível. Tente novamente em alguns instantes.",
+        "title": "Não foi possível entrar agora"
+      },
+      "verificationFailed": {
+        "action": "Verificar novamente",
+        "description": "Confira sua conexão e tente novamente.",
+        "title": "Não foi possível verificar sua sessão"
+      }
+    },
+    "surface": {
+      "description": "Escolha uma forma segura de acessar sua conta.",
+      "eyebrow": "Acesso seguro",
+      "title": "Entre na sua conta"
+    },
+    "title": "Entre para continuar"
   },
   "PublicShell": {
     "ariaLabel": "Navegação pública",

@@ -34,7 +34,7 @@ architecture, API contracts, validation, errors, and implementation details.
 
 ## Repository Role
 
-- Repository: `sandicts/reactjs-sandicts-web`
+- Repository: `fradelli/reactjs-sandicts-web`
 - App: Sandicts Web
 - Framework: Next.js App Router with TypeScript
 - Runtime: Node.js 24 LTS and npm 11
@@ -69,7 +69,7 @@ backend-owned API rules.
 Example:
 
 ```text
-sandicts/sandicts-docs:docs/product/sandicts-mvp-scope.md
+fradelli/sandicts-docs:docs/product/sandicts-mvp-scope.md
 ```
 
 ## Local Commands
@@ -112,7 +112,7 @@ Follow the decided frontend direction:
 
 - Next.js App Router with TypeScript
 - Tailwind CSS and Phosphor Icons
-- shadcn/ui as the component strategy
+- `@fradelli/ui@0.5.0` public exports as the component strategy
 - TanStack Query for server state
 - React Hook Form and Zod for forms
 - Orval as the initial MVP OpenAPI generator for the Nest Swagger contract

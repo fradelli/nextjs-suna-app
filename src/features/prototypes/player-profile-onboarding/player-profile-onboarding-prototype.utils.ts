@@ -4,7 +4,7 @@ import type {
   SportOption,
 } from "./player-profile-onboarding-prototype.types";
 
-function sortActiveSports(
+function getSortedActiveSports(
   sports: ReadonlyArray<SportOption>,
 ): ReadonlyArray<SportOption> {
   return sports
@@ -12,22 +12,22 @@ function sortActiveSports(
     .toSorted((first, second) => first.sortOrder - second.sortOrder);
 }
 
-function filterSports(
+function searchActiveSportsByName(
   sports: ReadonlyArray<SportOption>,
   query: string,
 ): ReadonlyArray<SportOption> {
   const normalizedQuery = query.trim().toLocaleLowerCase("pt-BR");
 
   if (!normalizedQuery) {
-    return sortActiveSports(sports);
+    return getSortedActiveSports(sports);
   }
 
-  return sortActiveSports(sports).filter((sport) =>
+  return getSortedActiveSports(sports).filter((sport) =>
     sport.name.toLocaleLowerCase("pt-BR").includes(normalizedQuery),
   );
 }
 
-function findSport(
+function findActiveSportById(
   sports: ReadonlyArray<SportOption>,
   sportId: string,
 ): SportOption | undefined {
@@ -39,7 +39,7 @@ function getLevelsForSport(
   levelScales: ReadonlyArray<LevelScale>,
   sportId: string,
 ): ReadonlyArray<LevelOption> {
-  const sport = findSport(sports, sportId);
+  const sport = findActiveSportById(sports, sportId);
   const scale = sport
     ? levelScales.find((candidate) => candidate.id === sport.levelScaleId)
     : undefined;
@@ -63,9 +63,9 @@ function isLevelValidForSport(
 }
 
 export {
-  filterSports,
-  findSport,
+  searchActiveSportsByName,
+  findActiveSportById,
   getLevelsForSport,
   isLevelValidForSport,
-  sortActiveSports,
+  getSortedActiveSports,
 };

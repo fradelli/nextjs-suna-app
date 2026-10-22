@@ -4,8 +4,8 @@
 
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Skeleton } from "@/components/ui/skeleton";
-import { LoadingRegion } from "./loading-region";
+import { Skeleton } from "@fradelli/ui/skeleton";
+import { LoadingRegion } from "@fradelli/ui/loading-region";
 
 describe("LoadingRegion", () => {
   it("marks the pending region as busy and exposes accessible status text", () => {

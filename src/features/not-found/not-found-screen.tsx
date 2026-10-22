@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { PublicShell } from "@/components/shared/app-shell/public/public-shell";
 import { PageState } from "@/components/shared/page-state/page-state";
-import { Button } from "@/components/ui/button";
+import { Button } from "@fradelli/ui/button";
 import { APP_ROUTES } from "@/lib/routes/app-routes";
 import { notFoundScreenStyles } from "./not-found-screen.styles";
 

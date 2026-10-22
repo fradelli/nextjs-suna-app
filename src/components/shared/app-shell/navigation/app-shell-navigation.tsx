@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NavigationItem } from "@fradelli/ui/navigation-item";
 import {
   getNavigationGroupClassName,
   getNavigationGroupTitleClassName,
@@ -47,26 +48,26 @@ function AppShellNavigation({
               const isCurrent = activeItem?.id === item.id;
 
               return (
-                <Link
-                  key={item.id}
-                  href={item.href}
-                  onClick={onNavigate}
-                  aria-current={isCurrent ? "page" : undefined}
-                  title={presentation === "adaptive" ? item.label : undefined}
-                  className={getNavigationItemClassName({
-                    isCurrent,
-                    presentation,
-                  })}
-                >
-                  <item.Icon
-                    className={getNavigationIconClassName(isCurrent)}
-                    weight={isCurrent ? "fill" : "regular"}
-                    aria-hidden="true"
-                  />
-                  <span className={getNavigationLabelClassName(presentation)}>
-                    {item.label}
-                  </span>
-                </Link>
+                <NavigationItem asChild key={item.id}>
+                  <Link
+                    href={item.href}
+                    onClick={onNavigate}
+                    aria-current={isCurrent ? "page" : undefined}
+                    title={presentation === "adaptive" ? item.label : undefined}
+                    className={getNavigationItemClassName({
+                      presentation,
+                    })}
+                  >
+                    <item.Icon
+                      className={getNavigationIconClassName(isCurrent)}
+                      weight={isCurrent ? "fill" : "regular"}
+                      aria-hidden="true"
+                    />
+                    <span className={getNavigationLabelClassName(presentation)}>
+                      {item.label}
+                    </span>
+                  </Link>
+                </NavigationItem>
               );
             })}
           </div>

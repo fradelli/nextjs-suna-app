@@ -85,7 +85,7 @@
     </svg>
     <!-- visual-system:icons:end -->
 
-    <header class="prototype-toolbar">
+    <header class="prototype-toolbar fd-surface-glass-elevated">
       <div class="prototype-toolbar__intro">
         <p class="prototype-kicker">KAN-84 · UX prototype</p>
         <h1>Entrada e sessão do Sandicts</h1>
@@ -125,7 +125,7 @@
         id="demo-shell"
         aria-label="Exemplo interativo do estado de autenticação selecionado"
       >
-        <header class="public-header" id="public-header">
+        <header class="public-header fd-surface-glass-elevated" id="public-header">
           <a class="brand-link" href="#auth-main" aria-label="Sandicts — início">
             <img
               src="../../../../public/sandicts-mark.svg"
@@ -137,7 +137,7 @@
           </a>
 
           <nav class="public-navigation" aria-label="Navegação pública">
-            <a class="button button--ghost" href="#auth-main">
+            <a class="button button--ghost fd-focus-managed" href="#auth-main">
               <svg class="icon" aria-hidden="true">
                 <use href="#icon-compass"></use>
               </svg>
@@ -145,7 +145,7 @@
               <span class="sr-only explore-label-compact">Explorar quadras</span>
             </a>
             <a
-              class="button button--primary button--compact"
+              class="button button--primary button--compact fd-focus-managed"
               id="header-sign-in-link"
               href="#auth-card-title"
               aria-current="page"
@@ -201,7 +201,7 @@
               </div>
             </div>
 
-            <article class="auth-card" id="auth-card" tabindex="-1">
+            <article class="auth-card fd-surface-glass fd-card" id="auth-card" tabindex="-1">
               <p class="auth-card__eyebrow" id="auth-card-eyebrow">
                 Acesso seguro
               </p>
@@ -244,7 +244,7 @@
 
               <div class="auth-actions" id="auth-actions">
                 <button
-                  class="button button--secondary"
+                  class="button button--secondary fd-focus-managed"
                   id="secondary-action"
                   type="button"
                   data-demo-action="back"
@@ -275,7 +275,7 @@
               <p id="boundary-description"></p>
               <div class="boundary-state__actions" id="boundary-actions">
                 <button
-                  class="button button--primary"
+                  class="button button--primary fd-focus-managed"
                   id="boundary-primary"
                   type="button"
                   data-demo-action="home"
@@ -283,7 +283,7 @@
                   <span id="boundary-primary-label">Voltar ao início</span>
                 </button>
                 <button
-                  class="button button--secondary"
+                  class="button button--secondary fd-focus-managed"
                   id="boundary-secondary"
                   type="button"
                   data-demo-action="back"

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { APP_ROUTES } from "@/lib/routes/app-routes";
-import { cn } from "@/lib/utils";
+import { cn } from "@fradelli/ui/cn";
 import { BrandLockup } from "./brand-lockup";
 import { BrandMark } from "./brand-mark";
 
@@ -16,10 +16,7 @@ function BrandLink({ className, compact = false }: BrandLinkProps) {
   return (
     <Link
       href={APP_ROUTES.public.home}
-      className={cn(
-        "inline-flex min-h-11 items-center rounded-md outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
-        className,
-      )}
+      className={cn("inline-flex min-h-11 items-center rounded-md", className)}
       aria-label={t("brandHomeLabel")}
       data-brand-link=""
     >

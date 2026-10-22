@@ -30,7 +30,7 @@ describe("AreaPlaceholder", () => {
       screen.getByText("Find the next place to play."),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: "Voltar para o Sandicts" }),
+      screen.getByRole("link", { name: "Voltar para a Suna" }),
     ).toHaveAttribute("href", "/");
   });
 });
