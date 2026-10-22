@@ -50,3 +50,10 @@ Read them in this order for most frontend work:
 
 Files under `discovery/` are historical inputs. Use them for comparison or
 audit work, then prefer the current docs above for decisions.
+
+
+## Fradelli Design System
+
+- [Contrato visual atual](sandicts-mvp-visual-system.md)
+- [Plano e diagnóstico da adoção](sandicts-fradelli-design-system-adoption-plan.md)
+- [Relatório de implementação e validação](sandicts-fradelli-design-system-adoption-report.md)

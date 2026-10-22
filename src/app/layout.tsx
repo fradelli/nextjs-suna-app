@@ -1,4 +1,4 @@
-import { IBM_Plex_Sans, Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 import { setRequestLocale } from "next-intl/server";
 import { activeBrandVariantId } from "@/config/brand";
 import { DEFAULT_LOCALE } from "@/i18n/config";
@@ -9,18 +9,10 @@ import { createRootMetadata } from "@/lib/seo/seo-metadata";
 import { AppProviders } from "./providers";
 import "./globals.css";
 
-const ibmPlexSans = IBM_Plex_Sans({
-  variable: "--font-ibm-plex-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-  fallback: ["Arial", "Helvetica", "sans-serif"],
-});
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  display: "swap",
-  fallback: ["Arial", "sans-serif"],
 });
 
 export async function generateMetadata() {
@@ -37,10 +29,10 @@ export default function RootLayout({
   return (
     <html
       lang={DEFAULT_LOCALE}
-      className={`${ibmPlexSans.variable} ${montserrat.variable} dark h-full antialiased`}
+      className={`${inter.variable} dark h-full antialiased`}
       data-brand-variant={activeBrandVariantId}
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-dvh flex-col">
         <I18nClientProvider locale={DEFAULT_LOCALE} messages={messages}>
           <AppProviders>{children}</AppProviders>
         </I18nClientProvider>

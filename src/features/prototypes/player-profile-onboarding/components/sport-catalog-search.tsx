@@ -6,7 +6,7 @@ import {
   MagnifyingGlassIcon,
 } from "@phosphor-icons/react";
 import { useTranslations } from "next-intl";
-import { Popover } from "radix-ui";
+import { Popover } from "@fradelli/ui/popover";
 import {
   useEffect,
   useId,
@@ -15,8 +15,8 @@ import {
   useState,
   type KeyboardEvent,
 } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@fradelli/ui/button";
+import { Input } from "@fradelli/ui/input";
 import {
   Sheet,
   SheetContent,
@@ -24,15 +24,15 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "@fradelli/ui/sheet";
 import { prototypeStyles } from "../player-profile-onboarding-prototype.styles";
 import type {
   PrototypeScenarioId,
   SportOption,
 } from "../player-profile-onboarding-prototype.types";
 import {
-  filterSports,
-  findSport,
+  searchActiveSportsByName,
+  findActiveSportById,
 } from "../player-profile-onboarding-prototype.utils";
 import { useMediaQuery } from "../hooks/use-media-query";
 
@@ -205,9 +205,9 @@ function SportCatalogSearch({
     scenarioId === "searchNoResults" ? "Natação" : "",
   );
   const [activeIndex, setActiveIndex] = useState(0);
-  const selectedSport = findSport(sports, value);
+  const selectedSport = findActiveSportById(sports, value);
   const filteredSports = useMemo(
-    () => filterSports(sports, query),
+    () => searchActiveSportsByName(sports, query),
     [query, sports],
   );
 
@@ -268,9 +268,7 @@ function SportCatalogSearch({
             className={prototypeStyles.comboboxContent}
             onOpenAutoFocus={(event) => event.preventDefault()}
           >
-            <p className="mb-3 font-heading text-sm font-semibold">
-              {t("title")}
-            </p>
+            <p className="mb-3 text-sm font-semibold">{t("title")}</p>
             {searchPanel}
           </Popover.Content>
         </Popover.Portal>

@@ -2,11 +2,12 @@ import { MagnifyingGlassIcon } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { BrandLink } from "@/components/shared/brand";
-import { Button } from "@/components/ui/button";
+import { Button } from "@fradelli/ui/button";
 import { APP_ROUTES } from "@/lib/routes/app-routes";
 import { SkipLink } from "../chrome/skip-link";
 import { publicShellStyles } from "./public-shell.styles";
 import type { PublicShellProps } from "./public-shell.types";
+import { PublicAuthAction } from "./public-auth-action";
 
 function PublicShell({ children }: PublicShellProps) {
   const t = useTranslations("PublicShell");
@@ -32,9 +33,7 @@ function PublicShell({ children }: PublicShellProps) {
                 </span>
               </Link>
             </Button>
-            <Button asChild size="sm">
-              <Link href={APP_ROUTES.public.signIn}>{t("signIn")}</Link>
-            </Button>
+            <PublicAuthAction />
           </nav>
         </div>
       </header>

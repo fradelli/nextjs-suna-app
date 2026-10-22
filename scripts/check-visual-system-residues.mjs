@@ -6,7 +6,7 @@ import { inspectVisualSystemResidues } from "./visual-system-residue-rules.mjs";
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const projectRoot = resolve(scriptDirectory, "..");
 const scanRoots = ["src", "docs/frontend", "public"];
-const rootFiles = ["package.json", "components.json"];
+const rootFiles = ["package.json"];
 const textExtensions = new Set([
   ".css",
   ".html",

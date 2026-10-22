@@ -43,7 +43,7 @@
   min-height: 2.75rem;
   padding: 0.7rem 0.85rem;
   border: 1px solid var(--input);
-  border-radius: calc(var(--radius) * 0.8);
+  border-radius: var(--fd-radius-md);
   background: var(--background);
   color: var(--foreground);
 }
@@ -101,7 +101,7 @@
   margin-bottom: 1rem;
   place-items: center;
   border: 1px solid var(--success-border);
-  border-radius: calc(var(--radius) * 1.4);
+  border-radius: var(--fd-radius-xl);
   background: var(--success-subtle);
   color: var(--success);
 }

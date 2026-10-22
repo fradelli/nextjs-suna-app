@@ -1,7 +1,6 @@
 @import url("../shared/sandicts-visual-tokens.css");
 
 :root {
-  --shadow: 0 1rem 3rem rgb(0 0 0 / 0.24);
   font-family: var(--font-sans-stack);
   font-synthesis: none;
 }
@@ -57,11 +56,11 @@ input,
   outline-offset: 0.1875rem;
 }
 
-button:focus-visible,
-a:focus-visible,
-select:focus-visible,
-input:focus-visible,
-[tabindex]:focus-visible {
+button:focus-visible:not(.fd-focus-managed),
+a:focus-visible:not(.fd-focus-managed),
+select:focus-visible:not(.fd-focus-managed),
+input:focus-visible:not(.fd-focus-managed),
+[tabindex]:focus-visible:not(.fd-focus-managed) {
   outline-color: var(--primary);
 }
 
@@ -125,7 +124,7 @@ button {
   align-items: end;
   padding: 0.75rem 1rem;
   color: var(--foreground);
-  background: var(--background);
+
   border-bottom: 1px solid var(--border);
 }
 
@@ -168,7 +167,7 @@ button {
   gap: 0.625rem;
   align-items: center;
   min-height: 2.75rem;
-  color: var(--brand);
+  color: var(--sandicts-brand);
   text-decoration: none;
 }
 
@@ -204,16 +203,9 @@ button {
   cursor: pointer;
 }
 
-.button--primary {
-  color: var(--primary-foreground);
-  background: var(--primary);
-}
 
-.button--secondary {
-  color: var(--foreground);
-  background: var(--popover);
-  border-color: var(--border);
-}
+
+
 
 .button--outline {
   color: var(--foreground);
@@ -221,10 +213,7 @@ button {
   border-color: var(--input);
 }
 
-.button--ghost {
-  color: var(--muted-foreground);
-  background: transparent;
-}
+
 
 .icon-button {
   width: 2.75rem;
@@ -264,7 +253,7 @@ html[data-context-mode="single"] [data-single-context-label] {
   justify-content: space-between;
   min-height: 4.5rem;
   padding: 0.75rem 1rem;
-  background: var(--card);
+
   border-bottom: 1px solid var(--border);
 }
 
@@ -353,7 +342,7 @@ html[data-context-mode="single"] [data-single-context-label] {
   padding: 1rem;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) * 1.5);
+  border-radius: var(--fd-radius-xl);
 }
 
 .discovery-search label {
@@ -411,7 +400,7 @@ html[data-context-mode="single"] [data-single-context-label] {
   overflow: clip;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) * 1.5);
+  border-radius: var(--fd-radius-xl);
 }
 
 .venue-card__media {
@@ -541,7 +530,7 @@ html[data-context-mode="single"] [data-single-context-label] {
   padding: 1.25rem;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) * 1.5);
+  border-radius: var(--fd-radius-xl);
 }
 
 .player-hero {
@@ -625,7 +614,7 @@ html[data-context-mode="single"] [data-single-context-label] {
   justify-items: start;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) * 1.5);
+  border-radius: var(--fd-radius-xl);
 }
 
 .state-panel__icon {
@@ -673,7 +662,7 @@ html[data-context-mode="single"] [data-single-context-label] {
   padding: 1rem;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) * 1.5);
+  border-radius: var(--fd-radius-xl);
 }
 
 .date-navigation,
@@ -696,7 +685,7 @@ html[data-context-mode="single"] [data-single-context-label] {
   color: var(--muted-foreground);
   background: transparent;
   border: 0;
-  border-radius: calc(var(--radius) * 0.75);
+  border-radius: var(--fd-radius-xl);
   cursor: pointer;
 }
 
@@ -777,7 +766,7 @@ html[data-context-mode="single"] [data-single-context-label] {
   overflow: auto;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: calc(var(--radius) * 1.5);
+  border-radius: var(--fd-radius-xl);
 }
 
 .schedule-table {
@@ -827,7 +816,7 @@ html[data-context-mode="single"] [data-single-context-label] {
   color: var(--foreground);
   background: var(--popover);
   border: 1px solid currentcolor;
-  border-radius: calc(var(--radius) * 0.75);
+  border-radius: var(--fd-radius-xl);
   text-align: left;
 }
 
@@ -867,7 +856,7 @@ button.schedule-event {
   min-height: 4.25rem;
   padding: 0.625rem;
   border: 1px dashed var(--border);
-  border-radius: calc(var(--radius) * 0.75);
+  border-radius: var(--fd-radius-xl);
 }
 
 .continued-slot {
@@ -884,14 +873,14 @@ dialog {
 
 dialog::backdrop {
   background: rgb(0 0 0 / 0.72);
-  backdrop-filter: blur(0.125rem);
+
 }
 
 .context-dialog {
   width: min(calc(100% - 2rem), 34rem);
   max-height: min(44rem, calc(100dvh - 2rem));
   padding: 0;
-  border-radius: calc(var(--radius) * 1.5);
+  border-radius: var(--fd-radius-xl);
 }
 
 .context-dialog form {

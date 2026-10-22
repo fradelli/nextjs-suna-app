@@ -1,5 +1,5 @@
 import { ListIcon } from "@phosphor-icons/react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@fradelli/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -7,7 +7,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "@fradelli/ui/sheet";
 import { AppShellNavigation } from "../../navigation/app-shell-navigation";
 import { organizationShellStyles } from "../organization-shell.styles";
 import type { OrganizationNavigationDrawerProps } from "../organization-shell.types";

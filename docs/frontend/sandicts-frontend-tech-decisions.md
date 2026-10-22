@@ -16,10 +16,10 @@ related:
   - docs/frontend/sandicts-localization.md
   - docs/frontend/sandicts-local-ui-state.md
   - docs/frontend/sandicts-page-functional-spec.md
-  - sandicts/sandicts-docs:docs/product/sandicts-mvp-scope.md
-  - sandicts/sandicts-docs:docs/decisions/api-contract-governance.md
-  - sandicts/sandicts-docs:docs/decisions/shared-documentation-strategy.md
-  - sandicts/nodejs-sandicts-api:docs/ai/api/semantic-api-contracts.md
+  - fradelli/sandicts-docs:docs/product/sandicts-mvp-scope.md
+  - fradelli/sandicts-docs:docs/decisions/api-contract-governance.md
+  - fradelli/sandicts-docs:docs/decisions/shared-documentation-strategy.md
+  - fradelli/nodejs-sandicts-api:docs/ai/api/semantic-api-contracts.md
 scope: frontend, architecture, stack, mvp, delivery
 read-when:
   - creating the Sandicts frontend app
@@ -45,13 +45,13 @@ tasks.
 
 Decided:
 
-- frontend application lives in the separate `sandicts/reactjs-sandicts-web`
+- frontend application lives in the separate `fradelli/reactjs-sandicts-web`
   repository
 - local frontend path is `apps/reactjs-sandicts-web`, sibling to the backend
   repository
 - use npm as the package manager, with Node.js 24 LTS and npm 11
 - use Next.js App Router with TypeScript
-- use shadcn/ui Radix Nova with Tailwind CSS and Phosphor Icons
+- use public @fradelli/ui exports with Tailwind CSS and Phosphor Icons
 - use TanStack Query for server state
 - use Zod with React Hook Form for forms
 - use `next-intl` with `pt-BR` as the only MVP locale and fallback locale
@@ -84,8 +84,8 @@ Still open:
 
 Decision:
 
-- create and maintain the frontend in `sandicts/reactjs-sandicts-web`
-- keep it as a separate sibling repository from `sandicts/nodejs-sandicts-api`
+- create and maintain the frontend in `fradelli/reactjs-sandicts-web`
+- keep it as a separate sibling repository from `fradelli/nodejs-sandicts-api`
 - use local path `apps/reactjs-sandicts-web`
 
 Reason:
@@ -128,7 +128,7 @@ Rules:
 
 Current alignment:
 
-- `.nvmrc` targets Node.js `24.16.0`
+- `.nvmrc` targets Node.js `24.20.0`
 - `package.json` declares Node.js `>=24 <25`, npm `>=11 <12`, and
   `packageManager: npm@11.13.0`
 - CI reads Node.js from `.nvmrc`, caches npm dependencies by
@@ -153,7 +153,7 @@ Rules:
 
 - use App Router layouts for public, Player, Organization, Academy, and Admin App
   areas
-- keep product and business rules in `sandicts/sandicts-docs`
+- keep product and business rules in `fradelli/sandicts-docs`
 - do not treat Next.js as a second business backend
 - use server-side capabilities only when they improve routing, auth, metadata,
   initial reads, or user experience
@@ -231,37 +231,12 @@ Additional catalogs, localized public URLs, a locale switcher, persistence, and
 
 ### UI And Styling
 
-Use:
-
-- shadcn/ui
-- Tailwind CSS
-- `@phosphor-icons/react`
-
-Rules:
-
-- use preset `b6pMnd9eSI`: Radix Nova, Stone, Amber, small radius, IBM Plex
-  Sans, Montserrat, Phosphor, translucent menus, subtle menu accents, and
-  Orange charts
-- keep components owned in the frontend codebase instead of depending on a
-  closed external design system
-- use canonical Phosphor `*Icon` exports where an existing icon fits the control
-- keep the locally reconciled primitive behavior, types, accessibility, and
-  tests when comparing with a generated registry payload
-- use semantic shadcn/ui-compatible tokens for color, radius, typography,
-  status, focus, and surfaces
-- keep palette names out of shared component APIs
-- ship one dark theme for MVP and defer a user-selectable light theme
-- keep Organization screens denser and more operational than player screens
-
-Reason:
-
-- shadcn/ui is fast for MVP delivery and easy to customize
-- Sandicts needs a recognizable brand direction without spending the MVP on a
-  full custom component system
-
-The canonical MVP token values, component variants, common states, icon rules,
-and post-MVP visual boundaries live in
-`docs/frontend/sandicts-mvp-visual-system.md`.
+Use `@fradelli/ui@0.5.0`, Tailwind CSS and Phosphor. Inter and the dark palette,
+materials, radius, type roles, spacing and interaction states come from the
+package. Import public subpaths and CSS; do not generate or maintain duplicate
+primitives. Layout, product copy, brand art and business behavior remain local.
+Dense content may use the same family's solid/elevated materials. The full
+contract lives in `docs/frontend/sandicts-mvp-visual-system.md`.
 
 ### Global Feedback And Page States
 
@@ -277,17 +252,17 @@ Rules:
   consuming route or feature
 - do not create a global catalog that decides retry, sign-in, create, reset,
   or navigation behavior for feature-owned states
-- use `components/shared/loading-region` around pending content reads and keep
+- use `@fradelli/ui/loading-region` around pending content reads and keep
   skeleton geometry near the feature or route that knows the expected content
   shape
-- use `components/shared/pending-button` for user-triggered command loading
+- use `@fradelli/ui/pending-button` for user-triggered command loading
   when duplicate submission must be prevented and button width should remain
   stable
-- use `components/shared/status-badge` only for semantic presentation; feature
+- use `@fradelli/ui/status-badge` only for semantic presentation; feature
   code maps API/domain status codes to labels and tones, with a neutral
   fallback for unknown runtime values
-- keep `components/ui/skeleton` decorative and reduced-motion safe
-- keep `components/ui/alert` live-region semantics opt-in; use
+- keep `@fradelli/ui/skeleton` decorative and reduced-motion safe
+- keep `@fradelli/ui/alert` live-region semantics opt-in; use
   `role="alert"` only for newly surfaced interactive failures, and `role="status"`
   only for polite confirmations that should be announced
 - use `src/app/not-found.tsx` as the global privacy-safe 404 treatment for
@@ -576,6 +551,32 @@ Initial browser bootstrap:
    failure, protect private content and expose a recoverable verification state
    without claiming that the session expired.
 
+Concrete KAN-85 implementation:
+
+- `AuthSessionProvider` mounts inside `SandictsQueryProvider` and owns the
+  browser bootstrap and semantic lifecycle exposed to client UI
+- the lifecycle distinguishes `checking`, `authenticated`, `unauthenticated`,
+  `expired`, `recoverable-error`, `api-unavailable`, and `forbidden`
+- a terminal refresh `401` is `unauthenticated` when the current browser
+  runtime never established a session and `expired` only after it did
+- refresh returns a discriminated result instead of a boolean so `403`, `429`,
+  network, timeout, malformed success, and `5xx` cannot become false expiry
+- refresh remains single-flight and has no automatic mutation retry because it
+  rotates the backend-owned cookie
+- a successful session-producing operation places only `{ account, session }`
+  in `queryKeys.auth.session()`; access-token fields remain in memory only
+- the auth session query uses a 30-second stale time, remains in cache while
+  the root provider is mounted, revalidates on focus and reconnect, and does
+  not poll
+- terminal rejection removes auth and private Player-profile queries while
+  preserving public discovery data; temporary verification failures block
+  private rendering without destructive public-cache invalidation
+- the sign-in route is a Server Component shell with a Client Component
+  session surface; middleware and Server Components remain outside the proof
+  of authentication
+- `returnTo` is stored only after structural same-origin validation and remains
+  a routing hint that later protected-route work must reauthorize
+
 Current session query:
 
 - `GET /auth/me` is the canonical current-session read when the frontend has an
@@ -695,7 +696,7 @@ Generation workflow:
 - `KAN-73` implemented the Orval dependency, `orval.config.ts`, and
   `npm run api:generate`
 - generation first reads the sibling backend artifact at
-  `../nodejs-sandicts-api/openapi/sandicts-api.json`
+  `../nodejs-sandicts-api/openapi/suna-api.json`
 - CI falls back to the canonical backend `developer` artifact on GitHub
 - the command should support an explicit `OPENAPI_SCHEMA_URL` or equivalent
   non-public environment override for local, CI, and future preview workflows
@@ -750,7 +751,7 @@ Rules:
   full automation
 - magic link E2E should use the backend-owned Mailpit capture strategy
   documented in
-  `sandicts/nodejs-sandicts-api:docs/ai/architecture/transactional-email-provider-decision.md`
+  `fradelli/nodejs-sandicts-api:docs/ai/architecture/transactional-email-provider-decision.md`
   instead of reading tokens from application logs
 
 Initial E2E gates:
@@ -843,7 +844,7 @@ Reason:
   UI or API infrastructure into feature-specific code
 - the architecture should preserve the useful discipline of layered frontend
   systems while staying aligned with Next.js App Router, Orval, TanStack Query,
-  shadcn/ui, and the already configured `@/*` source alias
+  @fradelli/ui, and the already configured `@/*` source alias
 
 Recommended app areas:
 
@@ -855,8 +856,7 @@ Recommended app areas:
 Recommended boundaries:
 
 - `app`: route groups, layouts, route-level loading and error states
-- `components/ui`: shadcn/ui primitives and low-level reusable UI building
-  blocks owned by the frontend codebase
+- `@fradelli/ui/*`: shared primitives owned by the package; no local copies
 - `components/shared`: reusable cross-feature composition with no product data
   ownership
 - `features`: feature-specific screens, forms, hooks, and view models
@@ -951,11 +951,8 @@ app route or layout
   primitives, or shared route constants
 - storing API data in Zustand
 
-`components/ui` owns:
-
-- shadcn/ui primitives and low-level reusable UI components such as buttons,
-  inputs, dialogs, badges, tabs, menus, and tooltips
-- styling variants that are product-agnostic enough to reuse
+`@fradelli/ui/*` owns shared primitives and product-agnostic visual variants.
+The app imports public exports instead of maintaining `components/ui` copies.
 
 `components/shared` owns:
 
@@ -1294,7 +1291,7 @@ spec describes intent; the prototype decides the first shippable shape.
 Frontend documentation work is real delivery work and should be tracked.
 
 Follow
-`sandicts/sandicts-docs:docs/decisions/shared-documentation-strategy.md`: keep
+`fradelli/sandicts-docs:docs/decisions/shared-documentation-strategy.md`: keep
 small and stable rules in their overview document, and give a complex rule a
 dedicated canonical document when it has interacting states, lifecycle
 behavior, edge cases, or independent evolution. The overview must keep only the
@@ -1345,4 +1342,4 @@ This document does not decide:
 - exact Figma layouts
 - exact route map
 - final API endpoint names
-- business rules already owned by `sandicts/sandicts-docs`
+- business rules already owned by `fradelli/sandicts-docs`

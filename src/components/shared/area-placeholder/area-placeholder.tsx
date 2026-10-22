@@ -1,8 +1,8 @@
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Button } from "@fradelli/ui/button";
+import { Card } from "@fradelli/ui/card";
 import { areaPlaceholderStyles } from "./area-placeholder.styles";
 import type { AreaPlaceholderProps } from "./area-placeholder.types";
 

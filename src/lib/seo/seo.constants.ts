@@ -1,6 +1,6 @@
 import { APP_ROUTES } from "@/lib/routes/app-routes";
 
-const SEO_SITE_NAME = "Sandicts";
+const SEO_SITE_NAME = "Suna";
 const SOCIAL_IMAGE_SIZE = {
   width: 1200,
   height: 630,

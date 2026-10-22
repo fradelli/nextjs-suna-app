@@ -4,7 +4,7 @@ import {
   LARGE_SPORT_CATALOG,
 } from "./player-profile-onboarding-prototype.constants";
 import {
-  filterSports,
+  searchActiveSportsByName,
   getLevelsForSport,
   isLevelValidForSport,
 } from "./player-profile-onboarding-prototype.utils";
@@ -12,7 +12,9 @@ import {
 describe("player profile onboarding prototype utilities", () => {
   it("searches active sports case-insensitively by displayed name", () => {
     expect(
-      filterSports(LARGE_SPORT_CATALOG, "BEACH").map((sport) => sport.name),
+      searchActiveSportsByName(LARGE_SPORT_CATALOG, "BEACH").map(
+        (sport) => sport.name,
+      ),
     ).toEqual(["Beach Tennis"]);
   });
 

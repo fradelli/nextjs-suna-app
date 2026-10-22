@@ -4,7 +4,7 @@ import {
   getBrandVariant,
   type BrandVariantId,
 } from "@/config/brand";
-import { cn } from "@/lib/utils";
+import { cn } from "@fradelli/ui/cn";
 import { BrandMark } from "./brand-mark";
 import { BrandName } from "./brand-name";
 
@@ -31,7 +31,7 @@ function BrandLockup({
     <span
       {...props}
       className={cn(
-        "inline-flex text-brand",
+        "inline-flex text-sandicts-brand",
         orientation === "horizontal"
           ? "items-center gap-2.5"
           : "flex-col items-center gap-3",

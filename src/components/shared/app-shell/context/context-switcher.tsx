@@ -3,7 +3,7 @@
 import { CaretUpDownIcon, CheckIcon } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
+import { Button } from "@fradelli/ui/button";
 import {
   Sheet,
   SheetClose,
@@ -12,7 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "@fradelli/ui/sheet";
 import { CONTEXT_KIND_ORDER } from "./context-switcher.constants";
 import { contextSwitcherStyles } from "./context-switcher.styles";
 import type { ContextSwitcherProps } from "./context-switcher.types";

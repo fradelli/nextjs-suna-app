@@ -119,7 +119,7 @@ type UsePlayerProfileOnboardingPrototypeResult = Readonly<{
   errors: FieldErrors<PlayerProfileOnboardingInput>;
   isSubmitting: boolean;
   handleSubmit: (event?: BaseSyntheticEvent) => Promise<void>;
-  handleSportChange: (sportId: string) => void;
+  changeMainSportAndResetLevel: (sportId: string) => void;
   focusFirstError: (errors: FieldErrors<PlayerProfileOnboardingInput>) => void;
 }>;
 

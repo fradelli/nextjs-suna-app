@@ -1,7 +1,7 @@
 const canonicalBrandFiles = new Set([
   "public/sandicts-mark.svg",
   "src/app/brand-variants.generated.css",
-  "src/app/icon.svg",
+  "src/app/icon.png",
   "src/config/brand.ts",
   "docs/frontend/prototypes/shared/sandicts-brand-tokens.css",
 ]);
@@ -74,8 +74,33 @@ function inspectVisualSystemResidues(filePath, contents) {
       ...collectMatches(
         normalizedPath,
         contents,
+        "duplicate-shared-primitive",
+        /["'](?:@\/components\/ui\/[^"']+|radix-ui|@\/lib\/utils)["']/giu,
+      ),
+      ...collectMatches(
+        normalizedPath,
+        contents,
+        "local-glass-formula",
+        /\bbackdrop-(?:blur|saturate)-[\w[\].-]+/giu,
+      ),
+    );
+    violations.push(
+      ...collectMatches(
+        normalizedPath,
+        contents,
         "direct-public-brand-asset",
         /["']\/sandicts-mark\.svg["']/giu,
+      ),
+    );
+  }
+
+  if (normalizedPath === "src/app/layout.tsx") {
+    violations.push(
+      ...collectMatches(
+        normalizedPath,
+        contents,
+        "legacy-interface-font",
+        /\b(?:IBM_Plex_Sans|Montserrat)\b/gu,
       ),
     );
   }

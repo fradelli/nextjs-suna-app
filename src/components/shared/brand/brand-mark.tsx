@@ -5,7 +5,7 @@ import {
   type BrandVariantId,
 } from "@/config/brand";
 import { getBrandArtwork } from "@/lib/brand/brand-artwork";
-import { cn } from "@/lib/utils";
+import { cn } from "@fradelli/ui/cn";
 
 type BrandMarkProps = Omit<ComponentProps<"svg">, "children"> &
   Readonly<{
@@ -29,7 +29,7 @@ function BrandMark({
       {...props}
       aria-hidden={label ? undefined : true}
       aria-label={label}
-      className={cn("shrink-0 text-brand", className)}
+      className={cn("shrink-0 text-sandicts-brand", className)}
       data-brand-mark=""
       data-brand-variant={variantId}
       focusable="false"
@@ -39,7 +39,13 @@ function BrandMark({
       width={size}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d={artwork.path} fill="currentColor" />
+      <image
+        height={artwork.sourceHeight}
+        href={artwork.source}
+        width={artwork.sourceWidth}
+        x="0"
+        y="0"
+      />
     </svg>
   );
 }

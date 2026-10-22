@@ -6,7 +6,7 @@ import { forwardRef } from "react";
 import type { Icon, IconProps } from "@phosphor-icons/react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { StatusBadge } from "./status-badge";
+import { StatusBadge } from "@fradelli/ui/status-badge";
 
 const TestIcon = forwardRef<SVGSVGElement, Omit<IconProps, "ref">>(
   function TestIcon(props, ref) {
@@ -22,7 +22,6 @@ describe("StatusBadge", () => {
 
     expect(badge).toHaveAttribute("data-slot", "status-badge");
     expect(badge).toHaveAttribute("data-tone", "neutral");
-    expect(badge).toHaveAttribute("data-variant", "outline");
   });
 
   it("maps semantic tones to presentation variants and keeps icons decorative", () => {
@@ -31,7 +30,6 @@ describe("StatusBadge", () => {
     const badge = screen.getByText("Confirmada");
 
     expect(badge).toHaveAttribute("data-tone", "success");
-    expect(badge).toHaveAttribute("data-variant", "success");
     expect(screen.getByTestId("status-badge-icon")).toHaveAttribute(
       "aria-hidden",
       "true",

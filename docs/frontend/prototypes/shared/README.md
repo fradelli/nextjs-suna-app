@@ -1,30 +1,15 @@
-# Shared Prototype Visual Foundation
+# Fundação visual dos protótipos
 
-`sandicts-visual-tokens.css` is generated from the canonical token block in
-`src/app/globals.css`.
+`sandicts-visual-tokens.css` é compilado de `@fradelli/ui/styles.css` da versão
+instalada. Inclui utilitários do pacote, materiais e seus fallbacks. Não editar
+a saída: executar `npm run visual-system:sync` e `npm run visual-system:check`.
 
-Brand-specific tokens are generated from `src/config/brand.ts` by
-`scripts/sync-brand-system.mjs`. The shared visual-token stylesheet imports
-`sandicts-brand-tokens.css`, so standalone prototypes receive the variant
-contract without copying values locally.
+`prototype-theme.css` mantém aliases de vocabulário apenas para HTML estático;
+seus valores referenciam tokens públicos. Não é importado pelo runtime Next.
+A marca é gerada de `src/config/brand.ts` com prefixo `--sandicts-brand-*` e não
+pode sobrescrever primária/foco/navegação do DS. Inter pertence à interface;
+Roboto é exclusivo do wordmark. Fontes Google têm fallback de sistema offline.
 
-Prototype SVG sprites are generated from
-`scripts/prototype-icon-manifest.mjs` using the installed
-`@phosphor-icons/react` package. The generated blocks stay inline so every
-prototype remains directly openable through `file://`.
-
-Rules:
-
-- edit runtime tokens first
-- run `npm run visual-system:sync` to update this artifact
-- run `npm run visual-system:check` in validation
-- add or remap prototype icons only in the shared Phosphor manifest
-- do not edit generated `visual-system:icons` blocks by hand
-- do not use Unicode glyphs as interface-icon placeholders
-- keep prototype-specific layout and behavior in each prototype directory
-- do not copy the token block into an individual prototype
-
-The app-shell, global-state, sign-in, and KAN-104 magic-link prototypes must
-consume this file. Magic link inherits the shared sign-in base stylesheet and
-adds only flow-specific CSS. Google Fonts are loaded for visual fidelity; the
-declared font stacks provide offline fallbacks.
+Sprites inline são gerados do manifesto Phosphor, preservando abertura via
+arquivo. Não editar blocos `visual-system:icons` manualmente. Layout e cenários
+continuam locais em app-shells, global-states, auth-sign-in e auth-magic-link.

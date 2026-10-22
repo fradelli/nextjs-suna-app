@@ -23,10 +23,20 @@ const brandFontDataPromise = readFile(brandFontPath).then(
       fontBuffer.byteOffset + fontBuffer.byteLength,
     ) as ArrayBuffer,
 );
+const brandMarkPath = resolve(
+  process.cwd(),
+  "public/brand/suna-logo-source.png",
+);
+const brandMarkDataUriPromise = readFile(brandMarkPath).then(
+  (imageBuffer) => `data:image/png;base64,${imageBuffer.toString("base64")}`,
+);
 
 async function createSocialImage(copy: SocialImageCopy) {
   const artwork = getBrandArtwork(activeBrandVariant.artworkId);
-  const brandFontData = await brandFontDataPromise;
+  const [brandFontData, brandMarkDataUri] = await Promise.all([
+    brandFontDataPromise,
+    brandMarkDataUriPromise,
+  ]);
 
   return new ImageResponse(
     <div
@@ -70,7 +80,13 @@ async function createSocialImage(copy: SocialImageCopy) {
           viewBox={artwork.viewBox}
           width="96"
         >
-          <path d={artwork.path} fill={staticVisualColors.brand} />
+          <image
+            height={artwork.sourceHeight}
+            href={brandMarkDataUri}
+            width={artwork.sourceWidth}
+            x="0"
+            y="0"
+          />
         </svg>
         <div
           style={{
@@ -78,7 +94,7 @@ async function createSocialImage(copy: SocialImageCopy) {
             fontSize: "46px",
             fontWeight: 500,
             fontFamily: "Roboto",
-            letterSpacing: "6px",
+            letterSpacing: "2px",
           }}
         >
           {activeBrandVariant.displayName}

@@ -10,7 +10,7 @@ export async function generateMetadata() {
     {
       canonicalPath: APP_ROUTES.public.home,
       description: localization.defaultDescription,
-      title: "Sandicts",
+      title: "Suna",
       useAbsoluteTitle: true,
     },
     localization,

@@ -1,6 +1,6 @@
-# Sandicts Web
+# Suna Web
 
-Frontend web application for Sandicts, built as a separate sibling repository to
+Frontend web application for Suna, built as a separate sibling repository to
 the Nest API.
 
 ## Stack
@@ -9,39 +9,25 @@ the Nest API.
 - React
 - TypeScript
 - Tailwind CSS
-- shadcn/ui
+- `@fradelli/ui@0.5.0`
 - Phosphor Icons
 - npm
 
 ## UI Foundation
 
-shadcn/ui is configured through `components.json` for the Radix Nova preset,
-Tailwind CSS v4, React Server Components, TypeScript, Phosphor icons, Stone
-surfaces, Amber actions, and the existing `@/*` source alias.
+A interface consome o Fradelli Design System pelos exports públicos de
+`@fradelli/ui@0.5.0`, com Inter, tema escuro e a mesma fundação do portfólio.
+Importe primitives de `@fradelli/ui/<componente>`; mantenha composições de produto
+em `src/components/shared` e telas/forms em `src/features`.
 
-Inspect the current configuration or add a component with:
+O escopo `@fradelli` é resolvido no GitHub Packages. Configure acesso de leitura
+no ambiente de desenvolvimento e autorize este repositório no pacote para CI.
+Não versione credenciais. Actions usa seu token efêmero; builds locais da Vercel
+herdam esse ambiente. Builds remotos da Vercel exigem autenticação de registry
+configurada no próprio ambiente antes de qualquer publicação.
 
-```bash
-npm run ui:info
-npm run ui:add -- button
-```
-
-Low-level primitives live in `src/components/ui`. Cross-feature compositions
-live in `src/components/shared` when more than one feature needs them. Feature
-screens should import primitives from `@/components/ui/*` and must not edit
-generated or copied registry code at call sites to compensate for a shared
-visual rule.
-
-The semantic token and component contract lives in:
-
-```text
-docs/frontend/sandicts-mvp-visual-system.md
-```
-
-Use semantic utilities such as `bg-card`, `text-muted-foreground`,
-`border-border`, and `ring-ring`. Keep raw palette names and repeated color
-values out of shared component APIs. Add new shadcn/ui primitives only when a
-real screen needs them instead of generating the complete catalog up front.
+Use `docs/frontend/sandicts-mvp-visual-system.md` para materiais, tipografia,
+estados, ownership e validação. Não gere cópias locais de primitives do pacote.
 
 ## Runtime
 
@@ -54,7 +40,7 @@ npm -v
 
 The expected local baseline is:
 
-- Node.js `24.x`
+- Node.js `24.20.0` ou superior dentro de 24.x
 - npm `11.x`
 - package manager `npm`
 
@@ -71,7 +57,7 @@ optional Vercel operator access are documented once in the shared guide:
 The canonical GitHub location is:
 
 ```text
-https://github.com/sandicts/sandicts-docs/blob/main/docs/engineering/development-workstation-onboarding.md
+https://github.com/fradelli/sandicts-docs/blob/main/docs/engineering/development-workstation-onboarding.md
 ```
 
 Vercel is not required for frontend development or for CD to run after a merge.
@@ -191,6 +177,33 @@ npm run test:e2e
 npm run test:e2e:ui
 ```
 
+Run the deterministic auth happy path by itself with:
+
+```bash
+npm run test:e2e -- e2e/auth-happy-path.spec.ts
+```
+
+The auth E2E fixture in `e2e/fixtures/auth.fixture.ts` replaces Google Identity
+Services and the browser auth API contract inside Playwright. It uses only
+clearly fake credentials, account data, access tokens, and session IDs. The
+test never requires a real Google account, OAuth client secret, refresh cookie,
+API process, or committed environment file. Keep real credentials and captured
+production tokens out of E2E fixtures and artifacts.
+
+For a CI-like run, install the managed browser and enable Playwright's CI
+retries and single-worker behavior before running the same spec:
+
+```bash
+npx playwright install --with-deps chromium
+CI=1 npm run test:e2e -- e2e/auth-happy-path.spec.ts
+```
+
+On Windows, if Application Control blocks the managed browser, use the
+installed Chrome fallback shown above. The fake public client ID configured by
+`playwright.config.ts` is only a local web-server placeholder that lets the
+intercepted provider UI initialize; it is not a credential or a deployable
+OAuth client ID.
+
 `npm run test:e2e` starts or reuses the Next.js app at
 `http://localhost:3001` and runs the local Chromium project. Unit, component,
 and hook files stay beside their source as `*.test.ts` or `*.test.tsx`. E2E
@@ -213,8 +226,8 @@ contract with Orval.
 The default schema sources are tried in order:
 
 ```text
-../nodejs-sandicts-api/openapi/sandicts-api.json
-https://raw.githubusercontent.com/sandicts/nodejs-sandicts-api/developer/openapi/sandicts-api.json
+../nodejs-sandicts-api/openapi/suna-api.json
+https://raw.githubusercontent.com/fradelli/nodejs-sandicts-api/developer/openapi/suna-api.json
 ```
 
 Generate the client with:
@@ -353,10 +366,10 @@ Start with `docs/README.md` when deciding which frontend document to read.
 
 ## Repository Decision
 
-The frontend lives in `sandicts/reactjs-sandicts-web`, separate from
-`sandicts/nodejs-sandicts-api`.
+The frontend lives in `fradelli/reactjs-sandicts-web`, separate from
+`fradelli/nodejs-sandicts-api`.
 
 This keeps frontend CI, deployment, package management, and preview environments
 independent. Shared product and business rules live in
-`sandicts/sandicts-docs`; backend API contracts live in
-`sandicts/nodejs-sandicts-api`.
+`fradelli/sandicts-docs`; backend API contracts live in
+`fradelli/nodejs-sandicts-api`.

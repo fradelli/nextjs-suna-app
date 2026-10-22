@@ -1,5 +1,6 @@
 import { BrandLink } from "@/components/shared/brand";
 import type { AuthenticatedTopbarProps } from "./authenticated-topbar.types";
+import { AccountMenu } from "../account/account-menu";
 import { ContextSwitcher } from "../context/context-switcher";
 
 function AuthenticatedTopbar({
@@ -9,7 +10,7 @@ function AuthenticatedTopbar({
   title,
 }: AuthenticatedTopbarProps) {
   return (
-    <header className="sticky top-0 z-30 flex min-h-20 items-center gap-3 border-b border-border bg-background/95 px-4 py-3 backdrop-blur-sm sm:px-6">
+    <header className="fd-surface-glass-elevated sticky top-0 z-30 flex min-h-20 items-center gap-3 border-b border-border px-4 py-3 sm:px-6">
       {menuTrigger}
       {menuTrigger ? null : (
         <div className="md:hidden">
@@ -22,8 +23,11 @@ function AuthenticatedTopbar({
         </p>
         <p className="truncate text-base font-semibold">{title}</p>
       </div>
-      <div className="max-w-48 shrink-0 sm:max-w-xs">
-        <ContextSwitcher contexts={contexts} />
+      <div className="flex shrink-0 items-center gap-2">
+        <div className="max-w-36 sm:max-w-xs">
+          <ContextSwitcher contexts={contexts} />
+        </div>
+        <AccountMenu />
       </div>
     </header>
   );
