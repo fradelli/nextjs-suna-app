@@ -21,7 +21,7 @@ do-not-read-when:
   - reviewing CI, logging, database, or API internals with no frontend impact
 ---
 
-# Sandicts Frontend Context
+# Suna Frontend Context
 
 This file is canonical for frontend UX direction only. Shared product scope,
 entity names, and business rules remain in `fradelli/sandicts-docs`; backend
@@ -34,7 +34,7 @@ For the page inventory, permissions, page rules, and route draft, read
 
 ## Product Feel
 
-Sandicts should feel like a community for committed amateur sand athletes:
+Suna should feel like a community for committed amateur sand athletes:
 
 - strong tribe identity
 - beach lifestyle
@@ -45,19 +45,20 @@ The product should not feel like a generic booking SaaS or a passive social netw
 
 ## Brand
 
-Name: Sandicts
+Name: Suna
 
 Core idea:
 
-- sand sports addicts
+- `suna` means sand in Japanese and also evokes `sun` in English
+- four grains of sand connect the symbol to the product and its community
 - community, routine, progression, and status
 
 Visual direction:
 
-- stylized `S` mark with transparent, scalable vector geometry
-- `SANDICTS` rendered as text in Roboto
+- four-grain mark with transparent, scalable vector geometry
+- `suna` rendered as lowercase text in Roboto
 - dark background
-- Stone neutral surfaces with Amber brand and action emphasis
+- Stone neutral surfaces with yellow, pale green, coral and lilac brand accents
 - energetic contrast
 - beach/lifestyle imagery when useful
 

@@ -39,7 +39,13 @@ function BrandMark({
       width={size}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d={artwork.path} fill="currentColor" />
+      <image
+        height={artwork.sourceHeight}
+        href={artwork.source}
+        width={artwork.sourceWidth}
+        x="0"
+        y="0"
+      />
     </svg>
   );
 }

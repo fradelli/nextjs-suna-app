@@ -10,7 +10,7 @@ const localization = {
   defaultDescription:
     "Encontre quadras, partidas e pessoas para praticar esportes de areia.",
   locale: "pt-BR",
-  socialImageAlt: "Sandicts — encontre quadras, partidas e pessoas para jogar",
+  socialImageAlt: "Suna — encontre quadras, partidas e pessoas para jogar",
 } as const;
 const publicEnvironment = createSeoEnvironment({
   indexingEnabled: "true",
@@ -32,8 +32,8 @@ describe("createRootMetadata", () => {
 
     expect(metadata.metadataBase).toEqual(new URL("https://sandicts.com.br"));
     expect(metadata.title).toEqual({
-      default: "Sandicts",
-      template: "%s | Sandicts",
+      default: "Suna",
+      template: "%s | Suna",
     });
     expect(metadata.robots).toEqual({
       follow: false,
@@ -59,7 +59,7 @@ describe("createPublicPageMetadata", () => {
         description: discoveryPage.description,
         images: [
           {
-            alt: "Sandicts — encontre quadras, partidas e pessoas para jogar",
+            alt: "Suna — encontre quadras, partidas e pessoas para jogar",
             height: 630,
             type: "image/png",
             url: "https://sandicts.com.br/opengraph-image",
@@ -67,7 +67,7 @@ describe("createPublicPageMetadata", () => {
           },
         ],
         locale: "pt_BR",
-        siteName: "Sandicts",
+        siteName: "Suna",
         title: discoveryPage.title,
         type: "website",
         url: "https://sandicts.com.br/discovery",
@@ -82,7 +82,7 @@ describe("createPublicPageMetadata", () => {
         description: discoveryPage.description,
         images: [
           {
-            alt: "Sandicts — encontre quadras, partidas e pessoas para jogar",
+            alt: "Suna — encontre quadras, partidas e pessoas para jogar",
             height: 630,
             url: "https://sandicts.com.br/twitter-image",
             width: 1200,

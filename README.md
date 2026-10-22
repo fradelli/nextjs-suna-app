@@ -1,6 +1,6 @@
-# Sandicts Web
+# Suna Web
 
-Frontend web application for Sandicts, built as a separate sibling repository to
+Frontend web application for Suna, built as a separate sibling repository to
 the Nest API.
 
 ## Stack
@@ -226,8 +226,8 @@ contract with Orval.
 The default schema sources are tried in order:
 
 ```text
-../nodejs-sandicts-api/openapi/sandicts-api.json
-https://raw.githubusercontent.com/fradelli/nodejs-sandicts-api/developer/openapi/sandicts-api.json
+../nodejs-sandicts-api/openapi/suna-api.json
+https://raw.githubusercontent.com/fradelli/nodejs-sandicts-api/developer/openapi/suna-api.json
 ```
 
 Generate the client with:

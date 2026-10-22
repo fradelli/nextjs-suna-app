@@ -9,9 +9,9 @@ import {
 import { BrandLockup, BrandMark, BrandName } from "@/components/shared/brand";
 
 export const metadata: Metadata = {
-  title: "Galeria da marca Sandicts",
+  title: "Galeria da marca Suna",
   description:
-    "Referência interna da geometria, composições, tamanhos e variantes da marca Sandicts.",
+    "Referência interna da geometria, composições, tamanhos e variantes da marca Suna.",
   robots: {
     follow: false,
     index: false,
@@ -125,7 +125,7 @@ function VariantSection({
               key={size}
             >
               <BrandMark
-                label={`Símbolo Sandicts em ${size}px`}
+                label={`Símbolo Suna em ${size}px`}
                 size={size}
                 variantId={variantId}
               />
@@ -163,7 +163,7 @@ export default function BrandGalleryPage() {
           <p className="text-sm font-medium tracking-[0.12em] text-sandicts-brand uppercase">
             KAN-145 · Brand system
           </p>
-          <h1 className="fd-text-display mt-3">Galeria da marca Sandicts</h1>
+          <h1 className="fd-text-display mt-3">Galeria da marca Suna</h1>
           <p className="mt-4 leading-7 text-muted-foreground">
             A geometria abaixo é compartilhada por runtime, favicon, imagens
             sociais e protótipos. A variante de celebração existe somente para

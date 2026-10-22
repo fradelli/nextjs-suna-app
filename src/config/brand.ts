@@ -30,9 +30,9 @@ type BrandVariant = Readonly<{
 
 const brandVariants = {
   default: {
-    artworkId: "sandicts-s",
+    artworkId: "suna-grains",
     defaultTreatment: "flat",
-    displayName: "SANDICTS",
+    displayName: "suna",
     id: "default",
     theme: {
       dark: {
@@ -58,9 +58,9 @@ const brandVariants = {
     },
   },
   "celebration-fixture": {
-    artworkId: "sandicts-s",
+    artworkId: "suna-grains",
     defaultTreatment: "expressive",
-    displayName: "SANDICTS",
+    displayName: "suna",
     id: "celebration-fixture",
     theme: {
       dark: {
