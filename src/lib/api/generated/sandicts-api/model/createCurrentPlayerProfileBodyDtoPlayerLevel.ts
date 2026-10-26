@@ -6,9 +6,10 @@
  * OpenAPI spec version: 1.0.0
  */
 
-export type PlayerLevel = (typeof PlayerLevel)[keyof typeof PlayerLevel];
+export type CreateCurrentPlayerProfileBodyDtoPlayerLevel =
+  (typeof CreateCurrentPlayerProfileBodyDtoPlayerLevel)[keyof typeof CreateCurrentPlayerProfileBodyDtoPlayerLevel];
 
-export const PlayerLevel = {
+export const CreateCurrentPlayerProfileBodyDtoPlayerLevel = {
   beginner: "beginner",
   intermediate: "intermediate",
   advanced: "advanced",

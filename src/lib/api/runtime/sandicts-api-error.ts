@@ -4,8 +4,8 @@ import type {
   SandictsApiValidationIssue,
 } from "@/lib/api/contracts/sandicts-api-error.types";
 import {
-  ApiErrorResponseCode,
-  type ApiErrorResponseCode as KnownSandictsApiErrorCode,
+  ApiErrorResponseApiErrorResponseCode as ApiErrorResponseCode,
+  type ApiErrorResponseApiErrorResponseCode as KnownSandictsApiErrorCode,
 } from "@/lib/api/generated/sandicts-api/model";
 
 const knownSandictsApiErrorCodeSet = new Set<string>(

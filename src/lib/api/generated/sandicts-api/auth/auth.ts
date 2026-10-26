@@ -22,7 +22,7 @@ import type {
 } from "@tanstack/react-query";
 
 import type {
-  ConsumeMagicLinkBody,
+  ConsumeMagicLinkBodyDtoConsumeMagicLinkBody,
   ConsumeMagicLinkControllerConsume400,
   ConsumeMagicLinkControllerConsume401,
   ConsumeMagicLinkControllerConsume403,
@@ -36,7 +36,7 @@ import type {
   GetCurrentAuthSessionControllerGetCurrentSession429,
   GetCurrentAuthSessionControllerGetCurrentSession500,
   GetCurrentAuthSessionResponseOutput,
-  GoogleSignInBody,
+  GoogleSignInBodyDtoGoogleSignInBody,
   GoogleSignInControllerSignIn400,
   GoogleSignInControllerSignIn401,
   GoogleSignInControllerSignIn403,
@@ -49,7 +49,7 @@ import type {
   RefreshAuthSessionControllerRefresh429,
   RefreshAuthSessionControllerRefresh500,
   RefreshAuthSessionResponseOutput,
-  RequestMagicLinkBody,
+  RequestMagicLinkBodyDtoRequestMagicLinkBody,
   RequestMagicLinkControllerRequest400,
   RequestMagicLinkControllerRequest429,
   RequestMagicLinkControllerRequest500,
@@ -98,7 +98,7 @@ export const getRequestMagicLinkControllerRequestUrl = () => {
  * @summary Request magic link
  */
 export const requestMagicLinkControllerRequest = async (
-  requestMagicLinkBody: RequestMagicLinkBody,
+  requestMagicLinkBodyDtoRequestMagicLinkBody: RequestMagicLinkBodyDtoRequestMagicLinkBody,
   options?: RequestInit,
 ): Promise<RequestMagicLinkResponseOutput> => {
   return sandictsApiRequest<RequestMagicLinkResponseOutput>(
@@ -107,7 +107,7 @@ export const requestMagicLinkControllerRequest = async (
       ...options,
       method: "POST",
       headers: { "Content-Type": "application/json", ...options?.headers },
-      body: JSON.stringify(requestMagicLinkBody),
+      body: JSON.stringify(requestMagicLinkBodyDtoRequestMagicLinkBody),
     },
   );
 };
@@ -124,14 +124,14 @@ export const getRequestMagicLinkControllerRequestMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof requestMagicLinkControllerRequest>>,
     TError,
-    { data: BodyType<RequestMagicLinkBody> },
+    { data: BodyType<RequestMagicLinkBodyDtoRequestMagicLinkBody> },
     TContext
   >;
   request?: SecondParameter<typeof sandictsApiRequest>;
 }): UseMutationOptions<
   Awaited<ReturnType<typeof requestMagicLinkControllerRequest>>,
   TError,
-  { data: BodyType<RequestMagicLinkBody> },
+  { data: BodyType<RequestMagicLinkBodyDtoRequestMagicLinkBody> },
   TContext
 > => {
   const mutationKey = ["requestMagicLinkControllerRequest"];
@@ -145,7 +145,7 @@ export const getRequestMagicLinkControllerRequestMutationOptions = <
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof requestMagicLinkControllerRequest>>,
-    { data: BodyType<RequestMagicLinkBody> }
+    { data: BodyType<RequestMagicLinkBodyDtoRequestMagicLinkBody> }
   > = (props) => {
     const { data } = props ?? {};
 
@@ -159,7 +159,7 @@ export type RequestMagicLinkControllerRequestMutationResult = NonNullable<
   Awaited<ReturnType<typeof requestMagicLinkControllerRequest>>
 >;
 export type RequestMagicLinkControllerRequestMutationBody =
-  BodyType<RequestMagicLinkBody>;
+  BodyType<RequestMagicLinkBodyDtoRequestMagicLinkBody>;
 export type RequestMagicLinkControllerRequestMutationError = ErrorType<
   | RequestMagicLinkControllerRequest400
   | RequestMagicLinkControllerRequest429
@@ -183,7 +183,7 @@ export const useRequestMagicLinkControllerRequest = <
     mutation?: UseMutationOptions<
       Awaited<ReturnType<typeof requestMagicLinkControllerRequest>>,
       TError,
-      { data: BodyType<RequestMagicLinkBody> },
+      { data: BodyType<RequestMagicLinkBodyDtoRequestMagicLinkBody> },
       TContext
     >;
     request?: SecondParameter<typeof sandictsApiRequest>;
@@ -192,7 +192,7 @@ export const useRequestMagicLinkControllerRequest = <
 ): UseMutationResult<
   Awaited<ReturnType<typeof requestMagicLinkControllerRequest>>,
   TError,
-  { data: BodyType<RequestMagicLinkBody> },
+  { data: BodyType<RequestMagicLinkBodyDtoRequestMagicLinkBody> },
   TContext
 > => {
   return useMutation(
@@ -209,7 +209,7 @@ export const getConsumeMagicLinkControllerConsumeUrl = () => {
  * @summary Consume magic link
  */
 export const consumeMagicLinkControllerConsume = async (
-  consumeMagicLinkBody: ConsumeMagicLinkBody,
+  consumeMagicLinkBodyDtoConsumeMagicLinkBody: ConsumeMagicLinkBodyDtoConsumeMagicLinkBody,
   options?: RequestInit,
 ): Promise<ConsumeMagicLinkResponseOutput> => {
   return sandictsApiRequest<ConsumeMagicLinkResponseOutput>(
@@ -218,7 +218,7 @@ export const consumeMagicLinkControllerConsume = async (
       ...options,
       method: "POST",
       headers: { "Content-Type": "application/json", ...options?.headers },
-      body: JSON.stringify(consumeMagicLinkBody),
+      body: JSON.stringify(consumeMagicLinkBodyDtoConsumeMagicLinkBody),
     },
   );
 };
@@ -238,14 +238,14 @@ export const getConsumeMagicLinkControllerConsumeMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof consumeMagicLinkControllerConsume>>,
     TError,
-    { data: BodyType<ConsumeMagicLinkBody> },
+    { data: BodyType<ConsumeMagicLinkBodyDtoConsumeMagicLinkBody> },
     TContext
   >;
   request?: SecondParameter<typeof sandictsApiRequest>;
 }): UseMutationOptions<
   Awaited<ReturnType<typeof consumeMagicLinkControllerConsume>>,
   TError,
-  { data: BodyType<ConsumeMagicLinkBody> },
+  { data: BodyType<ConsumeMagicLinkBodyDtoConsumeMagicLinkBody> },
   TContext
 > => {
   const mutationKey = ["consumeMagicLinkControllerConsume"];
@@ -259,7 +259,7 @@ export const getConsumeMagicLinkControllerConsumeMutationOptions = <
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof consumeMagicLinkControllerConsume>>,
-    { data: BodyType<ConsumeMagicLinkBody> }
+    { data: BodyType<ConsumeMagicLinkBodyDtoConsumeMagicLinkBody> }
   > = (props) => {
     const { data } = props ?? {};
 
@@ -273,7 +273,7 @@ export type ConsumeMagicLinkControllerConsumeMutationResult = NonNullable<
   Awaited<ReturnType<typeof consumeMagicLinkControllerConsume>>
 >;
 export type ConsumeMagicLinkControllerConsumeMutationBody =
-  BodyType<ConsumeMagicLinkBody>;
+  BodyType<ConsumeMagicLinkBodyDtoConsumeMagicLinkBody>;
 export type ConsumeMagicLinkControllerConsumeMutationError = ErrorType<
   | ConsumeMagicLinkControllerConsume400
   | ConsumeMagicLinkControllerConsume401
@@ -303,7 +303,7 @@ export const useConsumeMagicLinkControllerConsume = <
     mutation?: UseMutationOptions<
       Awaited<ReturnType<typeof consumeMagicLinkControllerConsume>>,
       TError,
-      { data: BodyType<ConsumeMagicLinkBody> },
+      { data: BodyType<ConsumeMagicLinkBodyDtoConsumeMagicLinkBody> },
       TContext
     >;
     request?: SecondParameter<typeof sandictsApiRequest>;
@@ -312,7 +312,7 @@ export const useConsumeMagicLinkControllerConsume = <
 ): UseMutationResult<
   Awaited<ReturnType<typeof consumeMagicLinkControllerConsume>>,
   TError,
-  { data: BodyType<ConsumeMagicLinkBody> },
+  { data: BodyType<ConsumeMagicLinkBodyDtoConsumeMagicLinkBody> },
   TContext
 > => {
   return useMutation(
@@ -329,7 +329,7 @@ export const getGoogleSignInControllerSignInUrl = () => {
  * @summary Sign in with Google
  */
 export const googleSignInControllerSignIn = async (
-  googleSignInBody: GoogleSignInBody,
+  googleSignInBodyDtoGoogleSignInBody: GoogleSignInBodyDtoGoogleSignInBody,
   options?: RequestInit,
 ): Promise<GoogleSignInResponseOutput> => {
   return sandictsApiRequest<GoogleSignInResponseOutput>(
@@ -338,7 +338,7 @@ export const googleSignInControllerSignIn = async (
       ...options,
       method: "POST",
       headers: { "Content-Type": "application/json", ...options?.headers },
-      body: JSON.stringify(googleSignInBody),
+      body: JSON.stringify(googleSignInBodyDtoGoogleSignInBody),
     },
   );
 };
@@ -357,14 +357,14 @@ export const getGoogleSignInControllerSignInMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof googleSignInControllerSignIn>>,
     TError,
-    { data: BodyType<GoogleSignInBody> },
+    { data: BodyType<GoogleSignInBodyDtoGoogleSignInBody> },
     TContext
   >;
   request?: SecondParameter<typeof sandictsApiRequest>;
 }): UseMutationOptions<
   Awaited<ReturnType<typeof googleSignInControllerSignIn>>,
   TError,
-  { data: BodyType<GoogleSignInBody> },
+  { data: BodyType<GoogleSignInBodyDtoGoogleSignInBody> },
   TContext
 > => {
   const mutationKey = ["googleSignInControllerSignIn"];
@@ -378,7 +378,7 @@ export const getGoogleSignInControllerSignInMutationOptions = <
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof googleSignInControllerSignIn>>,
-    { data: BodyType<GoogleSignInBody> }
+    { data: BodyType<GoogleSignInBodyDtoGoogleSignInBody> }
   > = (props) => {
     const { data } = props ?? {};
 
@@ -392,7 +392,7 @@ export type GoogleSignInControllerSignInMutationResult = NonNullable<
   Awaited<ReturnType<typeof googleSignInControllerSignIn>>
 >;
 export type GoogleSignInControllerSignInMutationBody =
-  BodyType<GoogleSignInBody>;
+  BodyType<GoogleSignInBodyDtoGoogleSignInBody>;
 export type GoogleSignInControllerSignInMutationError = ErrorType<
   | GoogleSignInControllerSignIn400
   | GoogleSignInControllerSignIn401
@@ -420,7 +420,7 @@ export const useGoogleSignInControllerSignIn = <
     mutation?: UseMutationOptions<
       Awaited<ReturnType<typeof googleSignInControllerSignIn>>,
       TError,
-      { data: BodyType<GoogleSignInBody> },
+      { data: BodyType<GoogleSignInBodyDtoGoogleSignInBody> },
       TContext
     >;
     request?: SecondParameter<typeof sandictsApiRequest>;
@@ -429,7 +429,7 @@ export const useGoogleSignInControllerSignIn = <
 ): UseMutationResult<
   Awaited<ReturnType<typeof googleSignInControllerSignIn>>,
   TError,
-  { data: BodyType<GoogleSignInBody> },
+  { data: BodyType<GoogleSignInBodyDtoGoogleSignInBody> },
   TContext
 > => {
   return useMutation(

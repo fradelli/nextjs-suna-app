@@ -121,7 +121,7 @@
         kicker: "Autenticação necessária",
         title: "Entre para continuar",
         description:
-          "A descoberta continua pública, mas esta ação precisa de uma conta Sandicts.",
+          "A descoberta continua pública, mas esta ação precisa de uma conta Suna.",
         icon: "log-in",
         tone: "warning",
         primary: { label: "Entrar na conta", action: "sign-in" },
@@ -204,7 +204,7 @@
         kicker: "Contexto sem acesso",
         title: "Esta área não está disponível para sua conta",
         description:
-          "Use um contexto autorizado. O Sandicts não troca de perfil ou organização silenciosamente.",
+          "Use um contexto autorizado. A Suna não troca de perfil ou organização silenciosamente.",
         icon: "shield-x",
         tone: "destructive",
         primary: { label: "Escolher outro contexto", action: "switch-context" },

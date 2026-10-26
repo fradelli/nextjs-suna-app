@@ -5,11 +5,12 @@
  * API documentation generated from Nest controllers and Zod schemas.
  * OpenAPI spec version: 1.0.0
  */
-import type { ApiErrorResponse } from "./apiErrorResponse";
+import type { ApiErrorResponseApiErrorResponse } from "./apiErrorResponseApiErrorResponse";
 import type { CreateCurrentPlayerProfileControllerCreate401Code } from "./createCurrentPlayerProfileControllerCreate401Code";
 import type { CreateCurrentPlayerProfileControllerCreate401StatusCode } from "./createCurrentPlayerProfileControllerCreate401StatusCode";
 
-export type CreateCurrentPlayerProfileControllerCreate401 = ApiErrorResponse & {
-  statusCode?: CreateCurrentPlayerProfileControllerCreate401StatusCode;
-  code?: CreateCurrentPlayerProfileControllerCreate401Code;
-};
+export type CreateCurrentPlayerProfileControllerCreate401 =
+  ApiErrorResponseApiErrorResponse & {
+    statusCode?: CreateCurrentPlayerProfileControllerCreate401StatusCode;
+    code?: CreateCurrentPlayerProfileControllerCreate401Code;
+  };

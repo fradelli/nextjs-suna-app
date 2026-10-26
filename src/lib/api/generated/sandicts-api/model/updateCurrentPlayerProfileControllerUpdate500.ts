@@ -5,11 +5,12 @@
  * API documentation generated from Nest controllers and Zod schemas.
  * OpenAPI spec version: 1.0.0
  */
-import type { ApiErrorResponse } from "./apiErrorResponse";
+import type { ApiErrorResponseApiErrorResponse } from "./apiErrorResponseApiErrorResponse";
 import type { UpdateCurrentPlayerProfileControllerUpdate500Code } from "./updateCurrentPlayerProfileControllerUpdate500Code";
 import type { UpdateCurrentPlayerProfileControllerUpdate500StatusCode } from "./updateCurrentPlayerProfileControllerUpdate500StatusCode";
 
-export type UpdateCurrentPlayerProfileControllerUpdate500 = ApiErrorResponse & {
-  statusCode?: UpdateCurrentPlayerProfileControllerUpdate500StatusCode;
-  code?: UpdateCurrentPlayerProfileControllerUpdate500Code;
-};
+export type UpdateCurrentPlayerProfileControllerUpdate500 =
+  ApiErrorResponseApiErrorResponse & {
+    statusCode?: UpdateCurrentPlayerProfileControllerUpdate500StatusCode;
+    code?: UpdateCurrentPlayerProfileControllerUpdate500Code;
+  };

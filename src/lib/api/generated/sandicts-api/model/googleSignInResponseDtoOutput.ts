@@ -5,8 +5,6 @@
  * API documentation generated from Nest controllers and Zod schemas.
  * OpenAPI spec version: 1.0.0
  */
-import type { HealthResponseStatus } from "./healthResponseStatus";
+import type { GoogleSignInResponseOutput } from "./googleSignInResponseOutput";
 
-export interface HealthResponse {
-  status: HealthResponseStatus;
-}
+export type GoogleSignInResponseDtoOutput = GoogleSignInResponseOutput;

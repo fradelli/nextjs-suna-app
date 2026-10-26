@@ -5,11 +5,12 @@
  * API documentation generated from Nest controllers and Zod schemas.
  * OpenAPI spec version: 1.0.0
  */
-import type { ApiErrorResponse } from "./apiErrorResponse";
+import type { ApiErrorResponseApiErrorResponse } from "./apiErrorResponseApiErrorResponse";
 import type { SignOutControllerSignOutCurrentSession401Code } from "./signOutControllerSignOutCurrentSession401Code";
 import type { SignOutControllerSignOutCurrentSession401StatusCode } from "./signOutControllerSignOutCurrentSession401StatusCode";
 
-export type SignOutControllerSignOutCurrentSession401 = ApiErrorResponse & {
-  statusCode?: SignOutControllerSignOutCurrentSession401StatusCode;
-  code?: SignOutControllerSignOutCurrentSession401Code;
-};
+export type SignOutControllerSignOutCurrentSession401 =
+  ApiErrorResponseApiErrorResponse & {
+    statusCode?: SignOutControllerSignOutCurrentSession401StatusCode;
+    code?: SignOutControllerSignOutCurrentSession401Code;
+  };

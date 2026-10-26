@@ -5,11 +5,12 @@
  * API documentation generated from Nest controllers and Zod schemas.
  * OpenAPI spec version: 1.0.0
  */
-import type { ApiErrorResponse } from "./apiErrorResponse";
+import type { ApiErrorResponseApiErrorResponse } from "./apiErrorResponseApiErrorResponse";
 import type { SignOutAllControllerSignOutAllSessions429Code } from "./signOutAllControllerSignOutAllSessions429Code";
 import type { SignOutAllControllerSignOutAllSessions429StatusCode } from "./signOutAllControllerSignOutAllSessions429StatusCode";
 
-export type SignOutAllControllerSignOutAllSessions429 = ApiErrorResponse & {
-  statusCode?: SignOutAllControllerSignOutAllSessions429StatusCode;
-  code?: SignOutAllControllerSignOutAllSessions429Code;
-};
+export type SignOutAllControllerSignOutAllSessions429 =
+  ApiErrorResponseApiErrorResponse & {
+    statusCode?: SignOutAllControllerSignOutAllSessions429StatusCode;
+    code?: SignOutAllControllerSignOutAllSessions429Code;
+  };

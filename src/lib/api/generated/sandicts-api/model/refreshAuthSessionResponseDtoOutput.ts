@@ -5,11 +5,7 @@
  * API documentation generated from Nest controllers and Zod schemas.
  * OpenAPI spec version: 1.0.0
  */
+import type { RefreshAuthSessionResponseOutput } from "./refreshAuthSessionResponseOutput";
 
-export interface ConsumeMagicLinkBody {
-  /**
-   * @minLength 32
-   * @maxLength 256
-   */
-  token: string;
-}
+export type RefreshAuthSessionResponseDtoOutput =
+  RefreshAuthSessionResponseOutput;

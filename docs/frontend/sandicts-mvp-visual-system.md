@@ -55,7 +55,9 @@ não modifica primária, foco ou navegação do pacote.
 - `Field`/`Input`: labels persistentes, refs RHF, ids e descrições/erros
   associados explicitamente. Copy e validação pertencem ao consumidor.
 - `Alert`/`StatusBadge`: cor mais texto; anúncio explícito somente quando
-  necessário. Nunca deduzir estado de domínio pela cor.
+  necessário. Nunca deduzir estado de domínio pela cor. O `Alert` 0.5.0
+  posiciona título e descrição na mesma coluna, e o E2E de autenticação protege
+  a separação vertical do aviso beta em 320, 390, 768 e 1440 px.
 - `NavigationItem`: estilo/foco/estado ativo públicos. URL, grupos e modos
   bottom/rail/sidebar/drawer continuam no app.
 - `Sheet` e `AlertDialog`: dialog nativo, título/descrição, foco seguro,
