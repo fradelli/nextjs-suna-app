@@ -605,7 +605,7 @@
         renderStatePanel(contextName, stateName, isLongCopy, shapeName);
       }
 
-      document.title = `Sandicts — ${contexts[contextName].label} · ${stateLabels[stateName]}`;
+      document.title = `Suna — ${contexts[contextName].label} · ${stateLabels[stateName]}`;
     }
 
     return Object.freeze({ renderSelectedState });

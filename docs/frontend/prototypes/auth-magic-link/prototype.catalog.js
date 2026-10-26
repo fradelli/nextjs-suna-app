@@ -6,7 +6,7 @@
     (globalScope.sandictsMagicLinkPrototype = {});
 
   const entryHero = Object.freeze({
-    eyebrow: "Acesso Sandicts",
+    eyebrow: "Acesso Suna",
     title: "Entre para continuar",
     description: "Use Google ou receba um link seguro no seu e-mail.",
   });
@@ -15,7 +15,7 @@
     eyebrow: "Acesso por e-mail",
     title: "Confirme seu acesso",
     description:
-      "O Sandicts verifica o link sem expor o endereço, a conta ou detalhes internos.",
+      "A Suna verifica o link sem expor o endereço, a conta ou detalhes internos.",
   });
 
   const entryCard = Object.freeze({
@@ -45,7 +45,7 @@
       label: "Entrada após sessão expirada",
       presentation: "entry",
       hero: {
-        eyebrow: "Acesso Sandicts",
+        eyebrow: "Acesso Suna",
         title: "Entre novamente",
         description:
           "Use Google ou receba um link seguro para continuar em um destino autorizado.",
@@ -418,7 +418,7 @@
       label: "Autenticação proibida",
       presentation: "boundary",
       hero: {
-        eyebrow: "Acesso Sandicts",
+        eyebrow: "Acesso Suna",
         title: "Escolha como continuar",
         description:
           "O acesso atual não pode ser usado para entrar nesta área.",
@@ -429,7 +429,7 @@
         eyebrow: "Estado da conta",
         title: "Você não tem acesso a esta área",
         description:
-          "Use outra conta ou volte para uma área pública do Sandicts.",
+          "Use outra conta ou volte para uma área pública da Suna.",
         status: "",
         busy: false,
         primary: {

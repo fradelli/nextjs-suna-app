@@ -6,10 +6,10 @@
  * OpenAPI spec version: 1.0.0
  */
 
-export type ApiErrorResponseCode =
-  (typeof ApiErrorResponseCode)[keyof typeof ApiErrorResponseCode];
+export type ApiErrorResponseApiErrorResponseCode =
+  (typeof ApiErrorResponseApiErrorResponseCode)[keyof typeof ApiErrorResponseApiErrorResponseCode];
 
-export const ApiErrorResponseCode = {
+export const ApiErrorResponseApiErrorResponseCode = {
   bad_request: "bad_request",
   validation_error: "validation_error",
   rate_limited: "rate_limited",

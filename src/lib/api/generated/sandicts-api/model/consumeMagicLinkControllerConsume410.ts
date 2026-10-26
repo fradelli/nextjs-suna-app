@@ -5,11 +5,12 @@
  * API documentation generated from Nest controllers and Zod schemas.
  * OpenAPI spec version: 1.0.0
  */
-import type { ApiErrorResponse } from "./apiErrorResponse";
+import type { ApiErrorResponseApiErrorResponse } from "./apiErrorResponseApiErrorResponse";
 import type { ConsumeMagicLinkControllerConsume410Code } from "./consumeMagicLinkControllerConsume410Code";
 import type { ConsumeMagicLinkControllerConsume410StatusCode } from "./consumeMagicLinkControllerConsume410StatusCode";
 
-export type ConsumeMagicLinkControllerConsume410 = ApiErrorResponse & {
-  statusCode?: ConsumeMagicLinkControllerConsume410StatusCode;
-  code?: ConsumeMagicLinkControllerConsume410Code;
-};
+export type ConsumeMagicLinkControllerConsume410 =
+  ApiErrorResponseApiErrorResponse & {
+    statusCode?: ConsumeMagicLinkControllerConsume410StatusCode;
+    code?: ConsumeMagicLinkControllerConsume410Code;
+  };

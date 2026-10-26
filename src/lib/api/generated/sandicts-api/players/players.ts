@@ -22,7 +22,7 @@ import type {
 } from "@tanstack/react-query";
 
 import type {
-  CreateCurrentPlayerProfileBody,
+  CreateCurrentPlayerProfileBodyDtoCreateCurrentPlayerProfileBody,
   CreateCurrentPlayerProfileControllerCreate400,
   CreateCurrentPlayerProfileControllerCreate401,
   CreateCurrentPlayerProfileControllerCreate403,
@@ -34,7 +34,7 @@ import type {
   GetCurrentPlayerProfileControllerGetCurrentProfile403,
   GetCurrentPlayerProfileControllerGetCurrentProfile429,
   GetCurrentPlayerProfileControllerGetCurrentProfile500,
-  UpdateCurrentPlayerProfileBody,
+  UpdateCurrentPlayerProfileBodyDtoUpdateCurrentPlayerProfileBody,
   UpdateCurrentPlayerProfileControllerUpdate400,
   UpdateCurrentPlayerProfileControllerUpdate401,
   UpdateCurrentPlayerProfileControllerUpdate403,
@@ -320,7 +320,7 @@ export const getCreateCurrentPlayerProfileControllerCreateUrl = () => {
  * @summary Create current player profile
  */
 export const createCurrentPlayerProfileControllerCreate = async (
-  createCurrentPlayerProfileBody: CreateCurrentPlayerProfileBody,
+  createCurrentPlayerProfileBodyDtoCreateCurrentPlayerProfileBody: CreateCurrentPlayerProfileBodyDtoCreateCurrentPlayerProfileBody,
   options?: RequestInit,
 ): Promise<CurrentPlayerProfileResponseOutput> => {
   return sandictsApiRequest<CurrentPlayerProfileResponseOutput>(
@@ -329,7 +329,9 @@ export const createCurrentPlayerProfileControllerCreate = async (
       ...options,
       method: "POST",
       headers: { "Content-Type": "application/json", ...options?.headers },
-      body: JSON.stringify(createCurrentPlayerProfileBody),
+      body: JSON.stringify(
+        createCurrentPlayerProfileBodyDtoCreateCurrentPlayerProfileBody,
+      ),
     },
   );
 };
@@ -348,14 +350,18 @@ export const getCreateCurrentPlayerProfileControllerCreateMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof createCurrentPlayerProfileControllerCreate>>,
     TError,
-    { data: BodyType<CreateCurrentPlayerProfileBody> },
+    {
+      data: BodyType<CreateCurrentPlayerProfileBodyDtoCreateCurrentPlayerProfileBody>;
+    },
     TContext
   >;
   request?: SecondParameter<typeof sandictsApiRequest>;
 }): UseMutationOptions<
   Awaited<ReturnType<typeof createCurrentPlayerProfileControllerCreate>>,
   TError,
-  { data: BodyType<CreateCurrentPlayerProfileBody> },
+  {
+    data: BodyType<CreateCurrentPlayerProfileBodyDtoCreateCurrentPlayerProfileBody>;
+  },
   TContext
 > => {
   const mutationKey = ["createCurrentPlayerProfileControllerCreate"];
@@ -369,7 +375,9 @@ export const getCreateCurrentPlayerProfileControllerCreateMutationOptions = <
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof createCurrentPlayerProfileControllerCreate>>,
-    { data: BodyType<CreateCurrentPlayerProfileBody> }
+    {
+      data: BodyType<CreateCurrentPlayerProfileBodyDtoCreateCurrentPlayerProfileBody>;
+    }
   > = (props) => {
     const { data } = props ?? {};
 
@@ -384,7 +392,7 @@ export type CreateCurrentPlayerProfileControllerCreateMutationResult =
     Awaited<ReturnType<typeof createCurrentPlayerProfileControllerCreate>>
   >;
 export type CreateCurrentPlayerProfileControllerCreateMutationBody =
-  BodyType<CreateCurrentPlayerProfileBody>;
+  BodyType<CreateCurrentPlayerProfileBodyDtoCreateCurrentPlayerProfileBody>;
 export type CreateCurrentPlayerProfileControllerCreateMutationError = ErrorType<
   | CreateCurrentPlayerProfileControllerCreate400
   | CreateCurrentPlayerProfileControllerCreate401
@@ -412,7 +420,9 @@ export const useCreateCurrentPlayerProfileControllerCreate = <
     mutation?: UseMutationOptions<
       Awaited<ReturnType<typeof createCurrentPlayerProfileControllerCreate>>,
       TError,
-      { data: BodyType<CreateCurrentPlayerProfileBody> },
+      {
+        data: BodyType<CreateCurrentPlayerProfileBodyDtoCreateCurrentPlayerProfileBody>;
+      },
       TContext
     >;
     request?: SecondParameter<typeof sandictsApiRequest>;
@@ -421,7 +431,9 @@ export const useCreateCurrentPlayerProfileControllerCreate = <
 ): UseMutationResult<
   Awaited<ReturnType<typeof createCurrentPlayerProfileControllerCreate>>,
   TError,
-  { data: BodyType<CreateCurrentPlayerProfileBody> },
+  {
+    data: BodyType<CreateCurrentPlayerProfileBodyDtoCreateCurrentPlayerProfileBody>;
+  },
   TContext
 > => {
   return useMutation(
@@ -438,7 +450,7 @@ export const getUpdateCurrentPlayerProfileControllerUpdateUrl = () => {
  * @summary Update current player profile
  */
 export const updateCurrentPlayerProfileControllerUpdate = async (
-  updateCurrentPlayerProfileBody: UpdateCurrentPlayerProfileBody,
+  updateCurrentPlayerProfileBodyDtoUpdateCurrentPlayerProfileBody: UpdateCurrentPlayerProfileBodyDtoUpdateCurrentPlayerProfileBody,
   options?: RequestInit,
 ): Promise<CurrentPlayerProfileResponseOutput> => {
   return sandictsApiRequest<CurrentPlayerProfileResponseOutput>(
@@ -447,7 +459,9 @@ export const updateCurrentPlayerProfileControllerUpdate = async (
       ...options,
       method: "PATCH",
       headers: { "Content-Type": "application/json", ...options?.headers },
-      body: JSON.stringify(updateCurrentPlayerProfileBody),
+      body: JSON.stringify(
+        updateCurrentPlayerProfileBodyDtoUpdateCurrentPlayerProfileBody,
+      ),
     },
   );
 };
@@ -466,14 +480,18 @@ export const getUpdateCurrentPlayerProfileControllerUpdateMutationOptions = <
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof updateCurrentPlayerProfileControllerUpdate>>,
     TError,
-    { data: BodyType<UpdateCurrentPlayerProfileBody> },
+    {
+      data: BodyType<UpdateCurrentPlayerProfileBodyDtoUpdateCurrentPlayerProfileBody>;
+    },
     TContext
   >;
   request?: SecondParameter<typeof sandictsApiRequest>;
 }): UseMutationOptions<
   Awaited<ReturnType<typeof updateCurrentPlayerProfileControllerUpdate>>,
   TError,
-  { data: BodyType<UpdateCurrentPlayerProfileBody> },
+  {
+    data: BodyType<UpdateCurrentPlayerProfileBodyDtoUpdateCurrentPlayerProfileBody>;
+  },
   TContext
 > => {
   const mutationKey = ["updateCurrentPlayerProfileControllerUpdate"];
@@ -487,7 +505,9 @@ export const getUpdateCurrentPlayerProfileControllerUpdateMutationOptions = <
 
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof updateCurrentPlayerProfileControllerUpdate>>,
-    { data: BodyType<UpdateCurrentPlayerProfileBody> }
+    {
+      data: BodyType<UpdateCurrentPlayerProfileBodyDtoUpdateCurrentPlayerProfileBody>;
+    }
   > = (props) => {
     const { data } = props ?? {};
 
@@ -502,7 +522,7 @@ export type UpdateCurrentPlayerProfileControllerUpdateMutationResult =
     Awaited<ReturnType<typeof updateCurrentPlayerProfileControllerUpdate>>
   >;
 export type UpdateCurrentPlayerProfileControllerUpdateMutationBody =
-  BodyType<UpdateCurrentPlayerProfileBody>;
+  BodyType<UpdateCurrentPlayerProfileBodyDtoUpdateCurrentPlayerProfileBody>;
 export type UpdateCurrentPlayerProfileControllerUpdateMutationError = ErrorType<
   | UpdateCurrentPlayerProfileControllerUpdate400
   | UpdateCurrentPlayerProfileControllerUpdate401
@@ -530,7 +550,9 @@ export const useUpdateCurrentPlayerProfileControllerUpdate = <
     mutation?: UseMutationOptions<
       Awaited<ReturnType<typeof updateCurrentPlayerProfileControllerUpdate>>,
       TError,
-      { data: BodyType<UpdateCurrentPlayerProfileBody> },
+      {
+        data: BodyType<UpdateCurrentPlayerProfileBodyDtoUpdateCurrentPlayerProfileBody>;
+      },
       TContext
     >;
     request?: SecondParameter<typeof sandictsApiRequest>;
@@ -539,7 +561,9 @@ export const useUpdateCurrentPlayerProfileControllerUpdate = <
 ): UseMutationResult<
   Awaited<ReturnType<typeof updateCurrentPlayerProfileControllerUpdate>>,
   TError,
-  { data: BodyType<UpdateCurrentPlayerProfileBody> },
+  {
+    data: BodyType<UpdateCurrentPlayerProfileBodyDtoUpdateCurrentPlayerProfileBody>;
+  },
   TContext
 > => {
   return useMutation(
