@@ -1,7 +1,7 @@
 import type {
-  ApiErrorResponse,
-  ApiErrorResponseCode,
-  ApiValidationIssue,
+  ApiErrorResponseApiErrorResponse as ApiErrorResponse,
+  ApiErrorResponseApiErrorResponseCode as ApiErrorResponseCode,
+  ApiErrorResponseApiValidationIssue as ApiValidationIssue,
 } from "@/lib/api/generated/sandicts-api/model";
 
 type SandictsApiErrorCode =

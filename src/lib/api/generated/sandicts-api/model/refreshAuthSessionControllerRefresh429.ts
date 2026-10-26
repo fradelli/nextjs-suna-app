@@ -5,11 +5,12 @@
  * API documentation generated from Nest controllers and Zod schemas.
  * OpenAPI spec version: 1.0.0
  */
-import type { ApiErrorResponse } from "./apiErrorResponse";
+import type { ApiErrorResponseApiErrorResponse } from "./apiErrorResponseApiErrorResponse";
 import type { RefreshAuthSessionControllerRefresh429Code } from "./refreshAuthSessionControllerRefresh429Code";
 import type { RefreshAuthSessionControllerRefresh429StatusCode } from "./refreshAuthSessionControllerRefresh429StatusCode";
 
-export type RefreshAuthSessionControllerRefresh429 = ApiErrorResponse & {
-  statusCode?: RefreshAuthSessionControllerRefresh429StatusCode;
-  code?: RefreshAuthSessionControllerRefresh429Code;
-};
+export type RefreshAuthSessionControllerRefresh429 =
+  ApiErrorResponseApiErrorResponse & {
+    statusCode?: RefreshAuthSessionControllerRefresh429StatusCode;
+    code?: RefreshAuthSessionControllerRefresh429Code;
+  };

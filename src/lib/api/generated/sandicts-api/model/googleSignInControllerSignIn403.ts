@@ -5,11 +5,12 @@
  * API documentation generated from Nest controllers and Zod schemas.
  * OpenAPI spec version: 1.0.0
  */
-import type { ApiErrorResponse } from "./apiErrorResponse";
+import type { ApiErrorResponseApiErrorResponse } from "./apiErrorResponseApiErrorResponse";
 import type { GoogleSignInControllerSignIn403Code } from "./googleSignInControllerSignIn403Code";
 import type { GoogleSignInControllerSignIn403StatusCode } from "./googleSignInControllerSignIn403StatusCode";
 
-export type GoogleSignInControllerSignIn403 = ApiErrorResponse & {
-  statusCode?: GoogleSignInControllerSignIn403StatusCode;
-  code?: GoogleSignInControllerSignIn403Code;
-};
+export type GoogleSignInControllerSignIn403 =
+  ApiErrorResponseApiErrorResponse & {
+    statusCode?: GoogleSignInControllerSignIn403StatusCode;
+    code?: GoogleSignInControllerSignIn403Code;
+  };

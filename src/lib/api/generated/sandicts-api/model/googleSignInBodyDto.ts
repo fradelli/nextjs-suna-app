@@ -5,8 +5,6 @@
  * API documentation generated from Nest controllers and Zod schemas.
  * OpenAPI spec version: 1.0.0
  */
+import type { GoogleSignInBodyDtoGoogleSignInBody } from "./googleSignInBodyDtoGoogleSignInBody";
 
-export interface RequestMagicLinkBody {
-  /** @pattern ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$ */
-  email: string;
-}
+export type GoogleSignInBodyDto = GoogleSignInBodyDtoGoogleSignInBody;

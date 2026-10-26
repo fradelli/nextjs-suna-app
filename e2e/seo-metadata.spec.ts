@@ -14,7 +14,7 @@ test("publishes complete metadata for the public home page", async ({
 }) => {
   await page.goto("/");
 
-  await expect(page).toHaveTitle("Sandicts");
+  await expect(page).toHaveTitle("Suna");
   await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR");
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     "href",
@@ -60,7 +60,7 @@ test("publishes complete metadata for the public home page", async ({
 test("publishes route-specific discovery metadata", async ({ page }) => {
   await page.goto("/discovery");
 
-  await expect(page).toHaveTitle("Descobrir quadras | Sandicts");
+  await expect(page).toHaveTitle("Descobrir quadras | Suna");
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     "href",
     "http://localhost:3001/discovery",

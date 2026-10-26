@@ -1,5 +1,33 @@
 import { e2eGoogleCredential, expect, test } from "./fixtures/auth.fixture";
 
+test("keeps the beta notice readable across supported widths", async ({
+  page,
+}) => {
+  await page.goto("/sign-in");
+
+  const betaAlert = page.locator(
+    '[data-slot="alert"][aria-labelledby="beta-notice-title"]',
+  );
+  const betaTitle = betaAlert.locator(':scope > [data-slot="alert-title"]');
+  const betaDescription = betaAlert.locator(
+    ':scope > [data-slot="alert-description"]',
+  );
+
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ height: 900, width });
+    await expect(betaTitle).toBeVisible();
+    await expect(betaDescription).toBeVisible();
+
+    const titleBox = await betaTitle.boundingBox();
+    const descriptionBox = await betaDescription.boundingBox();
+
+    expect(titleBox).not.toBeNull();
+    expect(descriptionBox).not.toBeNull();
+    expect(Math.abs(titleBox!.x - descriptionBox!.x)).toBeLessThanOrEqual(1);
+    expect(titleBox!.y + titleBox!.height).toBeLessThan(descriptionBox!.y);
+  }
+});
+
 test("signs in and resumes the authenticated Player area", async ({
   authApi,
   page,

@@ -75,7 +75,7 @@ test("uses complete Phosphor sprites without legacy glyph placeholders", async (
         ).filter((text) => legacyIconGlyphs.some((glyph) => glyph === text));
         const brandImages = Array.from(
           document.querySelectorAll<HTMLImageElement>(
-            'img[src$="public/sandicts-mark.svg"]',
+            'img[src$="public/brand/suna-logo-source.png"]',
           ),
           (image) => ({
             complete: image.complete,

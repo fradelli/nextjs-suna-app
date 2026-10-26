@@ -6,15 +6,7 @@
  * OpenAPI spec version: 1.0.0
  */
 
-export interface GoogleSignInBody {
-  /**
-   * @minLength 10
-   * @maxLength 4096
-   */
-  credential?: string;
-  /**
-   * @minLength 10
-   * @maxLength 4096
-   */
-  idToken?: string;
+export interface ApiErrorResponseApiValidationIssue {
+  path: (string | number)[];
+  message: string;
 }
