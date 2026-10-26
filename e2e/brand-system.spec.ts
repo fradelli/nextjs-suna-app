@@ -16,14 +16,14 @@ test("publishes the active variant and accessible shared brand link", async ({
     "data-brand-variant",
     "default",
   );
-  await expect(
-    page.getByRole("link", { name: "Sandicts — início" }),
-  ).toHaveCount(1);
+  await expect(page.getByRole("link", { name: "Suna — início" })).toHaveCount(
+    1,
+  );
   await expect(page.locator("[data-brand-link] [data-brand-mark]")).toHaveCount(
     1,
   );
   await expect(page.locator("[data-brand-link] [data-brand-name]")).toHaveText(
-    "SANDICTS",
+    "suna",
   );
 });
 
@@ -33,7 +33,7 @@ test("renders the gallery and propagates fixture theme tokens", async ({
   await page.goto("/prototypes/brand");
 
   await expect(
-    page.getByRole("heading", { level: 1, name: "Galeria da marca Sandicts" }),
+    page.getByRole("heading", { level: 1, name: "Galeria da marca Suna" }),
   ).toBeVisible();
 
   const defaultVariant = page.locator('[data-brand-gallery-variant="default"]');
@@ -77,9 +77,9 @@ test("renders the gallery and propagates fixture theme tokens", async ({
   ]);
 
   expect(darkSurfaceColor).not.toBe(lightSurfaceColor);
-  expect(await page.locator("[data-brand-mark] path").count()).toBeGreaterThan(
-    20,
-  );
+  await expect(
+    page.locator('[data-brand-mark] image[href="/brand/suna-logo-source.png"]'),
+  ).not.toHaveCount(0);
 });
 
 for (const viewport of representativeViewports) {
@@ -97,27 +97,25 @@ for (const viewport of representativeViewports) {
     expect(layoutMetrics.scrollWidth).toBeLessThanOrEqual(
       layoutMetrics.clientWidth,
     );
-    await expect(page.locator("[data-brand-mark] path")).not.toHaveCount(0);
+    await expect(
+      page.locator(
+        '[data-brand-mark] image[href="/brand/suna-logo-source.png"]',
+      ),
+    ).not.toHaveCount(0);
   });
 }
 
-test("serves generated mark and icon assets from the canonical geometry", async ({
-  request,
-}) => {
+test("serves the canonical Suna mark and icon assets", async ({ request }) => {
   const [markResponse, iconResponse] = await Promise.all([
-    request.get("/sandicts-mark.svg"),
-    request.get("/icon.svg"),
+    request.get("/brand/suna-logo-source.png"),
+    request.get("/icon.png"),
   ]);
 
   expect(markResponse.ok()).toBe(true);
   expect(iconResponse.ok()).toBe(true);
 
-  const [mark, icon] = await Promise.all([
-    markResponse.text(),
-    iconResponse.text(),
-  ]);
-
-  expect(mark).toContain("M8 90V74H57");
-  expect(icon).toContain("M8 90V74H57");
-  expect(mark).not.toContain("M25 58c8 10 31 11 43 0");
+  expect(markResponse.headers()["content-type"]).toContain("image/png");
+  expect(iconResponse.headers()["content-type"]).toContain("image/png");
+  expect((await markResponse.body()).byteLength).toBeGreaterThan(0);
+  expect((await iconResponse.body()).byteLength).toBeGreaterThan(0);
 });

@@ -1,8 +1,8 @@
 import { defineConfig } from "orval";
 
-const localOpenApiSchemaPath = "../nodejs-sandicts-api/openapi/suna-api.json";
+const localOpenApiSchemaPath = "../nestjs-suna-api/openapi/suna-api.json";
 const canonicalOpenApiSchemaUrl =
-  "https://raw.githubusercontent.com/fradelli/nodejs-sandicts-api/developer/openapi/suna-api.json";
+  "https://raw.githubusercontent.com/fradelli/nestjs-suna-api/developer/openapi/suna-api.json";
 const configuredOpenApiSchemaUrl = process.env.OPENAPI_SCHEMA_URL?.trim();
 const openApiSchemaTarget = [
   localOpenApiSchemaPath,

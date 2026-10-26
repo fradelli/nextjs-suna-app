@@ -16,7 +16,7 @@ function setShell(shellName) {
     shell.hidden = shell.dataset.shell !== shellName;
   });
 
-  document.title = `Sandicts — Shell ${shellName}`;
+  document.title = `Suna — Shell ${shellName}`;
 }
 
 function setState(stateName) {

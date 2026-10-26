@@ -6,7 +6,10 @@
  * OpenAPI spec version: 1.0.0
  */
 
-export interface ApiValidationIssue {
-  path: (string | number)[];
-  message: string;
+export interface ConsumeMagicLinkBodyDtoConsumeMagicLinkBody {
+  /**
+   * @minLength 32
+   * @maxLength 256
+   */
+  token: string;
 }

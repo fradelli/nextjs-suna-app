@@ -1,6 +1,6 @@
 (function registerAuthSignInCatalog(globalScope) {
   const defaultHero = Object.freeze({
-    eyebrow: "Acesso Sandicts",
+    eyebrow: "Acesso Suna",
     title: "Entre para continuar",
     description:
       "Use sua conta Google para acessar seu perfil e os contextos disponíveis.",
@@ -15,7 +15,7 @@
       card: {
         eyebrow: "Acesso seguro",
         title: "Entre na sua conta",
-        description: "Continue com o Google para acessar o Sandicts.",
+        description: "Continue com o Google para acessar a Suna.",
       },
       provider: {
         kind: "google",
@@ -28,7 +28,7 @@
       },
       helper: "O Google será usado apenas para confirmar sua identidade.",
       longCopy:
-        "Depois do acesso, o Sandicts verifica o destino e os contextos disponíveis antes de navegar.",
+        "Depois do acesso, a Suna verifica o destino e os contextos disponíveis antes de navegar.",
     },
     "google-ready": {
       label: "Google Sign-In normal",
@@ -59,7 +59,7 @@
       group: "Loading e retry",
       mode: "auth",
       hero: {
-        eyebrow: "Acesso Sandicts",
+        eyebrow: "Acesso Suna",
         title: "Estamos verificando sua sessão",
         description:
           "A página mantém sua estrutura enquanto confirma o estado de acesso.",
@@ -225,7 +225,7 @@
       group: "Google One Tap",
       mode: "boundary",
       hero: {
-        eyebrow: "Acesso Sandicts",
+        eyebrow: "Acesso Suna",
         title: "Abra no navegador para entrar",
         description:
           "Webviews incorporadas não são superfícies de autenticação suportadas no MVP.",
@@ -268,7 +268,7 @@
         eyebrow: "Reautenticação",
         title: "Confirme sua conta",
         description:
-          "Use o botão oficial do Google para criar uma nova sessão Sandicts.",
+          "Use o botão oficial do Google para criar uma nova sessão Suna.",
       },
       provider: {
         kind: "google",
@@ -282,7 +282,7 @@
       note:
         "“Entrar novamente” é a intenção aprovada; o provider controla o rótulo final do botão.",
       longCopy:
-        "O Sandicts revalida o destino solicitado e não restaura valores de formulários descartados.",
+        "A Suna revalida o destino solicitado e não restaura valores de formulários descartados.",
     },
     "verification-failed": {
       label: "Falha ao verificar sessão",
@@ -319,7 +319,7 @@
         eyebrow: "Acesso em andamento",
         title: "Estamos confirmando sua conta",
         description:
-          "Aguarde enquanto o Sandicts cria a sessão e prepara o próximo destino.",
+          "Aguarde enquanto a Suna cria a sessão e prepara o próximo destino.",
       },
       provider: {
         kind: "google",
@@ -415,7 +415,7 @@
         label: "Voltar ao início",
         action: "home",
       },
-      note: "Representa rede, timeout ou erro interno durante a troca com o Sandicts.",
+      note: "Representa rede, timeout ou erro interno durante a troca com a Suna.",
     },
     "validation-error": {
       label: "Falha inesperada da solicitação",
@@ -481,7 +481,7 @@
         eyebrow: "Proteção de acesso",
         title: "Faça uma pausa antes de tentar novamente",
         description:
-          "O Sandicts limita tentativas repetidas para proteger o fluxo de autenticação.",
+          "A Suna limita tentativas repetidas para proteger o fluxo de autenticação.",
       },
       boundary: {
         tone: "warning",
@@ -504,7 +504,7 @@
         eyebrow: "Limite de acesso",
         title: "Sua conta não pode continuar",
         description:
-          "O Sandicts mantém este estado separado de sessão expirada e de falha temporária.",
+          "A Suna mantém este estado separado de sessão expirada e de falha temporária.",
       },
       boundary: {
         tone: "destructive",
@@ -512,7 +512,7 @@
         eyebrow: "Acesso indisponível",
         title: "Você não tem acesso a esta área",
         description:
-          "Use outra conta ou volte para uma área pública do Sandicts.",
+          "Use outra conta ou volte para uma área pública da Suna.",
         primary: {
           label: "Entrar com outra conta",
           action: "sign-in",
@@ -533,7 +533,7 @@
         eyebrow: "Acesso confirmado",
         title: "Estamos preparando sua área",
         description:
-          "O provider já terminou; agora o Sandicts resolve um destino autorizado.",
+          "O provider já terminou; agora a Suna resolve um destino autorizado.",
       },
       boundary: {
         tone: "info",
@@ -636,7 +636,7 @@
         eyebrow: "Conta autenticada",
         title: "Nenhuma área está disponível agora",
         description:
-          "O Sandicts não inventa um perfil Player nem uma organização para completar o roteamento.",
+          "A Suna não inventa um perfil Player nem uma organização para completar o roteamento.",
       },
       boundary: {
         tone: "warning",

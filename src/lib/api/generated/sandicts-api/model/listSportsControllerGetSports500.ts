@@ -5,11 +5,12 @@
  * API documentation generated from Nest controllers and Zod schemas.
  * OpenAPI spec version: 1.0.0
  */
-import type { ApiErrorResponse } from "./apiErrorResponse";
+import type { ApiErrorResponseApiErrorResponse } from "./apiErrorResponseApiErrorResponse";
 import type { ListSportsControllerGetSports500Code } from "./listSportsControllerGetSports500Code";
 import type { ListSportsControllerGetSports500StatusCode } from "./listSportsControllerGetSports500StatusCode";
 
-export type ListSportsControllerGetSports500 = ApiErrorResponse & {
-  statusCode?: ListSportsControllerGetSports500StatusCode;
-  code?: ListSportsControllerGetSports500Code;
-};
+export type ListSportsControllerGetSports500 =
+  ApiErrorResponseApiErrorResponse & {
+    statusCode?: ListSportsControllerGetSports500StatusCode;
+    code?: ListSportsControllerGetSports500Code;
+  };

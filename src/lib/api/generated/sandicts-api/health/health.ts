@@ -18,7 +18,10 @@ import type {
   UseQueryResult,
 } from "@tanstack/react-query";
 
-import type { HealthResponse, HealthResponseOutput } from "../model";
+import type {
+  HealthResponseDtoHealthResponse,
+  HealthResponseOutput,
+} from "../model";
 
 import { sandictsApiRequest } from "../../../runtime/sandicts-api-request";
 import type { ErrorType } from "../../../runtime/sandicts-api-request";
@@ -227,7 +230,7 @@ export const getHealthControllerReadinessQueryKey = () => {
 
 export const getHealthControllerReadinessQueryOptions = <
   TData = Awaited<ReturnType<typeof healthControllerReadiness>>,
-  TError = ErrorType<HealthResponse>,
+  TError = ErrorType<HealthResponseDtoHealthResponse>,
 >(options?: {
   query?: Partial<
     UseQueryOptions<
@@ -257,11 +260,12 @@ export const getHealthControllerReadinessQueryOptions = <
 export type HealthControllerReadinessQueryResult = NonNullable<
   Awaited<ReturnType<typeof healthControllerReadiness>>
 >;
-export type HealthControllerReadinessQueryError = ErrorType<HealthResponse>;
+export type HealthControllerReadinessQueryError =
+  ErrorType<HealthResponseDtoHealthResponse>;
 
 export function useHealthControllerReadiness<
   TData = Awaited<ReturnType<typeof healthControllerReadiness>>,
-  TError = ErrorType<HealthResponse>,
+  TError = ErrorType<HealthResponseDtoHealthResponse>,
 >(
   options: {
     query: Partial<
@@ -287,7 +291,7 @@ export function useHealthControllerReadiness<
 };
 export function useHealthControllerReadiness<
   TData = Awaited<ReturnType<typeof healthControllerReadiness>>,
-  TError = ErrorType<HealthResponse>,
+  TError = ErrorType<HealthResponseDtoHealthResponse>,
 >(
   options?: {
     query?: Partial<
@@ -313,7 +317,7 @@ export function useHealthControllerReadiness<
 };
 export function useHealthControllerReadiness<
   TData = Awaited<ReturnType<typeof healthControllerReadiness>>,
-  TError = ErrorType<HealthResponse>,
+  TError = ErrorType<HealthResponseDtoHealthResponse>,
 >(
   options?: {
     query?: Partial<
@@ -335,7 +339,7 @@ export function useHealthControllerReadiness<
 
 export function useHealthControllerReadiness<
   TData = Awaited<ReturnType<typeof healthControllerReadiness>>,
-  TError = ErrorType<HealthResponse>,
+  TError = ErrorType<HealthResponseDtoHealthResponse>,
 >(
   options?: {
     query?: Partial<

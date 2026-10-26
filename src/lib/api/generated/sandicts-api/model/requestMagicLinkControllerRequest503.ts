@@ -5,11 +5,12 @@
  * API documentation generated from Nest controllers and Zod schemas.
  * OpenAPI spec version: 1.0.0
  */
-import type { ApiErrorResponse } from "./apiErrorResponse";
+import type { ApiErrorResponseApiErrorResponse } from "./apiErrorResponseApiErrorResponse";
 import type { RequestMagicLinkControllerRequest503Code } from "./requestMagicLinkControllerRequest503Code";
 import type { RequestMagicLinkControllerRequest503StatusCode } from "./requestMagicLinkControllerRequest503StatusCode";
 
-export type RequestMagicLinkControllerRequest503 = ApiErrorResponse & {
-  statusCode?: RequestMagicLinkControllerRequest503StatusCode;
-  code?: RequestMagicLinkControllerRequest503Code;
-};
+export type RequestMagicLinkControllerRequest503 =
+  ApiErrorResponseApiErrorResponse & {
+    statusCode?: RequestMagicLinkControllerRequest503StatusCode;
+    code?: RequestMagicLinkControllerRequest503Code;
+  };

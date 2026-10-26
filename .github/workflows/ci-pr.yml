@@ -352,7 +352,7 @@ jobs:
     needs: governance
     timeout-minutes: 15
     env:
-      OPENAPI_SCHEMA_URL: https://raw.githubusercontent.com/fradelli/nodejs-sandicts-api/${{ github.head_ref || github.ref_name }}/openapi/suna-api.json
+      OPENAPI_SCHEMA_URL: https://raw.githubusercontent.com/fradelli/nestjs-suna-api/${{ github.head_ref || github.ref_name }}/openapi/suna-api.json
 
     steps:
       - name: Checkout

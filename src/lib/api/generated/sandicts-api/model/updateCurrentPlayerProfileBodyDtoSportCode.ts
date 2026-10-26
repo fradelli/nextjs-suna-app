@@ -6,9 +6,10 @@
  * OpenAPI spec version: 1.0.0
  */
 
-export type SportCode = (typeof SportCode)[keyof typeof SportCode];
+export type UpdateCurrentPlayerProfileBodyDtoSportCode =
+  (typeof UpdateCurrentPlayerProfileBodyDtoSportCode)[keyof typeof UpdateCurrentPlayerProfileBodyDtoSportCode];
 
-export const SportCode = {
+export const UpdateCurrentPlayerProfileBodyDtoSportCode = {
   futevolei: "futevolei",
   beach_tennis: "beach_tennis",
   beach_volleyball: "beach_volleyball",
